@@ -1,5 +1,5 @@
 
-export const Users = [
+export const users = [
   {"id":1,"name":"Trefor Balentyne","email":"tbalentyne0@twitpic.com","cpf":"532-51-0651","address":"69093 Jay Point", "userType": "client"},
   {"id":2,"name":"Lucina Ovenell","email":"lovenell1@hp.com","cpf":"247-94-2389","address":"115 Armistice Center", "userType": "client"},
   {"id":3,"name":"Barnie Hoyland","email":"bhoyland2@macromedia.com","cpf":"315-35-7863","address":"65610 Coolidge Junction", "userType": "client"},
@@ -52,7 +52,7 @@ export const Users = [
   {"id":50,"name":"Fleur Sharpless","email":"fsharpless1d@163.com","cpf":"819-15-5225","address":"7020 Maple Wood Road", "userType": "client"}
 ];
 
-export const Products = [
+export const products = [
   {"id":1,"name":"Honda","price":"$16.29","info":"Civic"},
   {"id":2,"name":"GMC","price":"$39.44","info":"Sierra 2500"},
   {"id":3,"name":"Chevrolet","price":"$46.98","info":"Corsica"},
