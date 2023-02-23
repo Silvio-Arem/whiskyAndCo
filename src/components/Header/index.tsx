@@ -7,7 +7,7 @@ export default function Header() {
         <header>
             <Logo alternative="Logo da loja" origin={LogoHeader} redirect="#"/>
             <nav>
-                <Link texto="Sobre nós" redirect="#"/>
+                <Link texto="Perfil" redirect="/profile"/>
             </nav>
         </header>
     );
