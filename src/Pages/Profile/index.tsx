@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { users } from "../../data";
 import { IUser } from "../../interfaces";
 
 export default function Profile() {
 
+  const [ updateProfile, setUpdateProfile ] = useState(true);
 
   const profileLabels: IUser = {
     name: "Nome Completo",
@@ -17,21 +19,29 @@ export default function Profile() {
   return (
       <section>
         <h3>Dados Pessoais:</h3>
+        <form>
         {
           Object.keys(profileLabels)
-          .map((label, index) => 
+          .map((label, index) =>
             <article key={index}>
-              <p>{profileLabels[label as keyof IUser]}</p>
+              <label>{profileLabels[label as keyof IUser]}</label>
               {
                 Object.keys(userProfile)
                 .filter(userkey => userkey === label)
-                .map((user, i) => 
-                  <p key={i}>{userProfile[user as keyof IUser]}</p>
+                .map((user, i) =>
+                  updateProfile
+                  ? <p key={i}>{userProfile[user as keyof IUser]}</p>
+                  : <input type="text" />
                 )
               }
-              <button>Atualizar</button>
             </article>
-        )}
+          )}
+          {
+            updateProfile
+            ? <button onClick={() => setUpdateProfile(!updateProfile)}>Atualizar Dados</button>
+            : <input type="submit" value="Salvar" />
+          }
+        </form>
       </section>
   );
 }
