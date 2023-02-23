@@ -1,5 +1,5 @@
 
-export const Users = [
+export const users = [
   {"id":1,"name":"Trefor Balentyne","email":"tbalentyne0@twitpic.com","cpf":"532-51-0651","address":"69093 Jay Point", "userType": "client"},
   {"id":2,"name":"Lucina Ovenell","email":"lovenell1@hp.com","cpf":"247-94-2389","address":"115 Armistice Center", "userType": "client"},
   {"id":3,"name":"Barnie Hoyland","email":"bhoyland2@macromedia.com","cpf":"315-35-7863","address":"65610 Coolidge Junction", "userType": "client"},
@@ -52,7 +52,7 @@ export const Users = [
   {"id":50,"name":"Fleur Sharpless","email":"fsharpless1d@163.com","cpf":"819-15-5225","address":"7020 Maple Wood Road", "userType": "client"}
 ];
 
-export const Products = [
+export const products = [
   {"id":1,"name":"Honda","price":"$16.29","info":"Civic"},
   {"id":2,"name":"GMC","price":"$39.44","info":"Sierra 2500"},
   {"id":3,"name":"Chevrolet","price":"$46.98","info":"Corsica"},
@@ -104,3 +104,56 @@ export const Products = [
   {"id":49,"name":"Toyota","price":"$13.20","info":"Camry Hybrid"},
   {"id":50,"name":"Dodge","price":"$49.58","info":"Ram 3500"}
 ];
+
+export const orders = [
+  {"id":1,"price":"$7.17","orderDate":"17-12-2022"},
+  {"id":2,"price":"$15.38","orderDate":"30-07-2022"},
+  {"id":3,"price":"$36.70","orderDate":"14-08-2022"},
+  {"id":4,"price":"$16.13","orderDate":"09-05-2022"},
+  {"id":5,"price":"$40.53","orderDate":"24-11-2022"},
+  {"id":6,"price":"$25.36","orderDate":"30-08-2022"},
+  {"id":7,"price":"$9.54","orderDate":"11-02-2023"},
+  {"id":8,"price":"$22.22","orderDate":"13-03-2022"},
+  {"id":9,"price":"$33.53","orderDate":"04-06-2022"},
+  {"id":10,"price":"$14.41","orderDate":"26-03-2022"},
+  {"id":11,"price":"$22.94","orderDate":"20-06-2022"},
+  {"id":12,"price":"$39.35","orderDate":"27-02-2022"},
+  {"id":13,"price":"$14.77","orderDate":"30-12-2022"},
+  {"id":14,"price":"$28.88","orderDate":"23-06-2022"},
+  {"id":15,"price":"$48.57","orderDate":"04-01-2023"},
+  {"id":16,"price":"$26.98","orderDate":"28-04-2022"},
+  {"id":17,"price":"$35.24","orderDate":"16-11-2022"},
+  {"id":18,"price":"$21.28","orderDate":"15-03-2022"},
+  {"id":19,"price":"$35.57","orderDate":"26-11-2022"},
+  {"id":20,"price":"$6.88","orderDate":"09-02-2023"},
+  {"id":21,"price":"$10.36","orderDate":"12-03-2022"},
+  {"id":22,"price":"$3.16","orderDate":"19-04-2022"},
+  {"id":23,"price":"$27.15","orderDate":"31-12-2022"},
+  {"id":24,"price":"$46.89","orderDate":"23-10-2022"},
+  {"id":25,"price":"$15.84","orderDate":"01-07-2022"},
+  {"id":26,"price":"$12.11","orderDate":"28-08-2022"},
+  {"id":27,"price":"$9.34","orderDate":"18-07-2022"},
+  {"id":28,"price":"$21.65","orderDate":"05-11-2022"},
+  {"id":29,"price":"$34.04","orderDate":"02-07-2022"},
+  {"id":30,"price":"$38.12","orderDate":"14-08-2022"},
+  {"id":31,"price":"$32.80","orderDate":"22-03-2022"},
+  {"id":32,"price":"$9.39","orderDate":"29-08-2022"},
+  {"id":33,"price":"$43.29","orderDate":"24-04-2022"},
+  {"id":34,"price":"$31.98","orderDate":"24-04-2022"},
+  {"id":35,"price":"$30.01","orderDate":"05-06-2022"},
+  {"id":36,"price":"$37.13","orderDate":"22-12-2022"},
+  {"id":37,"price":"$10.94","orderDate":"18-04-2022"},
+  {"id":38,"price":"$6.49","orderDate":"07-10-2022"},
+  {"id":39,"price":"$38.61","orderDate":"24-06-2022"},
+  {"id":40,"price":"$46.84","orderDate":"15-04-2022"},
+  {"id":41,"price":"$15.84","orderDate":"28-01-2023"},
+  {"id":42,"price":"$47.54","orderDate":"06-02-2023"},
+  {"id":43,"price":"$34.86","orderDate":"13-03-2022"},
+  {"id":44,"price":"$11.75","orderDate":"05-07-2022"},
+  {"id":45,"price":"$3.29","orderDate":"28-06-2022"},
+  {"id":46,"price":"$10.26","orderDate":"13-01-2023"},
+  {"id":47,"price":"$11.98","orderDate":"20-05-2022"},
+  {"id":48,"price":"$45.50","orderDate":"29-08-2022"},
+  {"id":49,"price":"$48.37","orderDate":"26-07-2022"},
+  {"id":50,"price":"$28.20","orderDate":"22-02-2022"}
+]
