@@ -4,6 +4,7 @@ import Profile from "./Pages/Profile"
 import Admin from "./Pages/Admin"
 import Products from "./Pages/Products"
 import Login from "./Pages/Login"
+import Checkout from "./Pages/Checkout"
 
 export default function routes() {
     return (
@@ -14,6 +15,7 @@ export default function routes() {
             <Route path="/admin" element={<Admin />} />
             <Route path="/products" element={<Products />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/checkout" element={<Checkout />} />
         </WrapperRoutes>
 
     )

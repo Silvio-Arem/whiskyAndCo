@@ -8,7 +8,7 @@ export default function Nav() {
           <li><Link to="#">Categorias</Link></li>
           <li><Link to="/profile">Profile</Link></li>
           <li><Link to="#">Sobre</Link></li>
-          <li><Link to="/admin">Painel Administrativo</Link></li>
+          <li><Link to="/admin">Painel do Administrador</Link></li>
         </ul>
       </nav>
     );
