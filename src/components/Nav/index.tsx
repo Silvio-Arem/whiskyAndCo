@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
+import { LinkItem, LinkList } from "./styles";
 
 export default function Nav() {
     return (
       <nav>
-        <ul>
-          <li><Link to="/products">Whiskys</Link></li>
-          <li><Link to="#">Categorias</Link></li>
-          <li><Link to="/profile">Profile</Link></li>
-          <li><Link to="#">Sobre</Link></li>
-          <li><Link to="/admin">Painel do Administrador</Link></li>
-        </ul>
+        <LinkList>
+          <LinkItem><Link to="/products">Whiskys</Link></LinkItem>
+          <LinkItem><Link to="#">Categorias</Link></LinkItem>
+          <LinkItem><Link to="/profile">Profile</Link></LinkItem>
+          <LinkItem><Link to="#">Sobre</Link></LinkItem>
+          <LinkItem><Link to="/admin">Painel do Administrador</Link></LinkItem>
+        </LinkList>
       </nav>
     );
   }

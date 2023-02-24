@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import { LinkList } from "../Nav/styles";
 
 export default function LoginIcon() {
     return (
-        <ul>
+        <LinkList>
           <li><Link to="/login">Login</Link></li>
-        </ul>
+        </LinkList>
     );
   }
