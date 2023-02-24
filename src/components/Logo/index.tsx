@@ -9,8 +9,10 @@ interface LogoProps {
 
 export default function Logo(props: LogoProps) {
     return (
-        <Link to={props.redirect}>
-            <LogoDefault src={props.origin} alt={props.alternative}/>
-        </Link>
+        <div>
+            <Link to={props.redirect}>
+                <LogoDefault src={props.origin} alt={props.alternative} />
+            </Link>
+        </div>
     )
 }

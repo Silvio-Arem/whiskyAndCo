@@ -12,6 +12,7 @@ export default function Header() {
                 <Links texto="Perfil" redirect="/profile"/>
                 <Links texto="Whiskys" redirect="/products"/>
             </nav>
+
         </HeaderDefault>
     );
 }
