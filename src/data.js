@@ -157,3 +157,21 @@ export const orders = [
   {"id":49,"price":"$48.37","orderDate":"26-07-2022"},
   {"id":50,"price":"$28.20","orderDate":"22-02-2022"}
 ]
+
+export const categories = [
+  {"id":1,"name":"AVX Corporation"},
+  {"id":2,"name":"MB Financial Inc."},
+  {"id":3,"name":"Fibria Celulose S.A."},
+  {"id":4,"name":"Seaspan Corporation"},
+  {"id":5,"name":"Voyager Therapeutics, Inc."},
+  {"id":6,"name":"Verisk Analytics, Inc."},
+  {"id":7,"name":"Regal Entertainment Group"},
+  {"id":8,"name":"Gray Television, Inc."},
+  {"id":9,"name":"Frontier Communications Corporation"},
+  {"id":10,"name":"First Financial Corporation Indiana"},
+  {"id":11,"name":"Silicom Ltd"},
+  {"id":12,"name":"Daseke, Inc."},
+  {"id":13,"name":"OCI Partners LP"},
+  {"id":14,"name":"Westmoreland Coal Company"},
+  {"id":15,"name":"National Commerce Corporation"}
+];

@@ -4,7 +4,7 @@ import Profile from "./Pages/Profile"
 import Admin from "./Pages/Admin"
 import Products from "./Pages/Products"
 
-export default function Routes() {
+export default function routes() {
     return (
 
         <WrapperRoutes>
