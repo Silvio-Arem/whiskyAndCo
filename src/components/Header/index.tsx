@@ -10,6 +10,7 @@ export default function Header() {
             <Logo alternative="Logo da loja" origin={LogoHeader} redirect="/"/>
             <nav>
                 <Links texto="Perfil" redirect="/profile"/>
+                <Links texto="Whiskys" redirect="/products"/>
             </nav>
         </HeaderDefault>
     );
