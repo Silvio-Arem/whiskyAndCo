@@ -1,4 +1,5 @@
 import Logo from "../Logo";
+import Nav from "../Nav";
 
 interface HeaderProps {
     logoSrc: string;
