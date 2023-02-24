@@ -1,4 +1,4 @@
-import { Routes as WrapperRoutes, Route, BrowserRouter } from "react-router-dom"
+import { Routes as WrapperRoutes, Route } from "react-router-dom"
 import Home from "./Pages/Home"
 import Profile from "./Pages/Profile"
 import Admin from "./Pages/Admin"
