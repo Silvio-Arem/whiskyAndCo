@@ -1,20 +1,17 @@
 import Logo from "../Logo";
 import Nav from "../Nav";
 import SearchBar from "../SearchBar";
+import ShoppingCart from "../ShoppingCart";
+import LogoHeader from "../../assets/icons/logo-header.jpg"
 
-interface HeaderProps {
-    logoSrc: string;
-    logoAlt: string;
-    numItemsInCart: number;
-  }
   
-export default function Header(props: HeaderProps) {
+export default function Header() {
     return (
       <header>
-        <Logo src={props.logoSrc} alt={props.logoAlt} />
+        <Logo src={LogoHeader} alt="Logo da loja" />
         <Nav />
         <SearchBar />
-        <ShoppingCart numItems={props.numItemsInCart} />
+        <ShoppingCart numItems={0} />
       </header>
     );
   }
