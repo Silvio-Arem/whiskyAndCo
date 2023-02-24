@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface LogoProps {
     origin: string;
     alternative: string;
@@ -6,8 +8,8 @@ interface LogoProps {
 
 export default function Logo(props: LogoProps) {
     return (
-        <a href={props.redirect}>
+        <Link to={props.redirect}>
             <img src={props.origin} alt={props.alternative}/>
-        </a>
+        </Link>
     )
 }
