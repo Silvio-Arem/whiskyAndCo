@@ -11,7 +11,7 @@ export default function Header() {
         <Logo src={LogoHeader} alt="Logo da loja" />
         <Nav />
         <SearchBar />
-        <ShoppingCart numItems={0} />
+        <ShoppingCart />
       </header>
     );
   }
