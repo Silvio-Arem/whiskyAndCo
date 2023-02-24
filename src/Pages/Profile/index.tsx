@@ -6,32 +6,32 @@ export default function Profile() {
 
   const [ updateProfile, setUpdateProfile ] = useState(true);
 
-  const profileLabels: IUser = {
-    name: "Nome Completo",
-    email: "Email",
-    cpf: "CPF",
-    address: "Endereço",
-    userType: "Tipo do Usuário"
-  };
+  enum Labels {
+    name = "Nome Completo",
+    email = "Email",
+    cpf = "CPF",
+    address = "Endereço",
+    userType = "Tipo do Usuário"
+  }
 
-  const userProfile: IUser = users[Math.floor(Math.random()*50)];
+  const userData: IUser = users[Math.floor(Math.random()*50)];
 
   return (
       <section>
         <h3>Dados Pessoais:</h3>
         <form>
         {
-          Object.keys(profileLabels)
-          .map((label, index) =>
-            <article key={index}>
-              <label>{profileLabels[label as keyof IUser]}</label>
+          (Object.keys(Labels) as Array<keyof typeof Labels>)
+          .map((label, indexL) =>
+            <article key={indexL}>
+              <label>{Labels[label]}</label>
               {
-                Object.keys(userProfile)
-                .filter(userkey => userkey === label)
-                .map((user, i) =>
+                Object.keys(userData)
+                .filter(fieldKey => fieldKey === label)
+                .map((userField, indexF) =>
                   updateProfile
-                  ? <p key={i}>{userProfile[user as keyof IUser]}</p>
-                  : <input type="text" />
+                  ? <p key={indexF}>{userData[userField as keyof IUser]}</p>
+                  : <input key={indexF} type="text" />
                 )
               }
             </article>

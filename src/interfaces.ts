@@ -24,3 +24,5 @@ export interface IOrder {
   price: string,
   orderDate: Date;
 }
+
+export type Data = IUser | IProduct | ICategory; 

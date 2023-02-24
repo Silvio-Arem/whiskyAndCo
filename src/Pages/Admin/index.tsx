@@ -1,24 +1,29 @@
-import { useState } from "react";
-import {users, products, orders } from "../../data";
-import { IUser, IProduct, ICategory, IOrder } from "../../interfaces";
+import { useState, useEffect } from "react";
+import {users, products, orders, categories } from "../../data";
+import { Data } from "../../interfaces";
 
 export default function Admin() {
 
-  const [ searchType, setSearchType ] = useState("");
-  const [ searchInput, setSearchInput ] = useState("");
-  const [data, setData ] = useState< IUser[] | null >(null);
-  const [ filteredList, setFilteredList ] = useState< IUser[] | null>(null);
+  const [ searchType, setSearchType ] = useState <string> ("users");
+  const [ searchInput, setSearchInput ] = useState <string> ("");
+  const [data, setData ] = useState < Data[] | null > (null);
+  const [ filteredList, setFilteredList ] = useState < Data[] | null > (null);
+
+
+  useEffect(() => {
+    selectData(searchType);
+  }, []);
 
   const selectData = (dataType: string) => {
 
     setSearchType(dataType);
 
     switch(dataType) {
-      // case "products":
-      //   return setData(products);
+      case "products":
+        return setData(products);
 
-      // case "categories":
-      //   return ;
+      case "categories":
+        return setData(categories);
 
       case "users":
         return setData(users);
@@ -33,25 +38,28 @@ export default function Admin() {
 
   const updateList = (search: string) => {
     setSearchInput(search);
-    if(data !== null){
-      searchInput === ""
-      ? setFilteredList(data)
-      : setFilteredList(data.filter((item) => 
-          item.name.toLowerCase().includes(searchInput.toLowerCase())))
-    }
+    const filtered = search !== "" && data !== null
+      ? (data.filter(item => 
+          item.name.toLowerCase().includes(search.toLowerCase())))
+      : data
+    setFilteredList(filtered);
   }
 
   return (
       <section>
         <h3>Painel do Administrador</h3>
         <div>
-          <select name="searchType" onChange={(e) => selectData(e.target.value)}>
+          <select name="searchType" value={searchType} onChange={(e) => selectData(e.target.value)}>
+            <option value="users">Usuários</option>
             <option value="products">Produtos</option>
             <option value="categories">Categorias</option>
-            <option value="users">Usuários</option>
             <option value="orders">Pedidos</option>
           </select>
-          <input type="text" name="searchInput" onChange={(e) => updateList(e.target.value)}/>
+          <input 
+            type="text" 
+            name="searchInput"
+            value={searchInput}
+            onChange={(e) => updateList(e.target.value)}/>
         </div>
         <ul>
           {
