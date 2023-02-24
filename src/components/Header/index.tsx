@@ -3,6 +3,7 @@ import Nav from "../Nav";
 import SearchBar from "../SearchBar";
 import ShoppingCart from "../ShoppingCart";
 import LogoHeader from "../../assets/icons/logo-header.jpg"
+import LoginIcon from "../LoginIcon";
 
   
 export default function Header() {
@@ -12,6 +13,7 @@ export default function Header() {
         <Nav />
         <SearchBar />
         <ShoppingCart />
+        <LoginIcon />
       </header>
     );
   }
