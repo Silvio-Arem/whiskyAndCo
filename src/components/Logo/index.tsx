@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { LogoDefault } from "./styles";
 
 interface LogoProps {
     origin: string;
@@ -9,7 +10,7 @@ interface LogoProps {
 export default function Logo(props: LogoProps) {
     return (
         <Link to={props.redirect}>
-            <img src={props.origin} alt={props.alternative}/>
+            <LogoDefault src={props.origin} alt={props.alternative}/>
         </Link>
     )
 }
