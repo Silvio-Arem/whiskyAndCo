@@ -1,5 +1,6 @@
 import Logo from "../Logo";
 import Nav from "../Nav";
+import SearchBar from "../SearchBar";
 
 interface HeaderProps {
     logoSrc: string;
