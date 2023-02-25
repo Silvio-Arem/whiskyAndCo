@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import {users, products, orders, categories } from "../../data";
 import { Data } from "../../interfaces";
 
@@ -13,7 +14,7 @@ export default function Admin() {
   const location = useLocation();
 
   useEffect(() => {
-    window.history.replaceState(null, "", `${location.pathname}/${searchType}`);
+
   }, [searchType]);
 
   const selectData = (dataType: string) => {
@@ -56,6 +57,7 @@ export default function Admin() {
         <h3>Painel do Administrador</h3>
         <div>
           <select name="searchType" value={searchType} onChange={(e) => selectData(e.target.value)}>
+            <option value="">Selecione um tipo</option>
             <option value="users">Usuários</option>
             <option value="products">Produtos</option>
             <option value="categories">Categorias</option>
@@ -72,11 +74,19 @@ export default function Admin() {
             filteredList !== null
             ? (
               filteredList.map((item, index) =>
-                <li key={index}>{searchType === "orders" ? item.id : item.name}</li>
+                <li key={index}>
+                  <Link to={`${searchType}/${index}`}>
+                    {searchType === "orders" ? item.id : item.name}
+                  </Link>
+                </li>
             ))
             : (
               data?.map((item, index) => 
-                <li key={index}>{searchType === "orders" ? item.id : item.name}</li>
+                <li key={index}>
+                  <Link to={`${searchType}/${index+1}`} state={{id: index+1, dataType: searchType}}>
+                    {searchType === "orders" ? item.id : item.name}
+                  </Link>
+                </li>
             ))
           }
         </ul>
