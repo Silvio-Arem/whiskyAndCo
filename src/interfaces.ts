@@ -1,5 +1,5 @@
 export interface IUser {
-  id?: number,
+  id: number,
   name: string,
   email: string,
   cpf: string,
@@ -21,8 +21,9 @@ export interface ICategory {
 
 export interface IOrder {
   id: number,
+  name: string,
   price: string,
   orderDate: Date;
 }
 
-export type Data = IUser | IProduct | ICategory; 
+export type Data = IUser | IProduct | ICategory | IOrder; 
