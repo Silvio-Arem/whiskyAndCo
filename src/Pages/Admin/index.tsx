@@ -6,7 +6,7 @@ export default function Admin() {
 
   const [ searchType, setSearchType ] = useState <string> ("users");
   const [ searchInput, setSearchInput ] = useState <string> ("");
-  const [data, setData ] = useState < Data[] | null > (null);
+  const [ data, setData ] = useState < Data[] | null > (null);
   const [ filteredList, setFilteredList ] = useState < Data[] | null > (null);
 
 
@@ -39,8 +39,8 @@ export default function Admin() {
   const updateList = (search: string) => {
     setSearchInput(search);
     const filtered = search !== "" && data !== null
-      ? (data.filter(item => 
-          item.name.toLowerCase().includes(search.toLowerCase())))
+      ? data.filter(item => 
+          item.name.toLowerCase().includes(search.toLowerCase()))
       : data
     setFilteredList(filtered);
   }

@@ -22,16 +22,16 @@ export default function Profile() {
         <form>
         {
           (Object.keys(Labels) as Array<keyof typeof Labels>)
-          .map((label, indexL) =>
-            <article key={indexL}>
+          .map((label, index) =>
+            <article key={index}>
               <label>{Labels[label]}</label>
               {
                 Object.keys(userData)
                 .filter(fieldKey => fieldKey === label)
-                .map((userField, indexF) =>
+                .map((userField) =>
                   updateProfile
-                  ? <p key={indexF}>{userData[userField as keyof IUser]}</p>
-                  : <input key={indexF} type="text" />
+                  ? <p>{userData[userField as keyof IUser]}</p>
+                  : <input type="text" />
                 )
               }
             </article>
