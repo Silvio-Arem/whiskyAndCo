@@ -1,17 +1,20 @@
-import Links from "../Links";
 import Logo from "../Logo";
-import LogoHeader from "../../assets/icons/logo-header.jpg";
+import Nav from "../Nav";
+import SearchBar from "../SearchBar";
+import ShoppingCart from "../ShoppingCart";
+import LogoHeader from "../../assets/icons/logo-header.jpg"
+import LoginIcon from "../LoginIcon";
 import { HeaderDefault } from "./styles";
 
-
+  
 export default function Header() {
     return (
-        <HeaderDefault>
-            <Logo alternative="Logo da loja" origin={LogoHeader} redirect="/"/>
-            <nav>
-                <Links texto="Perfil" redirect="/profile"/>
-                <Links texto="Whiskys" redirect="/products"/>
-            </nav>
-        </HeaderDefault>
+      <HeaderDefault>
+        <Logo src={LogoHeader} alt="Logo da loja" />
+        <Nav />
+        <SearchBar />
+        <ShoppingCart />
+        <LoginIcon />
+      </HeaderDefault>
     );
-}
+  }

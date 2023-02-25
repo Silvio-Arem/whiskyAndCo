@@ -7,4 +7,4 @@ export const HeaderDefault = styled.header`
     justify-content: space-between;
     padding: 20px;
     background-color: ${tertiaryColor}
-`
+`;
