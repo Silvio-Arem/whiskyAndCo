@@ -4,7 +4,7 @@ import { IUser } from "../../interfaces";
 
 export default function Profile() {
 
-  const [ updateProfile, setUpdateProfile ] = useState(true);
+  const [ updateProfile, setUpdateProfile ] = useState(false);
 
   enum Labels {
     name = "Nome Completo",
@@ -30,16 +30,16 @@ export default function Profile() {
                 .filter(fieldKey => fieldKey === label)
                 .map((userField) =>
                   updateProfile
-                  ? <p>{userData[userField as keyof IUser]}</p>
-                  : <input type="text" />
+                  ? <input type="text" name={userField}/>
+                  : <p>{userData[userField as keyof IUser]}</p>
                 )
               }
             </article>
           )}
           {
             updateProfile
-            ? <button onClick={() => setUpdateProfile(!updateProfile)}>Atualizar Dados</button>
-            : <input type="submit" value="Salvar" />
+            ? <input type="submit" value="Salvar" />
+            : <button onClick={() => setUpdateProfile(!updateProfile)}>Atualizar Dados</button>
           }
         </form>
       </section>

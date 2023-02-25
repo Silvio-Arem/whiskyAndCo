@@ -1,22 +1,26 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router";
 import {users, products, orders, categories } from "../../data";
 import { Data } from "../../interfaces";
 
 export default function Admin() {
 
-  const [ searchType, setSearchType ] = useState <string> ("users");
+  const [ searchType, setSearchType ] = useState <string> ("");
   const [ searchInput, setSearchInput ] = useState <string> ("");
   const [ data, setData ] = useState < Data[] | null > (null);
   const [ filteredList, setFilteredList ] = useState < Data[] | null > (null);
 
+  const location = useLocation();
 
   useEffect(() => {
-    selectData(searchType);
-  }, []);
+    window.history.replaceState(null, "", `${location.pathname}/${searchType}`);
+  }, [searchType]);
 
   const selectData = (dataType: string) => {
 
     setSearchType(dataType);
+    setSearchInput("");
+    setFilteredList(null);
 
     switch(dataType) {
       case "products":
@@ -28,8 +32,8 @@ export default function Admin() {
       case "users":
         return setData(users);
 
-      // case "orders":
-      //   return setData(orders);
+      case "orders":
+        return setData(orders);
       
       default:
         break;
@@ -40,7 +44,9 @@ export default function Admin() {
     setSearchInput(search);
     const filtered = search !== "" && data !== null
       ? data.filter(item => 
-          item.name.toLowerCase().includes(search.toLowerCase()))
+          searchType === "orders" 
+          ? item.id.toString() === search
+          : item.name.toLowerCase().includes(search.toLowerCase()))
       : data
     setFilteredList(filtered);
   }
@@ -66,11 +72,11 @@ export default function Admin() {
             filteredList !== null
             ? (
               filteredList.map((item, index) =>
-                <li key={index}>{item.name}</li>
+                <li key={index}>{searchType === "orders" ? item.id : item.name}</li>
             ))
             : (
               data?.map((item, index) => 
-                <li key={index}>{item.name}</li>
+                <li key={index}>{searchType === "orders" ? item.id : item.name}</li>
             ))
           }
         </ul>
