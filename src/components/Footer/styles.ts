@@ -1,9 +1,15 @@
+import { secondaryColor, tertiaryColor } from './../UI/variables';
 import styled from "styled-components";
 
 export const ContainerFooter = styled.footer`
-    display: grid;
-    grid-auto-flow: row dense; 
-    grid-template-columns: 2fr 1fr; 
+    margin-top: 15px;
+    padding: 20px;
+    background-color: ${secondaryColor};
+    color: ${tertiaryColor};
+    display: 
+`;
+
+export const DivFooter = styled.div`
 
 `;
 
