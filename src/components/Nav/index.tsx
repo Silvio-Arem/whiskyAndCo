@@ -6,8 +6,7 @@ export default function Nav() {
       <nav>
         <LinkList>
           <LinkItem><Link to="/products">Whiskys</Link></LinkItem>
-          <LinkItem><Link to="#">Categorias</Link></LinkItem>
-          <LinkItem><Link to="/profile">Profile</Link></LinkItem>
+          <LinkItem><Link to="/profile">Perfil</Link></LinkItem>
           <LinkItem><Link to="#">Sobre</Link></LinkItem>
           <LinkItem><Link to="/admin">Painel do Administrador</Link></LinkItem>
         </LinkList>
