@@ -1,16 +1,12 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { StyledFooter } from './styles';
 
-interface FooterProps {
-  className?: string;
-}
 
-const Footer: React.FC<FooterProps> = ({ className }) => {
+export default function Footer () {
   return (
-    <StyledFooter className={className}>
+    <StyledFooter >
       <div className="container ">
         <div className="row contact">
           <div className="col">
@@ -42,5 +38,3 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
     </StyledFooter>
   );
 };
-
-export default Footer;
