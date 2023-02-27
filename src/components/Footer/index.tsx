@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom';
 import { primaryColor, secondaryColor, tertiaryColor } from '../UI/variables';
 
 const StyledFooter = styled.footer`
+  width: 100%;
   background-color: ${secondaryColor};
   padding: 30px;
+  margin: 15px auto auto auto;
+  bottom: 0px;
 
   .contact {
     display: flex;
@@ -63,42 +66,42 @@ const StyledFooter = styled.footer`
 `;
 
 interface FooterProps {
-    className?: string;
+  className?: string;
 }
 
 const Footer: React.FC<FooterProps> = ({ className }) => {
-    return (
-        <StyledFooter className={className}>
-            <div className="container ">
-                <div className="row contact">
-                    <div className="col">
-                        <h4>Informações de Contato</h4>
-                        <ul>
-                            <li><FontAwesomeIcon icon={faMapMarkerAlt} /> Endereço: Rua Gama, 123 - Experience - Edição/46 - CEP 12345-678</li>
-                            <li><FontAwesomeIcon icon={faPhone} /> Telefone: (11) 1234-5678</li>
-                            <li><FontAwesomeIcon icon={faEnvelope} /> Email: contato@gama.com.br</li>
-                        </ul>
-                    </div>
-                    <div className="col">
-                        <h4>Links Rápidos</h4>
-                        <ul>
-                            <li><Link to="/products">Whiskys</Link></li>
-                            <li><Link to="/profile">Perfil</Link></li>
-                            <li><Link to="#">Sobre</Link></li>
-                            <li><Link to="/admin">Painel do Administrador</Link></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div className="container bottom-bar">
-                <div className="row">
-                    <div className="col">
-                        <p>&copy; 2023 Exemplo de E-commerce. Todos os direitos reservados.</p>
-                    </div>
-                </div>
-            </div>
-        </StyledFooter>
-    );
+  return (
+    <StyledFooter className={className}>
+      <div className="container ">
+        <div className="row contact">
+          <div className="col">
+            <h4>Informações de Contato</h4>
+            <ul>
+              <li><FontAwesomeIcon icon={faMapMarkerAlt} /> Endereço: Rua Gama, 123 - Experience - Edição/46 - CEP 12345-678</li>
+              <li><FontAwesomeIcon icon={faPhone} /> Telefone: (11) 1234-5678</li>
+              <li><FontAwesomeIcon icon={faEnvelope} /> Email: contato@whiskyandco.com.br</li>
+            </ul>
+          </div>
+          <div className="col">
+            <h4>Links Rápidos</h4>
+            <ul>
+              <li><Link to="/products">Whiskys</Link></li>
+              <li><Link to="/profile">Perfil</Link></li>
+              <li><Link to="#">Sobre</Link></li>
+              <li><Link to="/admin">Painel do Administrador</Link></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="container bottom-bar">
+        <div className="row">
+          <div className="col">
+            <p>&copy; 2023 Whisky&Co. Todos os direitos reservados.</p>
+          </div>
+        </div>
+      </div>
+    </StyledFooter>
+  );
 };
 
 export default Footer;
