@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
-export const LogoDefault = styled.img`
-    width: 200px;
-`
+export const LogoContainer = styled.div`
+.logo {
+  a {
+    img {
+      max-height: 90px;
+    }
+  }
+}
+`;
