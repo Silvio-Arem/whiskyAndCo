@@ -13,9 +13,9 @@ export default function Admin() {
 
   const location = useLocation();
 
-  useEffect(() => {
-
-  }, [searchType]);
+  // useEffect(() => {
+  //   window.history.replaceState(null, "", `${location.pathname}/${searchType}`);
+  // }, [searchType]);
 
   const selectData = (dataType: string) => {
 
@@ -48,13 +48,14 @@ export default function Admin() {
           searchType === "orders" 
           ? item.id.toString() === search
           : item.name.toLowerCase().includes(search.toLowerCase()))
-      : data
+      : null
     setFilteredList(filtered);
   }
 
   return (
       <section>
         <h3>Painel do Administrador</h3>
+        <p>Faça todas as operações sobre os tipos disponíveis</p>
         <div>
           <select name="searchType" value={searchType} onChange={(e) => selectData(e.target.value)}>
             <option value="">Selecione um tipo</option>
@@ -73,17 +74,17 @@ export default function Admin() {
           {
             filteredList !== null
             ? (
-              filteredList.map((item, index) =>
-                <li key={index}>
-                  <Link to={`${searchType}/${index}`}>
+              filteredList.map((item) =>
+                <li key={item.id}>
+                  <Link to={`${searchType}/${item.id}`}>
                     {searchType === "orders" ? item.id : item.name}
                   </Link>
                 </li>
             ))
             : (
-              data?.map((item, index) => 
-                <li key={index}>
-                  <Link to={`${searchType}/${index+1}`} state={{id: index+1, dataType: searchType}}>
+              data?.map((item) => 
+                <li key={item.id}>
+                  <Link to={`${searchType}/${item.id}`} state={{id: item.id, dataType: searchType}}>
                     {searchType === "orders" ? item.id : item.name}
                   </Link>
                 </li>
