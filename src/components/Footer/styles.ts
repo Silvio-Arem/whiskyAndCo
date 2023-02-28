@@ -11,9 +11,10 @@ export const StyledFooter = styled.footer`
 
   .contact {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-evenly; 
+    padding-left: 10%;
   }
-
+ 
   h4 {
     color: ${primaryColor};
     font-size: 18px;

@@ -20,10 +20,10 @@ export default function Footer () {
           <div className="col">
             <h4>Links Rápidos</h4>
             <ul>
-              <li><Link to="/products">Whiskys</Link></li>
-              <li><Link to="/profile">Perfil</Link></li>
-              <li><Link to="#">Sobre</Link></li>
-              <li><Link to="/admin">Painel do Administrador</Link></li>
+              <li><Link to="/products" title="Ir para whiskys">Whiskys</Link></li>
+              <li><Link to="/profile" title="Ir para perfil">Perfil</Link></li>
+              <li><Link to="#" title="Ir para informações sobre a loja">Sobre</Link></li>
+              <li><Link to="/admin" title="Ir para painel administrativo">Painel do Administrador</Link></li>
             </ul>
           </div>
         </div>
