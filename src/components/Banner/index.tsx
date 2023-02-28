@@ -6,25 +6,25 @@ const images = [
   {
     id: 1,
     src: 'https://images.tcdn.com.br/img/editor/up/704508/adegajackdanielstennesseewhiskeydragonkingdrinksbanner.jpg',
-    alt: 'Banner 1'
+    alt: "Banner Jack Danniel's"
   },
   {
     id: 2,
     src: 'https://s3-sa-east-1.amazonaws.com/static.standout.com.br/pernod/products/img_iQEFSaYEFWVsYnHo.jpg',
-    alt: 'Banner 2'
+    alt: "Banner Ballantine's"
   },
   {
     id: 3,
     src: 'https://uswhiskeyreport.com/wp-content/uploads/2020/06/Uncle_nearest_banner.jpg',
-    alt: 'Banner 3'
+    alt: 'Banner Uncle Nearest'
   }
 ];
 
 const Banner = styled.div`
-  margin-left: 234px;
+  margin-left: 149px;
   text-align: center;
   background-color: #000000;
-  width: 60%;
+  width: 75%;
   height: 350px;
 `;
 
