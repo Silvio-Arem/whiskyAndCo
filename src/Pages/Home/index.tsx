@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import BannerComponent from "../../components/Banner";
 import styled from "styled-components";
-import { primaryColor, secondaryColor, tertiaryColor } from "../../components/UI/variables";
+import { primaryColor, secondaryColor } from "../../components/UI/variables";
 
 const Presentation = styled.div`
     display: flex;
