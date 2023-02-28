@@ -2,42 +2,40 @@ import React from 'react';
 import styled from 'styled-components';
 import { Carousel } from 'react-bootstrap';
 
-// Definição das imagens do banner
 const images = [
   {
     id: 1,
-    src: 'banner1.jpg',
+    src: 'https://images.tcdn.com.br/img/editor/up/704508/adegajackdanielstennesseewhiskeydragonkingdrinksbanner.jpg',
     alt: 'Banner 1'
   },
   {
     id: 2,
-    src: 'banner2.jpg',
+    src: 'https://s3-sa-east-1.amazonaws.com/static.standout.com.br/pernod/products/img_iQEFSaYEFWVsYnHo.jpg',
     alt: 'Banner 2'
   },
   {
     id: 3,
-    src: 'banner3.jpg',
+    src: 'https://uswhiskeyreport.com/wp-content/uploads/2020/06/Uncle_nearest_banner.jpg',
     alt: 'Banner 3'
   }
 ];
 
-// Definição do estilo do banner
 const Banner = styled.div`
-
-  width: 100%;
-  height: 300px;
+  margin-left: 234px;
+  text-align: center;
+  background-color: #000000;
+  width: 60%;
+  height: 350px;
 `;
 
-// Definição do estilo das imagens do banner
 const BannerImage = styled.img`
+  background-color: #ffffff;
   width: 100%;
-  height: 100%;
+  height: 350px;
 `;
 
-// Definição da interface do componente
 interface BannerProps {}
 
-// Definição do componente Banner
 const BannerComponent: React.FC<BannerProps> = () => {
   return (
     <Banner>
