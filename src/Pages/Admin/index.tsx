@@ -8,8 +8,8 @@ export default function Admin() {
 
   const [ searchType, setSearchType ] = useState <string> ("");
   const [ searchInput, setSearchInput ] = useState <string> ("");
-  const [ data, setData ] = useState < Data[] | null > (null);
-  const [ filteredList, setFilteredList ] = useState < Data[] | null > (null);
+  const [ data, setData ] = useState < Data[]> ([]);
+  const [ filteredList, setFilteredList ] = useState <Data[]> ([]);
 
   const location = useLocation();
 
@@ -21,7 +21,7 @@ export default function Admin() {
 
     setSearchType(dataType);
     setSearchInput("");
-    setFilteredList(null);
+    setFilteredList([]);
 
     switch(dataType) {
       case "products":
@@ -43,12 +43,12 @@ export default function Admin() {
 
   const updateList = (search: string) => {
     setSearchInput(search);
-    const filtered = search !== "" && data !== null
+    const filtered = search !== ""
       ? data.filter(item => 
           searchType === "orders" 
           ? item.id.toString() === search
           : item.name.toLowerCase().includes(search.toLowerCase()))
-      : null
+      : []
     setFilteredList(filtered);
   }
 
@@ -72,7 +72,7 @@ export default function Admin() {
         </div>
         <ul>
           {
-            filteredList !== null
+            filteredList.length > 0
             ? (
               filteredList.map((item) =>
                 <li key={item.id}>
@@ -82,7 +82,7 @@ export default function Admin() {
                 </li>
             ))
             : (
-              data?.map((item) => 
+              data.map((item) => 
                 <li key={item.id}>
                   <Link to={`${searchType}/${item.id}`} state={{id: item.id, dataType: searchType}}>
                     {searchType === "orders" ? item.id : item.name}
