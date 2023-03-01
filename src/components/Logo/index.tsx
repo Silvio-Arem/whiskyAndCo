@@ -1,13 +1,19 @@
+import { Link } from "react-router-dom";
+import { LogoContainer } from "./styles";
+
 interface LogoProps {
-    origin: string;
-    alternative: string;
-    redirect: string;
+  src: string;
+  alt: string;
 }
 
 export default function Logo(props: LogoProps) {
-    return (
-        <a href={props.redirect}>
-            <img src={props.origin} alt={props.alternative}/>
-        </a>
-    )
+  return (
+    <LogoContainer>
+      <div className="logo">
+        <Link to="/">
+          <img src={props.src} alt={props.alt} />
+        </Link>
+      </div>
+    </LogoContainer>
+  );
 }

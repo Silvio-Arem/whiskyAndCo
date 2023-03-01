@@ -1,44 +1,47 @@
+import { useState } from "react";
 import { users } from "../../data";
+import { IUser } from "../../interfaces";
 
 export default function Profile() {
 
-  type User = {
-    id?: number,
-    name: string,
-    email: string,
-    cpf: string,
-    address: string,
-    userType?: string
+  const [ updateProfile, setUpdateProfile ] = useState(false);
+
+  enum Labels {
+    name = "Nome Completo",
+    email = "Email",
+    cpf = "CPF",
+    address = "Endereço",
+    userType = "Tipo do Usuário"
   }
 
-  const profileLabels: User = {
-    name: "Nome Completo",
-    email: "Email",
-    cpf: "CPF",
-    address: "Endereço",
-    userType: "Tipo do Usuário"
-  };
-
-  const userProfile: User = users[Math.floor(Math.random()*50)];
+  const userData: IUser = users[Math.floor(Math.random()*50)];
 
   return (
       <section>
         <h3>Dados Pessoais:</h3>
+        <form>
         {
-          Object.keys(profileLabels)
-          .map((label, index) => 
+          (Object.keys(Labels) as Array<keyof typeof Labels>)
+          .map((label, index) =>
             <article key={index}>
-              <p>{profileLabels[label as keyof User]}</p>
+              <label>{Labels[label]}</label>
               {
-                Object.keys(userProfile)
-                .filter(userkey => userkey === label)
-                .map((user, i) => 
-                  <p key={i}>{userProfile[user as keyof User]}</p>
+                Object.keys(userData)
+                .filter(fieldKey => fieldKey === label)
+                .map((userField) =>
+                  updateProfile
+                  ? <input type="text" name={userField}/>
+                  : <p>{userData[userField as keyof IUser]}</p>
                 )
               }
-              <button>Atualizar</button>
             </article>
-        )}
+          )}
+          {
+            updateProfile
+            ? <input type="submit" value="Salvar" />
+            : <button onClick={() => setUpdateProfile(!updateProfile)}>Atualizar Dados</button>
+          }
+        </form>
       </section>
   );
 }
