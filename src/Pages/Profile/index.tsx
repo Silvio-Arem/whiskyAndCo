@@ -15,7 +15,8 @@ export default function Profile() {
     email: userData.email,
     cpf: userData.cpf,
     address: userData.address,
-    userType: userData.userType
+    userType: userData.userType,
+    userOrders: userData.userOrders
   })
   
   const navigate = useNavigate();
@@ -36,8 +37,8 @@ export default function Profile() {
       <h3>Dados Pessoais:</h3>
       <p>Tipo do Usuário</p>
       <p>{userProfile.userType}</p>
-      <p>Pedidos: {userData.userOrders?.length}</p>
-      <button onClick={() => navigate("orders", {state : {userOrders: userData.userOrders}})}>Pedidos</button>
+      <button>Alterar Senha</button>
+      <button onClick={() => navigate("orders", {state : {userOrders: userData.userOrders}})}>Ir para Pedidos</button>
     {
     updatedProfile
     ? (
@@ -48,7 +49,7 @@ export default function Profile() {
         <p>{userProfile.email}</p>
         <p>CPF:</p>
         <p>{userProfile.cpf}</p>
-        <p>Endereço</p>
+        <p>Endereço:</p>
         <p>{userProfile.address}</p>
         <button onClick={() => setUpdatedProfile(!updatedProfile)}>Atualizar Dados</button>
       </div>

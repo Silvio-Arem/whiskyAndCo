@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import {users, products, orders, categories } from "../../data";
 import { Data } from "../../interfaces";
 
 export default function Admin() {
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [ searchType, setSearchType ] = useState <string> ("");
   const [ searchInput, setSearchInput ] = useState <string> ("");
-  const [ data, setData ] = useState < Data[]> ([]);
+  const [ data, setData ] = useState <Data[]> ([]);
   const [ filteredList, setFilteredList ] = useState <Data[]> ([]);
-
-  const location = useLocation();
 
   // useEffect(() => {
   //   window.history.replaceState(null, "", `${location.pathname}/${searchType}`);
@@ -70,6 +71,7 @@ export default function Admin() {
             value={searchInput}
             onChange={(e) => updateList(e.target.value)}/>
         </div>
+        {searchType !== "" && <button onClick={() => navigate(`${searchType}/new`)}>Criar</button>}
         <ul>
           {
             filteredList.length > 0

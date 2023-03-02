@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { orders } from "../../data";
+import { orders, products } from "../../data";
 import { IOrder } from "../../interfaces";
 
 export default function Orders () {
@@ -16,8 +16,9 @@ export default function Orders () {
 
   return (
     <section>
-      <h3>Pedidos:</h3>
+      <h3>Pedidos Realizados</h3>
         {
+
           orderList.map((item, index) => 
             <article key={index} onClick={() => navigate(`${item.id}`, {state : item})}>
               <p>Data do Pedido: {item.orderDate}</p>

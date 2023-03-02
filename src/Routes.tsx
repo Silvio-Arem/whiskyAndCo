@@ -7,21 +7,27 @@ import Login from "./Pages/Login";
 import Checkout from "./Pages/Checkout";
 import Orders  from "./Pages/Orders";
 import Order from "./Pages/Order";
-import Product from "./Pages/Product";
-import User from "./Pages/User";
-import Category from "./Pages/Category";
+import ProductAdmin from "./Pages/ProductAdmin";
+import UserAdmin from "./Pages/UserAdmin";
+import CategoryAdmin from "./Pages/CategoryAdmin";
 
 export default function routes() {
   return (
     <WrapperRoutes>
       <Route path='/' element={<Home />} />
       <Route path='/profile' element={<Profile />} />
+      <Route path='/profile/orders' element={<Orders />}/>
       <Route path='/admin' element={<Admin />} />
-      <Route path='/admin/users/:id' element={<User />} />
-      <Route path='/admin/products/:id' element={<Product />} />
-      <Route path='/admin/categories/:id' element={<Category />} />
+      <Route path='/admin/users/new' element={<UserAdmin />} />
+      <Route path='/admin/users/:id' element={<UserAdmin />} />
+      <Route path='/admin/products/new' element={<ProductAdmin />} />
+      <Route path='/admin/products/:id' element={<ProductAdmin />} />
+      <Route path='/admin/categories/new' element={<CategoryAdmin />} />
+      <Route path='/admin/categories/:id' element={<CategoryAdmin />} />
+      <Route path='/admin/orders/new' element={<Order />} />
       <Route path='/admin/orders/:id' element={<Order />} />
       <Route path='/profile/orders' element={<Orders />} />
+      <Route path='/profile/orders/:id' element={<Order />} />
       <Route path='/products' element={<Products />} />
       <Route path='/login' element={<Login />} />
       <Route path='/checkout' element={<Checkout />} />
