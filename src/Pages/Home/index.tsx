@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import BannerComponent from "../../components/Banner";
 import styled from "styled-components";
 import { primaryColor, secondaryColor } from "../../components/UI/variables";
+import CollectionSection from "../../components/Collections";
 
 const Presentation = styled.div`
     display: flex;
@@ -39,11 +40,15 @@ const Presentation = styled.div`
     
 `;
 
+const DivBanner = styled.div`
+  text-align: center;
+`;
+
 
 
 export default function Home() {
   return (
-    <main className="Home">
+    <div className="Home">
       <Presentation className="container ">
         <div className="row">
           <div className="col">
@@ -55,9 +60,12 @@ export default function Home() {
           </div>
         </div>
       </Presentation>
-      <div>
+      <DivBanner>
       <BannerComponent />
+      </DivBanner>
+      <div>
+      <CollectionSection />
       </div>
-    </main>
+    </div>
   );
 }
