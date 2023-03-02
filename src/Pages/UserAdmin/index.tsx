@@ -36,7 +36,6 @@ export default function UserAdmin() {
 
   const formHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(user);
     setUpdatedItem(true);
   }
 

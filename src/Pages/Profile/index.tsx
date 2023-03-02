@@ -28,7 +28,6 @@ export default function Profile() {
 
   const formHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(userProfile);
     setUpdatedProfile(true);
   }
 

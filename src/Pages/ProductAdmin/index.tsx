@@ -33,7 +33,6 @@ export default function ProductAdmin() {
 
   const formHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(product);
     setUpdatedItem(true);
   }
 
