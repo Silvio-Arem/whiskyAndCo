@@ -1,37 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Carousel } from 'react-bootstrap';
+import Banner1 from '../../assets/images/banner1.png';
+import Banner2 from '../../assets/images/Banner2.png';
+import Banner3 from '../../assets/images/banner3.png';
 
 const images = [
   {
     id: 1,
-    src: 'https://images.tcdn.com.br/img/editor/up/704508/adegajackdanielstennesseewhiskeydragonkingdrinksbanner.jpg',
-    alt: "Banner Jack Danniel's"
+    src: Banner1,
+    alt: "Banner Whiskys drink"
   },
   {
     id: 2,
-    src: 'https://s3-sa-east-1.amazonaws.com/static.standout.com.br/pernod/products/img_iQEFSaYEFWVsYnHo.jpg',
-    alt: "Banner Ballantine's"
+    src: Banner2,
+    alt: "Banner Jack Daniel's"
   },
   {
     id: 3,
-    src: 'https://uswhiskeyreport.com/wp-content/uploads/2020/06/Uncle_nearest_banner.jpg',
-    alt: 'Banner Uncle Nearest'
+    src: Banner3,
+    alt: "Banner Ballantine's"
   }
 ];
 
 const Banner = styled.div`
-  margin-left: 149px;
+  margin-left: 5px;
   text-align: center;
   background-color: #000000;
-  width: 75%;
-  height: 350px;
+  width: 99%;
+  /* max-height: 250px; */
 `;
 
 const BannerImage = styled.img`
   background-color: #ffffff;
   width: 100%;
-  height: 350px;
+  /* height: 350px; */
 `;
 
 interface BannerProps {}
