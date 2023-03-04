@@ -10,6 +10,7 @@ import Order from "./Pages/Order";
 import ProductAdmin from "./Pages/ProductAdmin";
 import UserAdmin from "./Pages/UserAdmin";
 import CategoryAdmin from "./Pages/CategoryAdmin";
+import Product from "./Pages/Product";
 
 export default function routes() {
   return (
@@ -29,6 +30,7 @@ export default function routes() {
       <Route path='/profile/orders' element={<Orders />} />
       <Route path='/profile/orders/:id' element={<Order />} />
       <Route path='/products' element={<Products />} />
+      <Route path='/product' element={<Product />} />
       <Route path='/login' element={<Login />} />
       <Route path='/checkout' element={<Checkout />} />
     </WrapperRoutes>
