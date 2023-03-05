@@ -7,6 +7,7 @@ import CollectionSection from "../../components/Collections";
 const Presentation = styled.div`
     display: flex;
     text-align: center;
+    
 
     h1 {
       color: ${primaryColor};
@@ -36,6 +37,10 @@ const Presentation = styled.div`
       }  
     }
 
+    };
+
+    @media (max-width: 768px) {
+      font-size: 12px;
     }
     
 `;
