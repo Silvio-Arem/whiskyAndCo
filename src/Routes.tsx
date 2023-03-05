@@ -2,7 +2,7 @@ import { Routes as WrapperRoutes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import Admin from "./Pages/Admin";
-import Products from "./Pages/Products";
+import Products from "./Pages/Products/index";
 import Login from "./Pages/Login";
 import Checkout from "./Pages/Checkout";
 import Orders  from "./Pages/Orders";
