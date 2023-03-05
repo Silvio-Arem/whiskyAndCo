@@ -45,6 +45,7 @@ export default function Products() {
   });
 
 
+
   return (
     <>
       <PageDescript>
@@ -80,7 +81,7 @@ export default function Products() {
               <p>R$ {item.price}</p>
               <p>{item.category}</p>
               <div className="products__card-button">
-                <Link to="/product" title="Ir para whisky selecionado">
+                <Link to={`/product/${item.id}`} title="Ir para whisky selecionado">
                   Descrição
                 </Link>
               </div>

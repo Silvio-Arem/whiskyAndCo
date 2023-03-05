@@ -30,7 +30,7 @@ export default function routes() {
       <Route path='/profile/orders' element={<Orders />} />
       <Route path='/profile/orders/:id' element={<Order />} />
       <Route path='/products' element={<Products />} />
-      <Route path='/product' element={<Product />} />
+      <Route path='/product/:id' element={<Product />} />
       <Route path='/login' element={<Login />} />
       <Route path='/checkout' element={<Checkout />} />
     </WrapperRoutes>
