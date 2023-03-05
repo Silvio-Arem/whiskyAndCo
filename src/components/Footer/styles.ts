@@ -61,4 +61,13 @@ export const StyledFooter = styled.footer`
 
     
   }
+
+  @media (max-width: 479px) {
+    text-align: center;
+
+    .contact {
+      gap: 35px;
+    }
+  }
+
 `;
