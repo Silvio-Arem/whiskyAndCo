@@ -92,3 +92,17 @@ export const ProductsContainer = styled.section`
 
 `;
 
+export const PageDescript = styled.section`
+    text-align: center;
+    margin: 3% 11%;
+
+    h2 {
+      color: ${primaryColor};
+    }
+
+    @media (max-width: 768px) {
+      p {
+        font-size: 12px;
+      }
+    }
+`;

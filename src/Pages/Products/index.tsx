@@ -1,7 +1,7 @@
 import { IProduct } from "../../interfaces";
 import { products } from "../../data";
 import { Link } from "react-router-dom";
-import { ProductsContainer } from "./styles";
+import { PageDescript, ProductsContainer } from "./styles";
 import { Filter } from "../../components/Filter/styles";
 import { useState } from "react";
 
@@ -47,10 +47,10 @@ export default function Products() {
 
   return (
     <>
-      <section>
+      <PageDescript>
         <h2>Descubra os sabores e aromas dos nossos Whiskys</h2>
         <p>Navegue pela nossa seleção de Bourbon Whiskey, Rye, Tennessee Whiskey e Japanese Whiskey para descobrir novos sabores e aromas que irão impressionar o seu paladar. Se você é um apreciador de um bom whisky ou está apenas começando a explorar o mundo das bebidas destiladas, temos opções para todos os níveis de conhecimento.</p>
-      </section>
+      </PageDescript>
       <Filter>
         <details>
           <summary>
