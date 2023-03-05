@@ -3,7 +3,7 @@ import { primaryColor, secondaryColor, tertiaryColor } from '../../components/UI
 
 
 export const ProductsContainer = styled.section`
-  margin: 14px 20%;
+  margin: 14px 22%;
 
   .products__cards {
   display: flex;
@@ -24,6 +24,8 @@ export const ProductsContainer = styled.section`
 }
 
 .products__cards-body {
+  width: 100%;
+  max-width: 350px;
   text-align: center;
   padding: 10px;
 }
