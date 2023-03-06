@@ -19,12 +19,15 @@ max-height: 40vh;
 export const ProgressBar = styled.div `
  width: 100%;
 height: 10px;
+border: 3px solid #000;
 
 div{
 width: 33.3%;
 height: 100%;
 background-color: #cebd24;
 border-radius: 50px;
+border: 1px solid #000;
+
 
 }
 `
@@ -32,12 +35,19 @@ border-radius: 50px;
 export const DivButton = styled.div`
 display: flex;
 justify-content: space-evenly;
+
+#disable {
+    background-color: red;
+}
+
 button {
 border-radius: 2px;
 color: #cebd24;
 background-color: black;
 padding: 2px 8px 2px 8px;
 cursor: pointer;
+
+
 
 }
 

@@ -23,6 +23,15 @@ function MultiSteps () {
         }
     }
 
+    function Button () {
+        return page === 2 ? (
+    
+            <button id="disable" disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Proximo</button>
+    
+        ):   <button disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Proximo</button>
+    } 
+
+
 return (
 <Body>
 
@@ -43,7 +52,8 @@ return (
         <DivButton>
         <button disabled={page == 0 } onClick={() => {setPage((currPage) => currPage - 1);}}>Voltar</button>
 
-        <button disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Proximo</button>
+        {/* <button disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Proximo</button> */}
+        <Button/> 
         </DivButton>
      
 
