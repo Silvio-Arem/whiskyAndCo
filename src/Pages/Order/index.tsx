@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import { products } from "../../data";
+import { products, orders } from "../../data";
 import { IOrder, IProduct } from "../../interfaces";
 
-export default function Order  () {
+export default function Order () {
 
   const { state } = useLocation();
-  const currentOrder: IOrder =  state;
+  const currentOrder: IOrder = state;
+  let list: IProduct[];
 
-  const list: IProduct[] = products.filter((product, i) => product.id === currentOrder.productsList[i].productID);
+ useEffect(() => {
+ })
 
   return (
     <section>
@@ -16,12 +18,12 @@ export default function Order  () {
       <p>Data do Pedido: {currentOrder.orderDate}</p>
       <article>
         {
-          list
+          currentOrder.productsList
           .map((item, index) => 
             <div key={index}>
-              <p>{item.name}</p>
+              {/* <p>{products[]}</p>
               <p>{currentOrder.productsList[index].quantity}</p>
-              <p>Valor: {item.price * currentOrder.productsList[index].quantity}</p>
+              <p>Valor: {item.price * currentOrder.productsList[index].quantity}</p> */}
             </div>
           )
         }

@@ -15,7 +15,7 @@ export default function Profile() {
     email: userData.email,
     cpf: userData.cpf,
     address: userData.address,
-    userType: userData.userType,
+    isAdmin: userData.isAdmin,
     userOrders: userData.userOrders
   })
   
@@ -35,7 +35,7 @@ export default function Profile() {
     <section>
       <h3>Dados Pessoais:</h3>
       <p>Tipo do Usuário</p>
-      <p>{userProfile.userType}</p>
+      <p>{userProfile.isAdmin ? "Administrador": "Cliente"}</p>
       <button>Alterar Senha</button>
       <button onClick={() => navigate("orders", {state : {userOrders: userData.userOrders}})}>Ir para Pedidos</button>
     {

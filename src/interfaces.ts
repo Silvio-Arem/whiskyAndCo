@@ -5,7 +5,7 @@ export interface IUser {
   password?: string;
   cpf: string;
   address: string;
-  userType: string;
+  isAdmin: boolean;
   userOrders?: number[]
 }
 
@@ -21,10 +21,10 @@ export interface IProduct {
 export interface IOrder {
   id: number;
   name: string;
-  productsList: [{
+  productsList: {
     productID: number;
     quantity: number
-  }];
+  }[];
   totalPrice: number;
   orderDate: string;
 }

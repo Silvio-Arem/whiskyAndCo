@@ -21,6 +21,8 @@ export default function routes() {
       <Route path='/admin' element={<Admin />} />
       <Route path='/admin/users/new' element={<UserAdmin />} />
       <Route path='/admin/users/:id' element={<UserAdmin />} />
+      <Route path='/admin/users/:id/orders' element={<Orders />} />
+      <Route path='/admin/users/:id/orders/:id' element={<Order />} />
       <Route path='/admin/products/new' element={<ProductAdmin />} />
       <Route path='/admin/products/:id' element={<ProductAdmin />} />
       <Route path='/admin/categories/new' element={<CategoryAdmin />} />

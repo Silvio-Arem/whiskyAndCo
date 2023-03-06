@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { users } from '../../data';
 import { IUser } from '../../interfaces';
 
 export default function UserAdmin() {
 
   const { state } = useLocation();
+  const navigate = useNavigate();
 
   const [ updatedItem, setUpdatedItem ] = useState <boolean> (true);
   const [ user, setUser ] = useState <IUser> ({
@@ -14,12 +15,12 @@ export default function UserAdmin() {
     email: "",
     cpf: "",
     address: "",
-    userType: "",
+    isAdmin: false,
     userOrders: []
   });
 
   useEffect(() => {
-    if(state !== null) {
+    if(state) {
       setUser(users[state.id--]);
     }
     else {
@@ -39,14 +40,20 @@ export default function UserAdmin() {
     setUpdatedItem(true);
   }
 
+  const removeUser = (id: number) => {
+    console.log(id);
+  }
+
   return (
     <section>
+      <h3>Informações do Usuário:</h3>
     {
       updatedItem
       ? (
         <div>
           <p>ID do Usuário:</p>
           <p>{user.id}</p>
+          <button onClick={() => navigate("orders", {state : {userOrders: user.userOrders}})}>Ir para Pedidos</button>
           <p>Nome do Usuário:</p>
           <p>{user.name}</p>
           <p>Email do Usuário:</p>
@@ -56,7 +63,7 @@ export default function UserAdmin() {
           <p>Endereço do Usuário:</p>
           <p>{user.address}</p>
           <p>Tipo do Usuário:</p>
-          <p>{user.userType}</p>
+          <p>{user.isAdmin ? "Administrador": "Cliente"}</p>
           <button onClick={() => setUpdatedItem(!updatedItem)}>Atualizar Dados</button>
         </div>
         )
@@ -70,11 +77,12 @@ export default function UserAdmin() {
           <input type="text" value={user.cpf} onChange={(e) => handleValues(e)} />
           <label htmlFor="address">Endereço do Usuário:</label>
           <input type="text" value={user.address} onChange={(e) => handleValues(e)} />
-          <label htmlFor="address">Tipo do Usuário:</label>
-          <input type="text" value={user.userType} onChange={(e) => handleValues(e)} />
+          <label htmlFor="isAdmin">Tipo do Usuário:</label>
+          <input type="checkbox" checked={user.isAdmin} onChange={(e) => handleValues(e)} />
           <input type="submit" value="Salvar" />
         </form>
       )}
+      <button onClick={() => removeUser(user.id)}>Excluir</button>
     </section>
   )
 }
