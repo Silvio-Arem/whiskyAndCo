@@ -34,11 +34,12 @@ export default function Header() {
       <SearchBar />
       <ShoppingCart numItems={0} />
       <Menu open={menuOpen}>
+        <MenuItem to="/" title="Ir para home" onClick={handleMenuClick}>Início</MenuItem>
         <MenuItem to="/products" title="Ir para whiskys" onClick={handleMenuClick}>Whiskys</MenuItem>
         <MenuItem to="/profile" title="Ir para  perfil" onClick={handleMenuClick}>Perfil</MenuItem>
         <MenuItem to="#" title="Ir para informações sobre a loja" onClick={handleMenuClick}>Sobre</MenuItem>
         <MenuItem to="/admin" title="Ir para painel administrativo" onClick={handleMenuClick}>Painel do Administrador</MenuItem>
-        <MenuItem to="/" title="Fechar menu" onClick={handleMenuClick}>Fechar Menu</MenuItem>
+        <MenuItem to="#" title="Fechar menu" onClick={handleMenuClick}>Fechar Menu</MenuItem>
       </Menu>
       <LoginIcon />
     </HeaderContainer>
