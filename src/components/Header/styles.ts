@@ -18,4 +18,8 @@ margin-bottom: 15px;
     align-items: center;
     justify-content: space-between;    
 }
+
+@media (max-width: 479px) {
+    padding: 50px 57px 45px 0px;
+    }
 `;

@@ -24,10 +24,12 @@ const images = [
 ];
 
 const Banner = styled.div`
-  margin-left: 5px;
+  margin-left: 4%;
+  margin: auto;
+  /*margin-left: 5px; */
   text-align: center;
   background-color: #000000;
-  width: 99%;
+  width: 95%;
   /* max-height: 250px; */
 `;
 
