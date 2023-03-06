@@ -32,7 +32,7 @@ export default function routes() {
       <Route path='/products' element={<Products />} />
       <Route path='/product/:id' element={<Product />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/checkout' element={<Checkout />} />
+      <Route path='/checkout/:id' element={<Checkout />} />
     </WrapperRoutes>
   );
 }
