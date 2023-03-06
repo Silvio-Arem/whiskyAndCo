@@ -31,7 +31,9 @@ export interface IOrder {
 
 export interface ICategory {
   id: number;
-  name: string
+  name: string,
+  categoryTypes: string[]
+
 }
 
 export type Data = IUser | IProduct | ICategory | IOrder;

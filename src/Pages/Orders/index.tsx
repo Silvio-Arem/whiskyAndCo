@@ -18,9 +18,8 @@ export default function Orders () {
     <section>
       <h3>Pedidos Realizados</h3>
         {
-
-          orderList.map((item, index) => 
-            <article key={index} onClick={() => navigate(`${item.id}`, {state : item})}>
+          orderList.map((item) => 
+            <article key={item.id} onClick={() => navigate(`${item.id}`, {state : item})}>
               <p>Data do Pedido: {item.orderDate}</p>
             </article>             
           )
