@@ -2,7 +2,11 @@ import React, {useState} from "react"
 import FormAddress from "../Multi Steps Forms/FormAddress"
 import FormPayment from "../Multi Steps Forms/FormPayment"
 import FormShipping from "../Multi Steps Forms/FormShipping"
+
+import {Body} from "../../Pages/Login/styles"
+=======
 import {Body} from "../LoginPage/styles"
+
 
 import {Container, ProgressBar, Title, ContainerForm, DivButton} from "../Multi Steps Forms/styles"
 
