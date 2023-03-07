@@ -2,7 +2,7 @@ export interface IUser {
   id: number;
   name: string;
   email: string;
-  password?: string;
+  password: string;
   cpf: string;
   address: string;
   isAdmin: boolean;
@@ -13,7 +13,7 @@ export interface IProduct {
   id: number;
   name: string;
   category: string;
-  img: string;
+  picture: string;
   price: number;
   description: string
 }
@@ -25,14 +25,14 @@ export interface IOrder {
     productID: number;
     quantity: number
   }[];
-  totalPrice: number;
+  amount: number;
   orderDate: string;
 }
 
 export interface ICategory {
   id: number;
   name: string,
-  categoryTypes: string[]
+  categoryValues: string[]
 
 }
 

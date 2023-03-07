@@ -18,7 +18,7 @@ export default function Product() {
         <ProductSection className="Products">
           <div key={selectedProduct.id} className="products__cards">
             <div>
-            <img src={selectedProduct.img} alt={selectedProduct.name} />
+            <img src={selectedProduct.picture} alt={selectedProduct.name} />
             </div>
             <div className="products__cards-body">
               <h5>{selectedProduct.name}</h5>

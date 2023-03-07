@@ -6,10 +6,10 @@ export const LogoContainer = styled.div`
     max-height: 90px;
   }
 
-  @media (max-width: 479px) {
+  /* @media (max-width: 479px) {
       img {
         display: none;
       }
-    }
+    } */
 
 `;

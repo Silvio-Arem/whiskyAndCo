@@ -75,7 +75,7 @@ export default function Products() {
       <ProductsContainer className="Products">
         {filteredProducts.map((item: IProduct) => (
           <div key={item.id} className="products__cards">
-            <img src={item.img} alt={item.name} />
+            <img src={item.picture} alt={item.name} />
             <div className="products__cards-body">
               <h5>{item.name}</h5>
               <p>R$ {item.price}</p>

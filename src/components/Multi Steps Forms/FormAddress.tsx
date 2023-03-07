@@ -5,11 +5,13 @@ const FormAddress = () => {
         <ContainerForm>
         <DivForm >
                 <DivInputAddress>
+                    <label></label>
                     <input type="text" placeholder="Cep" />
+                    <label></label>
                     <input type="text" placeholder="Rua" />
+                    <label></label>
                     <input type="text" placeholder="Numero" />
-                    <input type="text" placeholder="Complemento" />
-                    <input type="text" placeholder="Bairro" />
+                    <label></label>
                     <input type="text" placeholder="Estado" />
                 </DivInputAddress>
         </DivForm>

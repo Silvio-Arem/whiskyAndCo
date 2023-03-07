@@ -28,7 +28,7 @@ export default function Order () {
           )
         }
       </article>
-    <p>Total da compra: {currentOrder.totalPrice}</p>
+    <p>Total da compra: {currentOrder.amount}</p>
     </section>
   )
 }

@@ -20,6 +20,21 @@ margin-bottom: 15px;
 }
 
 @media (max-width: 479px) {
-    padding: 50px 57px 45px 0px;
+    padding: 50px 49px 45px 28px;
     }
 `;
+
+export const DivLogoMenu = styled.div`
+    display: flex;
+    gap: 15px;
+    
+    @media (max-width: 479px) {
+        flex-direction: row-reverse;
+    }
+`;
+
+export const DivCartLogin = styled.div`
+    display: flex;
+    gap: 15px;
+`;
+

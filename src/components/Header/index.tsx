@@ -1,10 +1,9 @@
 import Logo from "../Logo";
 import Nav from "../Nav";
-import SearchBar from "../SearchBar";
 import ShoppingCart from "../ShoppingCart";
 import LogoHeader from "../../assets/icons/logo-header.png"
 import LoginIcon from "../LoginIcon";
-import { HeaderContainer } from "./styles";
+import { DivCartLogin, DivLogoMenu, HeaderContainer } from "./styles";
 import { useState } from "react";
 import { Menu, MenuButton, MenuItem } from "../Nav/styles";
 
@@ -23,6 +22,7 @@ export default function Header() {
 
   return (
     <HeaderContainer>
+      <DivLogoMenu>
       <Logo src={LogoHeader} alt="Logo da loja" />
       <MenuButton className={menuOpen ? "active" : ""} onClick={toggleMenu}>
         <span></span>
@@ -31,7 +31,8 @@ export default function Header() {
         <span></span>
       </MenuButton>
       <Nav />
-      <SearchBar />
+      </DivLogoMenu>
+      <DivCartLogin>
       <ShoppingCart numItems={0} />
       <Menu open={menuOpen}>
         <MenuItem to="/" title="Ir para home" onClick={handleMenuClick}>Início</MenuItem>
@@ -42,6 +43,7 @@ export default function Header() {
         <MenuItem to="#" title="Fechar menu" onClick={handleMenuClick}>Fechar Menu</MenuItem>
       </Menu>
       <LoginIcon />
+      </DivCartLogin>
     </HeaderContainer>
   );
 }
