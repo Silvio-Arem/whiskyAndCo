@@ -12,14 +12,14 @@ export default function ProductAdmin() {
     id: 0,
     name: "",
     category: "",
-    img: "",
+    picture: "",
     price: 0,
     description: "",
   });
 
   useEffect(() => {
     if(state) {
-      setProduct(products[state.id--]);
+      setProduct(products[state.id-1]);
     }
     else {
       setUpdatedItem(false);
@@ -45,7 +45,7 @@ export default function ProductAdmin() {
       { 
         updatedItem
         ? (
-          <div>
+          <>
             <p>ID do Produto:</p>
             <p>{product.id}</p>
             <p>Nome do Produto:</p>
@@ -53,13 +53,13 @@ export default function ProductAdmin() {
             <p>Categoria do Produto:</p>
             <p>{product.category}</p>
             <p>Imagens:</p>
-            <p>{product.img}</p>
+            <p>{product.picture}</p>
             <p>Preço do Produto:</p>
             <p>{product.price}</p>
             <p>Descrição do Produto:</p>
             <p>{product.description}</p>
-            <button onClick={() => setUpdatedItem(!updatedItem)}>Atualizar Dados</button>
-          </div>
+            <button onClick={() => setUpdatedItem(!updatedItem)}>Atualizar</button>
+          </>
         )
         : (
         <form onSubmit={(e) => formHandler(e)}>
@@ -68,7 +68,7 @@ export default function ProductAdmin() {
           <label htmlFor="email">Categoria do Produto:</label>
           <input type="text" value={product.category} onChange={(e) => handleValues(e)} />
           <label htmlFor="cpf">Imagens:</label>
-          <input type="text" value={product.img} onChange={(e) => handleValues(e)} />
+          <input type="text" value={product.picture} onChange={(e) => handleValues(e)} />
           <label htmlFor="address">Preço do Produto:</label>
           <input type="text" value={product.price} onChange={(e) => handleValues(e)} />
           <label htmlFor="description">Descrição do Produto:</label>
@@ -81,7 +81,7 @@ export default function ProductAdmin() {
           <input type="submit" value="Salvar" />
         </form> 
       )}  
-      <button onClick={() => removeProduct(product.id)}>Excluir</button>
+      <button onClick={() => removeProduct(product.id)}>Remover</button>
     </section>
   )
 }

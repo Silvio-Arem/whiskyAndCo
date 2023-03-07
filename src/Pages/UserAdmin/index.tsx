@@ -14,6 +14,7 @@ export default function UserAdmin() {
     name: "",
     email: "",
     cpf: "",
+    password: "",
     address: "",
     isAdmin: false,
     userOrders: []
@@ -64,7 +65,7 @@ export default function UserAdmin() {
           <p>{user.address}</p>
           <p>Tipo do Usuário:</p>
           <p>{user.isAdmin ? "Administrador": "Cliente"}</p>
-          <button onClick={() => setUpdatedItem(!updatedItem)}>Atualizar Dados</button>
+          <button onClick={() => setUpdatedItem(!updatedItem)}>Atualizar</button>
         </div>
         )
         : (
@@ -77,12 +78,12 @@ export default function UserAdmin() {
           <input type="text" value={user.cpf} onChange={(e) => handleValues(e)} />
           <label htmlFor="address">Endereço do Usuário:</label>
           <input type="text" value={user.address} onChange={(e) => handleValues(e)} />
-          <label htmlFor="isAdmin">Tipo do Usuário:</label>
+          <label htmlFor="isAdmin">Usuário Administrador:</label>
           <input type="checkbox" checked={user.isAdmin} onChange={(e) => handleValues(e)} />
           <input type="submit" value="Salvar" />
         </form>
       )}
-      <button onClick={() => removeUser(user.id)}>Excluir</button>
+      <button onClick={() => removeUser(user.id)}>Remover</button>
     </section>
   )
 }
