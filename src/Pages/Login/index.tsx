@@ -1,7 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import { LoginDiv, Form, Body, ActionsDiv, Div, CadastreDiv} from "./styles"
 
 const loginPage = () => {
+
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log("submit", {email, password});
+    // }
+
+
   return (
       <Body>   
   <LoginDiv>
