@@ -1,3 +1,4 @@
+import { tertiaryColor } from './../UI/variables';
 import styled from "styled-components";
 import { primaryColor, secondaryColor } from "../UI/variables";
 
@@ -47,6 +48,7 @@ export  const CollectionTitle = styled.h3`
   text-align: center;
   padding: 2%;
   border: 3px solid ${primaryColor};
+  background-color: ${secondaryColor};
   color: ${primaryColor};
   font-size: 16px;
   text-decoration: none;
@@ -55,6 +57,5 @@ export  const CollectionTitle = styled.h3`
   border-radius: 3px;    
 
   &:hover {
-    border: 4px solid ${primaryColor};
-    background-color: ${secondaryColor};
+    background-color: ${tertiaryColor};
 `;

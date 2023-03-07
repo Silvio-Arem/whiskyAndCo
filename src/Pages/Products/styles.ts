@@ -53,6 +53,7 @@ export const ProductsContainer = styled.section`
   border-radius: 5px;
   text-align: center;
   color: ${primaryColor};
+  transition: color 0.2s;
   text-decoration: none;
   font-size: 1rem;
 

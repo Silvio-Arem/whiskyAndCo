@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import BannerComponent from "../../components/Banner";
 import styled from "styled-components";
-import { primaryColor, secondaryColor } from "../../components/UI/variables";
+import { primaryColor, secondaryColor, tertiaryColor } from "../../components/UI/variables";
 import CollectionSection from "../../components/Collections";
 
 const Presentation = styled.div`
@@ -23,17 +23,16 @@ const Presentation = styled.div`
 
       a {
       padding: inherit;
-      border: 3px solid ${primaryColor};
+      background-color: ${secondaryColor};
+      border: 4px solid ${primaryColor};
       color: ${primaryColor};
       font-size: 16px;
       text-decoration: none;
-      text-transform: uppercase;
       transition: color 0.2s;
-      border-radius: 3px;    
+      border-radius: 5px;    
 
       &:hover {
-        border: 4px solid ${primaryColor};
-        background-color: ${secondaryColor};
+        background-color: ${tertiaryColor};
       }  
     }
 
