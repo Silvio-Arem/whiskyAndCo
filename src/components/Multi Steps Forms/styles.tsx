@@ -32,7 +32,7 @@ flex-direction: column;
 `
 export const ProgressBar = styled.div `
  width: auto;
-height: 10px;
+height: 15px;
 border: 3px solid #000;
 border-radius: 3px;
 
@@ -78,7 +78,7 @@ margin: 8px;
 
 export const DivShipping = styled.div`
 margin-top: 5px;
-margin-bottom: 10px
+margin-bottom: 10px;
 
 `
 
@@ -87,11 +87,11 @@ display: flex;
 flex-direction: column;
 
 input {
-    width: 80%;
+    width: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 5px;
-    margin-top: 10px;
+    margin-top: 5px;
 
     
 }
