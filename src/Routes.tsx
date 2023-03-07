@@ -11,6 +11,7 @@ import ProductAdmin from "./Pages/ProductAdmin";
 import UserAdmin from "./Pages/UserAdmin";
 import CategoryAdmin from "./Pages/CategoryAdmin";
 import Product from "./Pages/Product";
+import RegisterPage from "./Pages/Register";
 
 export default function routes() {
   return (
@@ -34,6 +35,7 @@ export default function routes() {
       <Route path='/products' element={<Products />} />
       <Route path='/product/:id' element={<Product />} />
       <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<RegisterPage/>}/>
       <Route path='/checkout/:id' element={<Checkout />} />
     </WrapperRoutes>
   );

@@ -1,6 +1,3 @@
-
-import React, { useState } from "react";
-
 import React, {useState} from "react";
 
 import { LoginDiv, Form, Body, ActionsDiv, Div, CadastreDiv} from "./styles"
