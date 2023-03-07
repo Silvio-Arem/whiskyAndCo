@@ -7,6 +7,7 @@ import Routes from "./Routes";
 import { GlobalStyle } from "./components/GlobalStyle"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Main } from "./components/UI";
+import MultiSteps from "./components/Multi Steps/MultiSteps";
 
 
 
@@ -14,7 +15,7 @@ import { Main } from "./components/UI";
 function App() {
   return (
     <div className="App">
-
+        {/* <MultiSteps/> */}
       <BrowserRouter>
         <GlobalStyle />
         <Header />
