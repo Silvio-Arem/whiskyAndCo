@@ -6,8 +6,17 @@ import Profile from "./Pages/Profile";
 import LoginPage from "./components/LoginPage/loginPage";
 import Routes from "./Routes";
 import { GlobalStyle } from "./components/GlobalStyle";
+
 import MultiSteps from "./components/Multi Steps/MultiSteps";
+<<<<<<< HEAD
 import { ShippingBox } from "./components/Shipping-Checkbox/shipping";
+=======
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Main } from "./components/UI";
+
+
+>>>>>>> 5de551b4994c0a4fba784c883c567b0310332d26
 
 function App() {
   return (
@@ -16,7 +25,9 @@ function App() {
       {/* <BrowserRouter>
         <GlobalStyle />
         <Header />
-        <Routes />
+        <Main>
+          <Routes />
+        </Main>
         <Footer />
       </BrowserRouter> */}
 
