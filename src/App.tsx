@@ -6,17 +6,25 @@ import Profile from "./Pages/Profile";
 import Routes from "./Routes";
 import { GlobalStyle } from "./components/GlobalStyle";
 
+import MultiSteps from "./components/Multi Steps/MultiSteps";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Main } from "./components/UI";
+
+
 
 function App() {
   return (
     <div className="App">
-
-      <BrowserRouter>
+      <MultiSteps/>
+      {/* <BrowserRouter>
         <GlobalStyle />
         <Header />
-        <Routes />
+        <Main>
+          <Routes />
+        </Main>
         <Footer />
-      </BrowserRouter>
+      </BrowserRouter> */}
 
     </div>
 

@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import {users, products, orders, categories } from "../../data";
 import { Data } from "../../interfaces";
 
 export default function Admin() {
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [ searchType, setSearchType ] = useState <string> ("");
   const [ searchInput, setSearchInput ] = useState <string> ("");
-  const [ data, setData ] = useState < Data[] | null > (null);
-  const [ filteredList, setFilteredList ] = useState < Data[] | null > (null);
-
-  const location = useLocation();
+  const [ data, setData ] = useState <Data[]> ([]);
+  const [ filteredList, setFilteredList ] = useState <Data[]> ([]);
 
   // useEffect(() => {
   //   window.history.replaceState(null, "", `${location.pathname}/${searchType}`);
@@ -21,7 +22,7 @@ export default function Admin() {
 
     setSearchType(dataType);
     setSearchInput("");
-    setFilteredList(null);
+    setFilteredList([]);
 
     switch(dataType) {
       case "products":
@@ -43,12 +44,12 @@ export default function Admin() {
 
   const updateList = (search: string) => {
     setSearchInput(search);
-    const filtered = search !== "" && data !== null
+    const filtered = search !== ""
       ? data.filter(item => 
           searchType === "orders" 
           ? item.id.toString() === search
           : item.name.toLowerCase().includes(search.toLowerCase()))
-      : null
+      : []
     setFilteredList(filtered);
   }
 
@@ -70,9 +71,10 @@ export default function Admin() {
             value={searchInput}
             onChange={(e) => updateList(e.target.value)}/>
         </div>
+        {searchType !== "" && <button onClick={() => navigate(`${searchType}/new`)}>Criar</button>}
         <ul>
           {
-            filteredList !== null
+            filteredList.length > 0
             ? (
               filteredList.map((item) =>
                 <li key={item.id}>
@@ -82,7 +84,7 @@ export default function Admin() {
                 </li>
             ))
             : (
-              data?.map((item) => 
+              data.map((item) => 
                 <li key={item.id}>
                   <Link to={`${searchType}/${item.id}`} state={{id: item.id, dataType: searchType}}>
                     {searchType === "orders" ? item.id : item.name}

@@ -11,4 +11,15 @@ height: 80px;
 justify-content: space-between; 
 padding: 60px;
 margin-bottom: 15px;
+
+@media (max-width: 1023px) {
+    /* height: auto; */
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;    
+}
+
+@media (max-width: 479px) {
+    padding: 50px 57px 45px 0px;
+    }
 `;
