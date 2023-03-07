@@ -12,7 +12,7 @@ export const NavContainer = styled.nav`
   align-items: center;
   gap: 15px;
 
-@media (max-width: 1023px) {
+@media (max-width: 860px) {
     display: none;
   }
 `;
@@ -39,6 +39,7 @@ export const MenuButton = styled.button`
   justify-content: space-between;
   height: 24px;
   width: 24px;
+  margin: 34px 0 0 8px;
   padding: 0;
   background-image: url(${MenuIcon});
   background-size: cover;
@@ -69,7 +70,7 @@ export const MenuButton = styled.button`
     opacity: 0;
   }
 
-  @media (max-width: 1023px) {
+  @media (max-width: 860px) {
     display: flex;
   }
 
