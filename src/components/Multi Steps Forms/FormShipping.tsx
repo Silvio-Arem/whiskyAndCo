@@ -1,17 +1,22 @@
 import React from "react";
-import {DivForm, ContainerForm} from "./styles"
+import { ShippingBox } from "../Shipping-Checkbox/shipping";
+import {DivForm, ContainerForm, DivShipping} from "./styles"
 
 const FormShipping= () => {
     return (
         <ContainerForm>
-        <DivForm>
-                <input type="" placeholder="ssssss" />
-                <input type="" placeholder="ssssss" />
-                <input type="" placeholder="ssssss" />
-                <input type="" placeholder="ssssss" />
-                <input type="" placeholder="ssssss" />
-                <input type="" placeholder="ssssss" />
+            <DivForm>
+
+        <DivShipping>
+        <ShippingBox title="asdasasadads" time="aaaaaaa"/>
+        </DivShipping>
+        
+        <DivShipping>
+        <ShippingBox title="asdasasadads" time="aaaaaaa"/>
+        </DivShipping>
+
         </DivForm>
+
         </ContainerForm>
     )
 }

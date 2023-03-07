@@ -1,5 +1,21 @@
 import styled from 'styled-components';
 // -------------------------------------- Pagina principal
+export const Body = styled.body`
+background-color: #E5E5E5;
+width: 100%;
+height: 100vh;
+margin: 0px;
+padding: 0px;
+display: flex;
+justify-content:center;
+`
+
+export const DivPage = styled.div`
+min-width: auto;
+min-height: auto;
+
+`
+
 export const Title = styled.div`
 display:flex;
 justify-content: center;
@@ -10,23 +26,22 @@ h2{
 `
 
 export const Container = styled.div`
-max-width: 50vh;
-max-height: 40vh;
-
-
+display: flex;
+flex-direction: column;
 
 `
 export const ProgressBar = styled.div `
- width: 100%;
+ width: auto;
 height: 10px;
 border: 3px solid #000;
+border-radius: 3px;
 
 div{
 width: 33.3%;
 height: 100%;
 background-color: #cebd24;
-border-radius: 50px;
 border: 1px solid #000;
+
 
 
 }
@@ -60,13 +75,15 @@ justify-content: center;
 flex-direction: column;
 margin: 8px;
 `
-export const StyleFormAddress = styled.form`
+
+export const DivShipping = styled.div`
+margin-top: 5px;
+margin-bottom: 10px
+
 `
 
 export const DivInputAddress = styled.div`
-margin: 8px;
 display: flex;
-justify-content: center;
 flex-direction: column;
 
 input {
@@ -74,15 +91,18 @@ input {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 5px;
+    margin-top: 10px;
 
     
 }
 `
 export const ContainerForm = styled.div`
-width: 50vh;
-height: 40vh;
+width: auto;
+height: auto;
+min-width: 300px;
+min-height: 300px;
 justify-content: center;
 display: flex;
 box-shadow: rgba(100, 100, 111, 0.2 ) 0px 7px 29px 0px;
+border: 3px solid #000;
 `
-

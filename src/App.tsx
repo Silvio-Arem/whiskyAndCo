@@ -7,12 +7,12 @@ import LoginPage from "./components/LoginPage/loginPage";
 import Routes from "./Routes";
 import { GlobalStyle } from "./components/GlobalStyle";
 import MultiSteps from "./components/Multi Steps/MultiSteps";
-
+import { ShippingBox } from "./components/Shipping-Checkbox/shipping";
 
 function App() {
   return (
     <div className="App">
-      <MultiSteps/>
+<MultiSteps/>
       {/* <BrowserRouter>
         <GlobalStyle />
         <Header />
