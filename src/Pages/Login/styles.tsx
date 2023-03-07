@@ -22,7 +22,7 @@ padding:2rem;
 export const Form = styled.form`
 background-color: #FFFFFF;
 width: 100%;
-max-width: 330px;
+max-width: 400px;
 padding:2rem; 
 
 h1 {
