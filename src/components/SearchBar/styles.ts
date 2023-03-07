@@ -37,4 +37,15 @@ export const SearchBarContainer = styled.div`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    input {
+      display: none;
+    }
+
+    button {
+      text-align: end;
+    }
+  }
+
 `;

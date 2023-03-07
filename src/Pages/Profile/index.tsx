@@ -1,47 +1,72 @@
+import { EventType } from "@testing-library/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { users } from "../../data";
 import { IUser } from "../../interfaces";
 
 export default function Profile() {
-
-  const [ updateProfile, setUpdateProfile ] = useState(false);
-
-  enum Labels {
-    name = "Nome Completo",
-    email = "Email",
-    cpf = "CPF",
-    address = "Endereço",
-    userType = "Tipo do Usuário"
+  
+  const userData: IUser = users[0];
+  
+  const [ updatedProfile, setUpdatedProfile ] = useState(true);
+  const [ userProfile, setUserProfile ] = useState({
+    id: userData.id, 
+    name: userData.name,
+    email: userData.email,
+    cpf: userData.cpf,
+    address: userData.address,
+    isAdmin: userData.isAdmin,
+    userOrders: userData.userOrders
+  })
+  
+  const navigate = useNavigate();
+  
+  const handleValues = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserProfile({...userProfile, [name]: value})
   }
 
-  const userData: IUser = users[Math.floor(Math.random()*50)];
+  const formHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setUpdatedProfile(true);
+  }
 
   return (
-      <section>
-        <h3>Dados Pessoais:</h3>
-        <form>
-        {
-          (Object.keys(Labels) as Array<keyof typeof Labels>)
-          .map((label, index) =>
-            <article key={index}>
-              <label>{Labels[label]}</label>
-              {
-                Object.keys(userData)
-                .filter(fieldKey => fieldKey === label)
-                .map((userField) =>
-                  updateProfile
-                  ? <input type="text" name={userField}/>
-                  : <p>{userData[userField as keyof IUser]}</p>
-                )
-              }
-            </article>
-          )}
-          {
-            updateProfile
-            ? <input type="submit" value="Salvar" />
-            : <button onClick={() => setUpdateProfile(!updateProfile)}>Atualizar Dados</button>
-          }
-        </form>
-      </section>
+    <section>
+      <h3>Dados Pessoais:</h3>
+      <p>Tipo do Usuário</p>
+      <p>{userProfile.isAdmin ? "Administrador": "Cliente"}</p>
+      <button>Alterar Senha</button>
+      <button onClick={() => navigate("orders", {state : {userOrders: userData.userOrders}})}>Ir para Pedidos</button>
+    {
+    updatedProfile
+    ? (
+      <div>
+        <p>Nome:</p>
+        <p>{userProfile.name}</p>
+        <p>E-mail:</p>
+        <p>{userProfile.email}</p>
+        <p>CPF:</p>
+        <p>{userProfile.cpf}</p>
+        <p>Endereço:</p>
+        <p>{userProfile.address}</p>
+        <button onClick={() => setUpdatedProfile(!updatedProfile)}>Atualizar Dados</button>
+      </div>
+    )
+    : (
+      <form onSubmit={(e) => formHandler(e)}>
+        <label htmlFor="name">Nome:</label>
+        <input type="text" value={userProfile.name} onChange={(e) => handleValues(e)} />
+        <label htmlFor="email">E-mail:</label>
+        <input type="email" value={userProfile.email} onChange={(e) => handleValues(e)} />
+        <label htmlFor="cpf">CPF:</label>
+        <input type="text" value={userProfile.cpf} onChange={(e) => handleValues(e)} />
+        <label htmlFor="address">Endereço</label>
+        <input type="text" value={userProfile.address} onChange={(e) => handleValues(e)} />
+        <input type="submit" value="Salvar" />
+      </form>
+    )}
+    </section>
   );
 }
+
