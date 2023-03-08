@@ -103,6 +103,5 @@ min-width: 300px;
 min-height: 300px;
 justify-content: center;
 display: flex;
-box-shadow: rgba(100, 100, 111, 0.2 ) 0px 7px 29px 0px;
-border: 3px solid #000;
+
 `

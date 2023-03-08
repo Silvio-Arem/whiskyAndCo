@@ -8,11 +8,11 @@ const FormShipping= () => {
             <DivForm>
 
         <DivShipping>
-        <ShippingBox title="asdasasadads" time="aaaaaaa"/>
+        <ShippingBox title="Comum - GRATIS" time="5 a 10 dias uteis"/>
         </DivShipping>
         
         <DivShipping>
-        <ShippingBox title="asdasasadads" time="aaaaaaa"/>
+        <ShippingBox title="Expresso - R$8,00" time="2 a 3 dias uteis"/>
         </DivShipping>
 
         </DivForm>
