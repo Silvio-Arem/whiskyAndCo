@@ -18,9 +18,11 @@ export const PrimaryButton = styled.div`
         color: ${primaryColor};
         text-decoration: none;
         font-size: 1rem;
+        transition: 0.3s;
 
         &:hover {
         background-color: ${tertiaryColor};
         }
     }
+
 `;

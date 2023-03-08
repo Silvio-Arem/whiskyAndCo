@@ -1,6 +1,5 @@
-import { tertiaryColor } from './../UI/variables';
 import styled from "styled-components";
-import { primaryColor, secondaryColor } from "../UI/variables";
+import { primaryColor } from "../UI/variables";
 
 export const CollectionsWrapper = styled.section`
   display: flex;
