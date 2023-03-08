@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { LoginDiv, Form, Body, ActionsDiv, Div, CadastreDiv} from "./styles"
 
-const loginPage = () => {
+const LoginPage = () => {
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -12,10 +12,8 @@ const loginPage = () => {
     }
     console.log(email)
 
-  return (
-      <Body>   
+  return (  
   <LoginDiv>
-  
   <Form>
   <h1 className="title">Faça seu login </h1>
   <h3>Entre com Email.</h3>
@@ -41,9 +39,6 @@ const loginPage = () => {
   </CadastreDiv>
 
   </LoginDiv>
-  </Body>
-
-
   )
 }
-export default loginPage;
+export default LoginPage;

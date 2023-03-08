@@ -3,7 +3,7 @@ import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import Admin from "./Pages/Admin";
 import Products from "./Pages/Products/index";
-import Login from "./Pages/Login";
+import LoginPage from "./Pages/Login";
 import Checkout from "./Pages/Checkout";
 import Orders  from "./Pages/Orders";
 import Order from "./Pages/Order";
@@ -34,7 +34,7 @@ export default function routes() {
       <Route path='/profile/orders/:id' element={<Order />} />
       <Route path='/products' element={<Products />} />
       <Route path='/product/:id' element={<Product />} />
-      <Route path='/login' element={<Login />} />
+      <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage/>}/>
       <Route path='/checkout/:id' element={<Checkout />} />
     </WrapperRoutes>

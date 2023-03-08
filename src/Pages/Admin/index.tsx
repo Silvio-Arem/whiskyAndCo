@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import {users, products, orders, categories } from "../../data";
 import { Data } from "../../interfaces";
 
+import { StyledSection } from "./styles";
+
 export default function Admin() {
 
   const navigate = useNavigate();
@@ -54,7 +56,7 @@ export default function Admin() {
   }
 
   return (
-      <section>
+      <StyledSection>
         <h3>Painel do Administrador</h3>
         <p>Faça todas as operações sobre os tipos disponíveis</p>
         <div>
@@ -63,6 +65,7 @@ export default function Admin() {
             <option value="users">Usuários</option>
             <option value="products">Produtos</option>
             <option value="categories">Categorias</option>
+            <option value="brands">Marcas</option>
             <option value="orders">Pedidos</option>
           </select>
           <input 
@@ -93,6 +96,6 @@ export default function Admin() {
             ))
           }
         </ul>
-      </section>
+      </StyledSection>
   );
 }
