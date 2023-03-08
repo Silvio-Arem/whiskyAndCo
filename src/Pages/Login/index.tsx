@@ -1,7 +1,12 @@
 import React, {useState} from "react";
+
 import { LoginDiv, Form, Body, ActionsDiv, Div, CadastreDiv} from "./styles"
 
 const loginPage = () => {
+
+
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
 
     // const [email, setEmail] = useState("");
     // const [password, setPassword] = useState("");
@@ -10,6 +15,7 @@ const loginPage = () => {
     //     e.preventDefault();
     //     console.log("submit", {email, password});
     // }
+
 
 
   return (
@@ -21,11 +27,11 @@ const loginPage = () => {
   <h3>Entre com Email.</h3>
   <Div>
       <label htmlFor="email"></label>
-      <input type="email" name="email" placeholder="Email"/>
+      <input type="email" name="email" placeholder="Email" value={email} onChange= {(event) => setEmail(event.target.value)} />
   </Div>
   <Div>
       <label htmlFor="password"></label>
-      <input type="password" name="password" placeholder="Senha"/>
+      <input type="password" name="password" placeholder="Senha" value={password} onChange= {(event) => setPassword(event.target.value)}/>
   </Div>
   <ActionsDiv>
   <button type="submit">Entrar</button>
