@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import BannerComponent from "../../components/Banner";
 import styled from "styled-components";
-import { primaryColor, secondaryColor } from "../../components/UI/variables";
+import { primaryColor, secondaryColor, tertiaryColor } from "../../components/UI/variables";
 import CollectionSection from "../../components/Collections";
+import Button from "../../components/Button";
 
 const Presentation = styled.div`
     display: flex;
@@ -23,17 +23,16 @@ const Presentation = styled.div`
 
       a {
       padding: inherit;
-      border: 3px solid ${primaryColor};
+      background-color: ${secondaryColor};
+      border: 4px solid ${primaryColor};
       color: ${primaryColor};
       font-size: 16px;
       text-decoration: none;
-      text-transform: uppercase;
       transition: color 0.2s;
-      border-radius: 3px;    
+      border-radius: 5px;    
 
       &:hover {
-        border: 4px solid ${primaryColor};
-        background-color: ${secondaryColor};
+        background-color: ${tertiaryColor};
       }  
     }
 
@@ -60,9 +59,7 @@ export default function Home() {
             <h1>Você vai adorar a nossa variedade</h1>
             <p>Nossa loja online de whisky oferece marcas exclusivas. Compra fácil e intuitiva com ampla variedade de opções, entregas rápidas e atendimento personalizado. Comprometidos com a melhor qualidade, cada garrafa é cuidadosamente embalada e entregue em sua porta. Descubra nossa seleção excepcional para satisfazer o seu paladar!</p>
           </div>
-          <div className="button-presentation">
-          <Link to="/products" title="Ir para whiskys">Confira!</Link>
-          </div>
+          <Button link="/products" title="Ir para whiskys" text="Confira!"/>
         </div>
       </Presentation>
       <DivBanner>

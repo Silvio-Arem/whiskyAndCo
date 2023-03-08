@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { primaryColor, secondaryColor } from "../UI/variables";
+import { primaryColor } from "../UI/variables";
 
 export const CollectionsWrapper = styled.section`
   display: flex;
@@ -41,20 +41,4 @@ export  const CollectionImage = styled.img`
   &:hover {
     border: 4px solid ${primaryColor};
   }
-`;
-
-export  const CollectionTitle = styled.h3`
-  text-align: center;
-  padding: 2%;
-  border: 3px solid ${primaryColor};
-  color: ${primaryColor};
-  font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: color 0.2s;
-  border-radius: 3px;    
-
-  &:hover {
-    border: 4px solid ${primaryColor};
-    background-color: ${secondaryColor};
 `;

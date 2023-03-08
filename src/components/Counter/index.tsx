@@ -1,25 +1,28 @@
-import React, { useState } from 'react';
+import { CounterDiv } from './styles';
 
-const Counter: React.FC = () => {
-  const [count, setCount] = useState(1);
+interface CounterProps {
+  quantity: number;
+  onQuantityChange: (newQuantity: number) => void;
+}
 
+export default function Counter({ quantity, onQuantityChange }: CounterProps) {
   const handleIncrement = () => {
-    setCount(count + 1);
+    const newQuantity = quantity + 1;
+    onQuantityChange(newQuantity);
   };
 
   const handleDecrement = () => {
-    if (count > 1) {
-      setCount(count - 1);
+    if (quantity > 1) {
+      const newQuantity = quantity - 1;
+      onQuantityChange(newQuantity);
     }
   };
 
   return (
-    <div>
+    <CounterDiv>
       <button onClick={handleDecrement}>-</button>
-      <span>{count}</span>
+      <span>{quantity}</span>
       <button onClick={handleIncrement}>+</button>
-    </div>
+    </CounterDiv>
   );
-};
-
-export default Counter;
+}

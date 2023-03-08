@@ -5,6 +5,7 @@ import { primaryColor, secondaryColor, tertiaryColor } from '../../components/UI
 export const ProductsContainer = styled.section`
   margin: 14px 22%;
 
+
   .products__cards {
   display: flex;
   flex-direction: column;
@@ -53,6 +54,7 @@ export const ProductsContainer = styled.section`
   border-radius: 5px;
   text-align: center;
   color: ${primaryColor};
+  transition: color 0.2s;
   text-decoration: none;
   font-size: 1rem;
 
