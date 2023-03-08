@@ -60,7 +60,7 @@ export default function Category() {
 
   return (
     <section>
-      <h3>Informações da Categoria</h3>
+      {/* <h3>Informações da Categoria</h3>
       {
         updatedItem
         ? (
@@ -107,7 +107,7 @@ export default function Category() {
           {updateValue ? "Salvar Valor" : "Adicionar Valor"}
         </button>
       }
-      <button onClick={() => removeCategory(state.id)}>Remover</button>
+      <button onClick={() => removeCategory(state.id)}>Remover</button> */}
     </section>
   )
 }
