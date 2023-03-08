@@ -27,6 +27,10 @@ width: 100%;
 max-width: 350px;
 text-align: center;
 padding: 10px;
+
+  .product__description {
+  font-size: 14px;
+  }
 }
 
 .products__cards-body h5 {
@@ -37,11 +41,13 @@ margin: 10px 0;
 .products__cards-body p {
 font-size: 16px;
 margin: 5px 0;
+
 }
 
 .products__card-button {
 margin: 10px 0;
 }
+
 
 
 .products__card-button a {
