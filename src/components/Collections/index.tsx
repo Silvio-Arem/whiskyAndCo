@@ -1,5 +1,4 @@
-import React from "react";
-import { CollectionImage, CollectionTitle, CollectionsList, CollectionsTitle, CollectionsWrapper } from "./styles";
+import { CollectionImage,  CollectionsList, CollectionsTitle, CollectionsWrapper } from "./styles";
 import { Link } from "react-router-dom";
 import Jack from "../../assets/images/jack-logo.png";
 import Ballantines from "../../assets/images/ballantines-logo.png";
@@ -17,7 +16,6 @@ function Collection (props: CollectionProps) {
   return (
     <Link to={props.link}>
       <CollectionImage src={props.image} alt={props.alt} />
-      <CollectionTitle>{props.title}</CollectionTitle>
     </Link>
   );
 };
