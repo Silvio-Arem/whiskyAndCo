@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ICategory } from '../../interfaces';
+import { StyledSection } from '../Admin/styles';
 
 export default function CategoryAdmin() {
   
@@ -15,7 +16,7 @@ export default function CategoryAdmin() {
     const requestOptions = {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(categoryName)
+      body: JSON.stringify({ name: categoryName })
     };
     const res = await fetch(`http://localhost:4000/category/${id}`, requestOptions);
     navigate(-1);
@@ -25,7 +26,7 @@ export default function CategoryAdmin() {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(categoryName)
+      body: JSON.stringify({ name: categoryName })
     };
     const res = await fetch("http://localhost:4000/category", requestOptions);
     console.log(res);
@@ -37,7 +38,7 @@ export default function CategoryAdmin() {
     const requestOptions = {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(categoryName)
+      body: JSON.stringify({ name: categoryName })
     };
     const res = await fetch(`http://localhost:4000/category/${id}`, requestOptions);
     setUpdatedItem(false);
@@ -54,33 +55,33 @@ export default function CategoryAdmin() {
   }, []);
 
   return (
-    <section>
+    <StyledSection>
       <h3>Informações da Categoria</h3>
       {
         updatedItem
         ? (
-          <>  
+          <div>  
             <p>ID da Categoria:</p>
-            <p>{state?.id}</p>
+            <span>{state?.id}</span>
             <p>Nome da Categoria:</p>
             <p>{categoryName}</p>
             <button onClick={() => setUpdatedItem(!updatedItem)}>Atualizar</button>
-          </>
+          </div>
         )
         : (
-          <>
+          <div>
             <p>ID da Categoria:</p>
             <p>{state ? state.id : "ID ainda não gerado"}</p>
             <label htmlFor="categoryName">Nome da Categoria:</label>
             <input type="text" value={categoryName} onChange={(e) => setCategoryName(e.target.value)}/>
             { state === null
-              ? <button onClick={() => addCategory()}>Salvar</button>
-              : <button onClick={() => updateCategory(state.id)}>Atualizar</button>
+              ? <button onClick={() => addCategory()}>Criar</button>
+              : <button onClick={() => updateCategory(state.id)}>Salvar</button>
             }
-          </>
+          </div>
         )
       }
       <button onClick={() => removeCategory(state.id)}>Remover</button>
-    </section>
+    </StyledSection>
   )
 }
