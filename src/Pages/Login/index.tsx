@@ -5,16 +5,14 @@ const LoginPage = () => {
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-
-    const result = {
-        email: {email},
-        password: {password}
-    }
-    console.log(email)
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        console.log("submit", {email, password});
+}
 
   return (  
   <LoginDiv>
-  <Form>
+  <Form onSubmit={handleSubmit}>
   <h1 className="title">Faça seu login </h1>
   <h3>Entre com Email.</h3>
   <Div>
