@@ -10,11 +10,12 @@ export interface IUser {
 }
 
 export interface IProduct {
-  id: number;
-  name: string;
-  category: string;
-  picture: string;
-  price: number;
+  id: number,
+  name: string,
+  category: string,
+  brand: string,
+  picture: string,
+  price: number,
   description: string
 }
 

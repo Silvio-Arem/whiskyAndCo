@@ -1,50 +1,22 @@
 import { BrowserRouter } from "react-router-dom";
+import Routes from "./Routes";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-
-import Profile from "./Pages/Profile";
-import Routes from "./Routes";
+import { Main } from "./components/UI";
 
 import { GlobalStyle } from "./components/GlobalStyle";
-
-
-
-import { ShippingBox } from "./components/Shipping-Checkbox/shipping";
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Main } from "./components/UI";
-import MultiSteps from "./components/Multi Steps/MultiSteps";
-
-
-
-
-
 
 function App() {
   return (
-    <div className="App">
-
-
-    <BrowserRouter>
-
-       
       <BrowserRouter>
-
         <GlobalStyle />
         <Header />
         <Main>
           <Routes />
         </Main>
         <Footer />
-
       </BrowserRouter> 
-
-      </BrowserRouter>
-
-
-    </div>
-
   );
 }
 

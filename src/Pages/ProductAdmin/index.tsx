@@ -12,6 +12,7 @@ export default function ProductAdmin() {
     id: 0,
     name: "",
     category: "",
+    brand: "",
     picture: "",
     price: 0,
     description: "",
@@ -63,6 +64,8 @@ export default function ProductAdmin() {
         )
         : (
         <form onSubmit={(e) => formHandler(e)}>
+          <p>ID do Produto:</p>
+          <p>{state ? state.id : "ID ainda não gerado"}</p>
           <label htmlFor="name">Nome do Produto:</label>
           <input type="text" value={product.name} onChange={(e) => handleValues(e)} />
           <label htmlFor="email">Categoria do Produto:</label>
