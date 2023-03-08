@@ -1,33 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ICategory } from '../../interfaces';
 import { StyledSection } from '../Admin/styles';
 
 export default function CategoryAdmin() {
   
+  
   const { state } = useLocation();
   const navigate = useNavigate();
-
+  
   const [ updatedItem, setUpdatedItem ] = useState(true);
   const [ categoryName, setCategoryName ] = useState("");
   
+  const requestOptions = {
+    method: '',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: categoryName })
+  };
 
   const removeCategory = async (id: number) => {
-    const requestOptions = {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: categoryName })
-    };
+    requestOptions.method = "DELETE";
     const res = await fetch(`http://localhost:4000/category/${id}`, requestOptions);
     navigate(-1);
   }
 
   const addCategory = async () => {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: categoryName })
-    };
+    requestOptions.method = "POST";
     const res = await fetch("http://localhost:4000/category", requestOptions);
     console.log(res);
     setUpdatedItem(false);
@@ -35,11 +32,7 @@ export default function CategoryAdmin() {
   }
 
   const updateCategory = async (id: number) => {
-    const requestOptions = {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: categoryName })
-    };
+    requestOptions.method = "PUT";
     const res = await fetch(`http://localhost:4000/category/${id}`, requestOptions);
     setUpdatedItem(false);
     navigate(-1);
