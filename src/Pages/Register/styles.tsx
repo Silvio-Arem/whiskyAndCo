@@ -5,8 +5,23 @@ display: flex;
 justify-content:center;
 align-items:center;
 flex-direction: column;
-min-height:100vh;
+min-height:70vh;
 padding:1rem; 
+
+button{
+text-shadow: none;
+font-size: 13px;
+padding: 2px 8px 2px 8px;
+background-color: black;
+color: #cebd24;
+border-radius: 2px;
+margin-top: 10px;
+}
+h1 {
+color: #111111;
+font-size: 28px ;
+margin-bottom: 15;
+}
 `
 
 export const InputDiv = styled.div`
@@ -17,33 +32,10 @@ label {
     padding-top:0;
 }
 input{
-    width: 95%;
+    width: 100%;
+    
     padding: 10px;
 }
 `
 
-export const AnddressDiv = styled.form`
 
-display: flex;
-align-items:center;
-flex-direction: column;
-min-height:100vh;
-padding:1rem; 
-
-h3 {
-    margin-top: 0px;
-    margin-bottom: 5px
-}
-`
-
-export const InputDiv2 = styled.div`
-padding: 5px 0 5px 0;
-
-label {
-    display: block;
-    padding-top:0;
-}
-input{
-    width: 95%;
-    padding: 10px;
-}`

@@ -1,5 +1,5 @@
 import React from "react";
-import {FormRegister, InputDiv,InputDiv2, AnddressDiv} from "./styles"
+import {FormRegister, InputDiv} from "./styles"
 
 const RegisterPage = () => {
     return(
@@ -8,42 +8,37 @@ const RegisterPage = () => {
         <h1>Faça seu cadastro</h1>
         
             <InputDiv>
-            <label htmlFor=""></label>
-            <input type="text" name="name" placeholder="Nome completo" />
+            <label htmlFor="name"></label>
+            <input type="name" name="name" placeholder="Nome completo" />
             </InputDiv>
-            <InputDiv>
-            <label htmlFor=""></label>
-            <input type="text" name="cpf" placeholder="CPF" />
-            </InputDiv>
-            <InputDiv>
-            <label htmlFor=""></label>
-            <input type="text" name="address" placeholder="Email" />
-            </InputDiv>
-         
 
-         <AnddressDiv>
-            <h3>Endereço</h3>
-            <InputDiv2>
-            <label htmlFor=""></label>
-            <input type="text" name="email" placeholder="Rua" />
-            </InputDiv2>
-            <InputDiv2>
+            <InputDiv>
+            <label htmlFor="cpf"></label>
+            <input type="cpf" name="cpf" placeholder="CPF" />
+            </InputDiv>
+
+            <InputDiv>
+            <label htmlFor="email"></label>
+            <input type="email" name="email" placeholder="Email" />
+            </InputDiv>
+
+            <InputDiv>
             <label htmlFor="password"></label>
-            <input type="cep" name="password" placeholder="Cep" />
-            </InputDiv2>
-            <InputDiv2>
-            <label htmlFor=""></label>
-            <input type="text" name="email" placeholder="Bairro" />
-            </InputDiv2>
-            <InputDiv2>
-            <label htmlFor="password"></label>
-            <input type="password" name="password" placeholder="Cidade" />
-            </InputDiv2>
-            </AnddressDiv>
-            </FormRegister>
+            <input type="password" name="password" placeholder="Senha" />
+            </InputDiv>
+
+             <InputDiv>
+            <label htmlFor="address"></label>
+            <input type="address" name="address" placeholder="Endereço" />
+            </InputDiv>
+
             <div>
                 <button>Cadastrar</button>
             </div>
+
+            
+            </FormRegister>
+
         
        
         </div>
