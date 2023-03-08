@@ -2,17 +2,18 @@ import styled from "styled-components";
 import { primaryColor, secondaryColor, tertiaryColor } from "../../components/UI/variables";
 
 export const ProductSection = styled.section`
-    margin: 14px 22%;
+    margin: 14px 7%;
 
 .products__cards {
 display: flex;
 flex-direction: column;
-justify-content: space-between;
+justify-content: center;
 align-items: center;
 background-color: #fff;
 border-radius: 5px;
-margin: 10px;
-padding: 10px;
+margin: auto;
+padding: 10px 28px 0 0px;
+gap: 30px;
 }
 
 .products__cards img {
@@ -60,6 +61,7 @@ background-color: ${tertiaryColor};
 }
 
 @media (min-width: 768px) {
+
 .products__cards {
   flex-direction: row;
   max-width: 700px;
@@ -86,6 +88,11 @@ background-color: ${tertiaryColor};
   margin: 0;
   text-align: center;
 }
+}
+
+.buttons__choice {
+  display: flex;
+  gap: 5px;
 }
 
 `;

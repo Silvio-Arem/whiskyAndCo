@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { products } from '../../data';
 import { IProduct } from '../../interfaces';
 
 export default function ProductAdmin() {
   
   const { state } = useLocation();
+  const navigate = useNavigate();
 
   const [ updatedItem, setUpdatedItem ] = useState <boolean> (true);
   const [ product, setProduct ] = useState <IProduct> ({
@@ -32,9 +33,24 @@ export default function ProductAdmin() {
       setProduct({...product, [name]: value});
   }
 
-  const formHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const formHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const requestOptions = {
+      method: '',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(product)
+    };
+    if(state === null) {
+      requestOptions.method = 'POST';
+      const res = await fetch("http://localhost:4000/product", requestOptions);
+    }
+    else {
+      requestOptions.method = 'PUT';
+      const res = await fetch(`http://localhost:4000/product/${product.id}`, requestOptions);
+
+    }
     setUpdatedItem(true);
+    navigate(-1);
   }
 
   const removeProduct = (id: number) => {
@@ -81,7 +97,7 @@ export default function ProductAdmin() {
             value={product.description} 
             onChange={(e) => handleValues(e)}>
           </textarea>
-          <input type="submit" value="Salvar" />
+          <input type="submit" value={state === null ? "Criar" : "Salvar"} />
         </form> 
       )}  
       <button onClick={() => removeProduct(product.id)}>Remover</button>
