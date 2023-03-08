@@ -5,8 +5,12 @@ export const PrimaryButton = styled.div`
     margin: 10px 0;
 
     button {
+        border: none;
+    }
+
+    a {
         display: block;
-        padding: 10px;
+        padding: 4px 56px;
         background-color: ${secondaryColor};
         border: 4px solid ${primaryColor};
         border-radius: 5px;

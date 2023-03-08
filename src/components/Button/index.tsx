@@ -1,27 +1,21 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PrimaryButton } from "./styles";
+import { primaryColor, secondaryColor, tertiaryColor } from "../UI/variables";
 
 interface ButtonProps {
     title: string;
     text: string;
-    onClick?: () => void;
+    link: string;
 }
 
 export default function Button(props: ButtonProps) {
 
-    const navigate = useNavigate();
-
-    function handleClick() {
-        if (props.onClick) {
-            props.onClick();
-        } else {
-            navigate(-1);
-        }
-    }
 
     return (
         <PrimaryButton className="primary-button">
-            <button onClick={handleClick} title={props.title}>{props.text}</button>
+            <button>
+                <Link to={props.link} title={props.title}>{props.text}</Link>     
+            </button>
         </PrimaryButton>
     );
 };

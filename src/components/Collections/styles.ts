@@ -43,19 +43,3 @@ export  const CollectionImage = styled.img`
     border: 4px solid ${primaryColor};
   }
 `;
-
-export  const CollectionTitle = styled.h3`
-  text-align: center;
-  padding: 2%;
-  border: 3px solid ${primaryColor};
-  background-color: ${secondaryColor};
-  color: ${primaryColor};
-  font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: color 0.2s;
-  border-radius: 3px;    
-
-  &:hover {
-    background-color: ${tertiaryColor};
-`;

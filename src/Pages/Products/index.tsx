@@ -1,9 +1,9 @@
 import { IProduct } from "../../interfaces";
 import { products } from "../../data";
-import { Link } from "react-router-dom";
 import { PageDescript, ProductsContainer } from "./styles";
 import { Filter } from "../../components/Filter/styles";
 import { useState } from "react";
+import Button from "../../components/Button";
 
 export default function Products() {
 
@@ -80,11 +80,7 @@ export default function Products() {
               <h5>{item.name}</h5>
               <p>R$ {item.price}</p>
               <p>{item.category}</p>
-              <div className="products__card-button">
-                <Link to={`/product/${item.id}`} title="Ir para whisky selecionado">
-                  Descrição
-                </Link>
-              </div>
+              <Button link={`/product/${item.id}`} title="Ir para whisky selecionado" text="Descrição"/>
             </div>
           </div>
         ))}
