@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../Context/AuthContext";
 import { LoginDiv, Form, Body, ActionsDiv, Div, CadastreDiv} from "./styles"
 
 const LoginPage = () => {
 
+    const { login, userToken } = useContext(AuthContext);
+
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    
     const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        console.log("submit", {email, password});
-}
+      event.preventDefault();
+      login(email, password);
+    }
+
+    console.log(userToken);
 
   return (  
   <LoginDiv>
