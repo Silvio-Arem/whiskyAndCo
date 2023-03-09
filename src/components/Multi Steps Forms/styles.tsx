@@ -11,8 +11,8 @@ justify-content:center;
 `
 
 export const DivPage = styled.div`
-min-width: auto;
-min-height: auto;
+width: auto;
+height: auto;
 
 `
 
@@ -28,6 +28,8 @@ h2{
 export const Container = styled.div`
 display: flex;
 flex-direction: column;
+min-width: 300px;
+min-height: 200px;
 
 `
 export const ProgressBar = styled.div `
@@ -39,7 +41,7 @@ border-radius: 3px;
 div{
 width: 33.3%;
 height: 100%;
-background-color: #cebd24;
+background-color: #EE8700;
 border: 1px solid #000;
 
 
@@ -52,15 +54,19 @@ display: flex;
 justify-content: space-evenly;
 
 #disable {
-    background-color: red;
+    background-color: #EE8700;
+    color: black;
+    font-size: 17px
 }
 
 button {
 border-radius: 2px;
-color: #cebd24;
+color: #EE8700;
 background-color: black;
 padding: 2px 8px 2px 8px;
 cursor: pointer;
+width: 80px;
+font-size: 17px;
 
 
 
@@ -80,28 +86,20 @@ export const DivShipping = styled.div`
 margin-top: 5px;
 margin-bottom: 10px;
 
-`
-
-export const DivInputAddress = styled.div`
-display: flex;
-flex-direction: column;
-
-input {
-    width: 100%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    margin-top: 5px;
-
-    
+input{
+    border: 3px solid black;
 }
+
 `
-export const ContainerForm = styled.div`
+
+export const ContainerForm = styled.form`
 width: auto;
 height: auto;
+min-height: 400px;
 min-width: 300px;
-min-height: 300px;
+min-height: 200px;
 justify-content: center;
 display: flex;
+align-items: center;
 
 `
