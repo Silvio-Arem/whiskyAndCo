@@ -4,6 +4,13 @@ import FormPayment from "../Multi Steps Forms/FormPayment"
 import FormShipping from "../Multi Steps Forms/FormShipping"
 import {Container, ProgressBar, Title, DivButton, Body, DivPage} from "../Multi Steps Forms/styles"
 
+export interface address{
+    address:{
+        address: string,
+
+    }
+}
+
 export interface FormProps{
     formData:{
         address: string,
@@ -48,8 +55,14 @@ function MultiSteps () {
             return <FormPayment formData={formData} setFormData={setFormData}/>;
         }
     }
-
-    function Button () {
+    function ButtonBack () {
+        return page === 0 ? (
+    
+            <button id="disableBack" disabled={page == 0 } onClick={() => {setPage((currPage) => currPage - 1);}}>Voltar</button>
+    
+        ):   <button disabled={page == 0 } onClick={() => {setPage((currPage) => currPage - 1);}}>Voltar</button>
+        }
+    function ButtonProx () {
         return page === 2 ? (
     
             <button id="disable" disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Enviar</button>
@@ -79,10 +92,10 @@ return (
         {PageDisplay()}
 
         <DivButton>
-        <button disabled={page == 0 } onClick={() => {setPage((currPage) => currPage - 1);}}>Voltar</button>
 
-        {/* <button disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Proximo</button> */}
-        <Button/> 
+        <ButtonBack/>
+        <ButtonProx/> 
+        
         </DivButton> 
     </DivPage>
 
