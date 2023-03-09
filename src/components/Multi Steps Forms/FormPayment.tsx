@@ -1,15 +1,15 @@
 import React from "react";
+import { FormDataProps } from "../Multi Steps/MultiSteps";
 import {DivForm, ContainerForm} from "./styles"
 
-const FormPayment = () => {
+function FormPayment ({formData, setFormData}: FormDataProps)  {
+
     return (
         <ContainerForm>
         <DivForm>
-             <input type="text" placeholder="babababa" />
-             <input type="text" placeholder="bassssssssssssssss" />
-             <input type="text" placeholder="baaaaa" />   
-
-        </DivForm>
+            <label htmlFor="payment"></label>
+             <input type="payment" placeholder="pagamento" value={formData.payment} onChange= {(event) => setFormData({...formData, payment: event.target.value})}/>
+            </DivForm>
         </ContainerForm>
     )
 }
