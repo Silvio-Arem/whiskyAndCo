@@ -18,11 +18,18 @@ export default function Product() {
 
   const [quantity, setQuantity] = useState(1);
 
+  const totalPrice = selectedProduct?.price ? selectedProduct.price * quantity : 0;
+
+  const [cartItems, setCartItems] = useState<IProduct[]>([]);
+
   function handleQuantityChange(newValue: number) {
     setQuantity(newValue);
   }
 
-  const totalPrice = selectedProduct?.price ? selectedProduct.price * quantity : 0;
+  function handleAddToCart(item: IProduct) {
+    const itemWithPrice = { ...item, totalPrice };
+    setCartItems([...cartItems, itemWithPrice]);
+  }
 
 
 
@@ -41,7 +48,7 @@ export default function Product() {
               <p className="product__description">{shortDescription}</p>
               <Counter quantity={quantity} onQuantityChange={handleQuantityChange} />
               <div className="buttons__choice">
-                <Button link={`/checkout/${selectedProduct.id}`} title="Ir para whisky checkout" text="Comprar Agora" />
+                <Button link="" title="Adicionar ao carrinho" text="Comprar Agora" onClick={() => handleAddToCart(selectedProduct)}/>
                 <Button link={`/products/`} title="Continuar comprando" text="Continuar Comprando" />
               </div>
             </div>
