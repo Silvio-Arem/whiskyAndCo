@@ -25,10 +25,10 @@ export default function CollectionSection () {
     <CollectionsWrapper>
       <CollectionsTitle>Nossos Rótulos</CollectionsTitle>
       <CollectionsList>
-        <Collection link="/products" title="Jack Daniels" image={Jack} alt="Coleção Jack Daniels" />
-        <Collection link="/products" title="Johnnie Walker" image={Johnnie} alt="Coleção Johnnie Walker" />
-        <Collection link="/products" title="Ballantines" image={Ballantines} alt="Coleção Ballantines" />
-        <Collection link="/products" title="Chivas Regal" image={Chivas} alt="Coleção Chivas Regal" />
+        <Collection link="/product" title="Jack Daniels" image={Jack} alt="Coleção Jack Daniels" />
+        <Collection link="/product" title="Johnnie Walker" image={Johnnie} alt="Coleção Johnnie Walker" />
+        <Collection link="/product" title="Ballantines" image={Ballantines} alt="Coleção Ballantines" />
+        <Collection link="/product" title="Chivas Regal" image={Chivas} alt="Coleção Chivas Regal" />
       </CollectionsList>
     </CollectionsWrapper>
   );

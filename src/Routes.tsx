@@ -32,7 +32,7 @@ export default function routes() {
       <Route path='/admin/orders/:id' element={<Order />} />
       <Route path='/profile/orders' element={<Orders />} />
       <Route path='/profile/orders/:id' element={<Order />} />
-      <Route path='/products' element={<Products />} />
+      <Route path='/product' element={<Products />} />
       <Route path='/product/:id' element={<Product />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage/>}/>

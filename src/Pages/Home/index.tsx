@@ -59,7 +59,7 @@ export default function Home() {
             <h1>Você vai adorar a nossa variedade</h1>
             <p>Nossa loja online de whisky oferece marcas exclusivas. Compra fácil e intuitiva com ampla variedade de opções, entregas rápidas e atendimento personalizado. Comprometidos com a melhor qualidade, cada garrafa é cuidadosamente embalada e entregue em sua porta. Descubra nossa seleção excepcional para satisfazer o seu paladar!</p>
           </div>
-          <Button link="/products" title="Ir para whiskys" text="Confira!"/>
+          <Button link="/product" title="Ir para whiskys" text="Confira!"/>
         </div>
       </Presentation>
       <DivBanner>
