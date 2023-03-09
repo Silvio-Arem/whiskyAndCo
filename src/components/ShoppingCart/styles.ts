@@ -3,7 +3,7 @@ import { primaryColor } from "../UI/variables";
 
 export const ShoppingCartContainer = styled.div`
 .carrinho {
-  a {
+  p {
     align-items: center;
     display: flex;
     text-decoration: none;
