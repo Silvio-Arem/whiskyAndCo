@@ -4,6 +4,13 @@ import FormPayment from "../Multi Steps Forms/FormPayment"
 import FormShipping from "../Multi Steps Forms/FormShipping"
 import {Container, ProgressBar, Title, DivButton, Body, DivPage} from "../Multi Steps Forms/styles"
 
+export interface address{
+    address:{
+        address: string,
+
+    }
+}
+
 export interface FormProps{
     formData:{
         address: string,
