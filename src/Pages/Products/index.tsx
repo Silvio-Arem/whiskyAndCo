@@ -1,17 +1,41 @@
-import { IProduct } from "../../interfaces";
-import { products } from "../../data";
+import { IBrand, ICategory, IProduct } from "../../interfaces";
 import { PageDescript, ProductsContainer } from "./styles";
 import { Filter } from "../../components/Filter/styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../components/Button";
+
+import { AxiosResponse } from "axios";
+import { instance } from "../../requestConfig";
+import { Link, useNavigate } from "react-router-dom";
+
+interface ITeste {
+  _id: string,
+  name: string,
+  category: {
+    _id: number,
+    description: string 
+  },
+  brand: {
+    _id: number,
+    description: string 
+  },
+  picture: string,
+  price: string,
+  description: string,
+};
 
 export default function Products() {
 
+  const navigate = useNavigate();
 
-  const product: IProduct[] = products;
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
+  const [ products, setProducts ] = useState<ITeste[]> ([]);
 
+  const getData = async () => {
+    const response = await instance.get("/product");
+    setProducts(response.data);
+  }
 
   const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = event.target;
@@ -35,16 +59,18 @@ export default function Products() {
     }
   };
 
-  const filteredProducts = product.filter((product) => {
-    const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
+  const filteredProducts = products.filter((product) => {
+    const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(product?.category?.description);
     const matchPriceRange = selectedPriceRanges.length === 0 || selectedPriceRanges.some((range) => {
       const [min, max] = range.split('-');
-      return product.price >= Number(min) && product.price <= Number(max);
+      return Number(product.price) >= Number(min) && Number(product.price) <= Number(max);
     });
     return matchCategory && matchPriceRange;
   });
 
-
+  useEffect( () => {
+    getData();
+  }, [])
 
   return (
     <>
@@ -73,14 +99,15 @@ export default function Products() {
         </details>
       </Filter>
       <ProductsContainer className="Products">
-        {filteredProducts.map((item: IProduct) => (
-          <div key={item.id} className="products__cards">
+        {products.map((item, index) => (
+          <div key={index} className="products__cards">
             <img src={item.picture} alt={item.name} />
             <div className="products__cards-body">
               <h5>{item.name}</h5>
-              <p>R$ {item.price}</p>
-              <p>{item.category}</p>
-              <Button link={`/product/${item.id}`} title="Ir para whisky selecionado" text="Descrição"/>
+              <p>R$ {item.price}</p>  
+              <p>{item?.category?.description}</p>
+              <Link to={`/product/${item._id}`} state={item}>Ir para whisky selecionado</Link>
+              <Button state={item} link={`/product/${item._id}`} title="Ir para whisky selecionado" text="Descrição"/>
             </div>
           </div>
         ))}

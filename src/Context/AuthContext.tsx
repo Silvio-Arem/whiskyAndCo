@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useState } from 'react';
-import { requestOptions, baseURL } from '../requestConfig';
+import { instance } from '../requestConfig';
 
 interface IAuthContext {
   loggedUser: {
@@ -28,13 +28,11 @@ export function AuthProvider({ children }: Props) {
     email: "",
     isAdmin: false
   })
-
+  
   const login = async (email: string, password: string) => {
     try {
-      requestOptions.method = "POST";
-      requestOptions.body = JSON.stringify({email, password})
-      const response = await fetch(`${baseURL}/login`, requestOptions);
-      const token = await response.json();
+      const response = await instance.post("/login", {email, password})
+      const token = response.data;
       setUserToken(token);
     } catch (error) {
       console.log("ERRO: ", error);

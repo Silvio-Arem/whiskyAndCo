@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+// import { baseURL, requestOptions } from '../../requestConfig';
 import { AuthContext } from '../../Context/AuthContext';
-import { baseURL, requestOptions } from '../../requestConfig';
 
 export default function BrandAdmin() {
   
-  const { userToken } = useContext(AuthContext) 
+  const { userToken } = useContext(AuthContext);
+  
   const { state } = useLocation();
   const navigate = useNavigate();
 
@@ -17,8 +18,8 @@ export default function BrandAdmin() {
 
   const removeBrand = async (id: number) => {
     try {
-      requestOptions.method = "DELETE";
-      const res = await fetch(baseURL + `/${brand.id}`, requestOptions);
+      // requestOptions.method = "DELETE";
+      // const res = await fetch(baseURL + `/${brand.id}`, requestOptions);
       setUpdatedItem(!updatedItem);
       navigate(-1);  
     } catch (error) {
@@ -28,11 +29,10 @@ export default function BrandAdmin() {
 
   const addBrand = async () => {
     try {
-      requestOptions.method = "POST";
-      requestOptions.headers.Authorization = `Bearer ${userToken}`;
-      requestOptions.body = JSON.stringify({name: brand.name})
-      const res = await fetch(baseURL + "/brand", requestOptions);
-      setUpdatedItem(!updatedItem);
+      // requestOptions.method = "POST";
+      // requestOptions.body = JSON.stringify({name: brand.name});
+      // const res = await fetch(baseURL + "/brand", requestOptions);
+      // setUpdatedItem(!updatedItem);
       alert("Item Adicionado!");
       navigate(-1);  
     } catch (error) {
@@ -42,18 +42,32 @@ export default function BrandAdmin() {
 
   const updateBrand = async (id: number) => {
     try {
-      requestOptions.method = "PUT";
-      const res = await fetch(baseURL + `/${brand.id}`, requestOptions);
-      setUpdatedItem(!updatedItem);
+      // requestOptions.method = "PUT";
+      // requestOptions.body = JSON.stringify({name: brand.name});
+      // const res = await fetch(baseURL + `/${brand.id}`, requestOptions);
+      // setUpdatedItem(!updatedItem);
       navigate(-1);  
     } catch (error) {
       return error;
     }
   }
 
+  const brandRequest = async (op: string) => {
+    // requestOptions.body = JSON.stringify({name: brand.name});
+    switch(op) {
+      case "create":
+
+      case "update":
+
+      case "delete":
+
+    }
+  }
+
   useEffect(() => {
     if(state) {
       setBrand(state);
+       
     }
     else {
       setUpdatedItem(false);
@@ -81,13 +95,13 @@ export default function BrandAdmin() {
             <label htmlFor="brandName">Nome da Marca:</label>
             <input name="name" type="text" value={brand.name} onChange={(e) => setBrand({...brand, name: e.target.value})}/>
             { state === null
-              ? <button onClick={() => addBrand()}>Criar</button>
-              : <button onClick={() => updateBrand(brand.id)}>Salvar</button>
+              ? <button onClick={() => brandRequest("create")}>Criar</button>
+              : <button onClick={() => brandRequest("update")}>Salvar</button>
             }
           </>
         )
       }
-      <button onClick={() => removeBrand(state.id)}>Remover</button>
+      <button onClick={() => brandRequest("delete")}>Remover</button>
     </section>
   )
 }

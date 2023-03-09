@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
 import { LoginDiv, Form, Body, ActionsDiv, Div, CadastreDiv} from "./styles"
 
 const LoginPage = () => {
 
     const { login, userToken } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -12,6 +14,7 @@ const LoginPage = () => {
     const handleSubmit = (event: React.FormEvent) => {
       event.preventDefault();
       login(email, password);
+      navigate("/", {replace: true});
     }
 
     console.log(userToken);
