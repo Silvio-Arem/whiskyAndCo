@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { primaryColor, secondaryColor, tertiaryColor } from "../../components/UI/variables";
 import CollectionSection from "../../components/Collections";
 import Button from "../../components/Button";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Presentation = styled.div`
     display: flex;
@@ -51,6 +53,7 @@ const DivBanner = styled.div`
 
 
 export default function Home() {
+
   return (
     <div className="Home">
       <Presentation className="container ">

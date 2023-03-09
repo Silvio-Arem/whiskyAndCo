@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, FormEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { products } from '../../data';
 import { IProduct } from '../../interfaces';
@@ -30,10 +30,10 @@ export default function ProductAdmin() {
 
   const handleValues = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-      setProduct({...product, [name]: value});
+    setProduct({...product, [name]: value});
   }
 
-  const formHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  const formHandler = async (e: FormEvent) => {
     e.preventDefault();
     const requestOptions = {
       method: '',
@@ -56,6 +56,7 @@ export default function ProductAdmin() {
   const removeProduct = (id: number) => {
     console.log(id);
   }
+
 
   return (
     <section>
@@ -83,13 +84,13 @@ export default function ProductAdmin() {
           <p>ID do Produto:</p>
           <p>{state ? state.id : "ID ainda não gerado"}</p>
           <label htmlFor="name">Nome do Produto:</label>
-          <input type="text" value={product.name} onChange={(e) => handleValues(e)} />
-          <label htmlFor="email">Categoria do Produto:</label>
-          <input type="text" value={product.category} onChange={(e) => handleValues(e)} />
-          <label htmlFor="cpf">Imagens:</label>
-          <input type="text" value={product.picture} onChange={(e) => handleValues(e)} />
-          <label htmlFor="address">Preço do Produto:</label>
-          <input type="text" value={product.price} onChange={(e) => handleValues(e)} />
+          <input name='name' type="text" value={product.name} onChange={(e) => handleValues(e)} />
+          <label htmlFor="category">Categoria do Produto:</label>
+          <input name='category' type="text" value={product.category} onChange={(e) => handleValues(e)} />
+          <label htmlFor="picture">Imagens:</label>
+          <input name='picture' type="text" value={product.picture} onChange={(e) => handleValues(e)} />
+          <label htmlFor="price">Preço do Produto:</label>
+          <input name='price' type="number" value={product.price} onChange={(e) => handleValues(e)} />
           <label htmlFor="description">Descrição do Produto:</label>
           <textarea 
             name="description" 
