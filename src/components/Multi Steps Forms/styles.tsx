@@ -50,6 +50,7 @@ border: 1px solid #000;
 `
 
 export const DivButton = styled.div`
+width:auto;
 display: flex;
 justify-content: space-evenly;
 
@@ -57,6 +58,11 @@ justify-content: space-evenly;
     background-color: #EE8700;
     color: black;
     font-size: 17px
+}
+
+#disableBack {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 button {
