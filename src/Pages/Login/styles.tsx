@@ -55,15 +55,16 @@ margin-top: 1rem;
 display: flex;
 justify-content: space-between;
 
-button{
-text-shadow: none;
-font-size: 13px;
-padding: 2px 8px 2px 8px;
-background-color: black;
-color: #cebd24;
-border-radius: 2px;
-}
 
+button {
+border-radius: 2px;
+color: #EE8700;
+background-color: black;
+padding: 2px 8px 2px 8px;
+cursor: pointer;
+width: 80px;
+font-size: 17px;
+}
 p {
 color: #A9ABBD;
 margin: 0;

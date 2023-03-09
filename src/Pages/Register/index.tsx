@@ -21,27 +21,27 @@ const RegisterPage = () => {
         
             <InputDiv>
             <label htmlFor="name"></label>
-            <input type="name" name="name" placeholder="Nome completo" value={name} onChange= {(event) => setName(event.target.value)}/>
+            <input type="name" name="name" required placeholder="Nome completo" value={name} onChange= {(event) => setName(event.target.value)}/>
             </InputDiv>
 
             <InputDiv>
             <label htmlFor="cpf"></label>
-            <input type="cpf" name="cpf"  placeholder="CPF" value={cpf} onChange= {(event) => setCpf(event.target.value)}/>
+            <input type="cpf" name="cpf"  required placeholder="CPF" value={cpf} onChange= {(event) => setCpf(event.target.value)}/>
             </InputDiv>
 
             <InputDiv>
             <label htmlFor="email"></label>
-            <input type="email" name="email" placeholder="Email" value={email} onChange= {(event) => setEmail(event.target.value)}/>
+            <input type="email" name="email" required placeholder="Email" value={email} onChange= {(event) => setEmail(event.target.value)}/>
             </InputDiv>
 
             <InputDiv>
             <label htmlFor="password"></label>
-            <input type="password" name="password" placeholder="Senha" value={password} onChange= {(event) => setPassword(event.target.value)}/>
+            <input type="password" name="password" required placeholder="Senha" value={password} onChange= {(event) => setPassword(event.target.value)}/>
             </InputDiv>
 
              <InputDiv>
             <label htmlFor="address"></label>
-            <input type="address" name="address" placeholder="Endereço" value={address} onChange= {(event) => setAddress(event.target.value)}/>
+            <input type="address" name="address" required placeholder="Endereço" value={address} onChange= {(event) => setAddress(event.target.value)}/>
             </InputDiv>
 
             <div>

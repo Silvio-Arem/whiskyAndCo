@@ -2,9 +2,25 @@ import React, {useState} from "react"
 import FormAddress from "../Multi Steps Forms/FormAddress"
 import FormPayment from "../Multi Steps Forms/FormPayment"
 import FormShipping from "../Multi Steps Forms/FormShipping"
+import {Container, ProgressBar, Title, DivButton, Body, DivPage} from "../Multi Steps Forms/styles"
 
+export interface FormProps{
+    formData:{
+        address: string,
+        shipping: boolean,
+        payment: string
+    }
+}
 
-import {Container, ProgressBar, Title, ContainerForm, DivButton, Body, DivPage} from "../Multi Steps Forms/styles"
+export interface CompleteFormState{
+         address: string,
+        shipping: boolean,
+        payment: string
+}
+
+export interface FormDataProps extends FormProps{
+    setFormData: React.Dispatch<React.SetStateAction<CompleteFormState>>
+}
 
 
 function MultiSteps () {
@@ -12,24 +28,33 @@ function MultiSteps () {
     const [page, setPage] = useState(0);
     const FormTitles =["Endereço", "Método de Entrega", "Forma de pagamento"];
 
+
+
+    const [formData, setFormData] = useState({
+        address: "",
+        shipping: false,
+        payment: ""
+    })
+
+
     const PageDisplay = () => {
         if (page === 0) {
-            return <FormAddress/>;
+            return <FormAddress formData={formData} setFormData={setFormData}/>;
         }
         else if (page === 1) {
-            return <FormShipping/>;
+            return <FormShipping formData={formData} setFormData={setFormData}/>;
         }
         else {
-            return <FormPayment/>;
+            return <FormPayment formData={formData} setFormData={setFormData}/>;
         }
     }
 
     function Button () {
         return page === 2 ? (
     
-            <button id="disable" disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Proximo</button>
+            <button id="disable" disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Enviar</button>
     
-        ):   <button disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Proximo</button>
+        ):   <button disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Próximo</button>
     } 
 
 
@@ -74,4 +99,4 @@ return (
 
 
 }
-export default MultiSteps;
+export default MultiSteps; 

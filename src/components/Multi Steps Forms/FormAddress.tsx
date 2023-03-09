@@ -1,19 +1,21 @@
-import React from "react";
-import {DivForm, DivInputAddress, ContainerForm } from "./styles"
-const FormAddress = () => {
+import React, { useState } from "react";
+import {DivForm, ContainerForm } from "./styles"
+import {  FormDataProps } from "../Multi Steps/MultiSteps";
+
+
+ function FormAddress ({formData, setFormData}: FormDataProps)  {
+
+
+    
     return (
         <ContainerForm>
-        <DivForm >
-                <DivInputAddress>
-                    <label></label>
-                    <input type="text" placeholder="Cep" />
-                    <label></label>
-                    <input type="text" placeholder="Rua" />
-                    <label></label>
-                    <input type="text" placeholder="Numero" />
-                    <label></label>
-                    <input type="text" placeholder="Estado" />
-                </DivInputAddress>
+        <DivForm>
+                
+                    <label htmlFor="address"></label>
+                    <input type="address" placeholder="Endereço" required value={formData.address} onChange= {(event) => setFormData({...formData, address: event.target.value})}/>
+                    
+
+                
         </DivForm>
         </ContainerForm>
     )

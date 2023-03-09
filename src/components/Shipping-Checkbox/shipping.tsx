@@ -10,11 +10,13 @@ interface Inputprops extends InputHTMLAttributes<HTMLInputElement>{
 export const ShippingBox = ({title, time, ...rest}:Inputprops)=>{
     return (
         <Div>
-            <input type="checkbox"  />
+            <input type="radio" name="shippingcheckbox" />
             <div>
                 {title && <p id="title">{title}</p>}
                 {time && <p id="time">{time}</p>}
+                
             </div>
+            
 
         </Div>
     )

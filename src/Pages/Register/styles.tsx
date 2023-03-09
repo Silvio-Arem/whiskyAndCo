@@ -8,14 +8,16 @@ flex-direction: column;
 min-height:70vh;
 padding:1rem; 
 
-button{
-text-shadow: none;
-font-size: 13px;
-padding: 2px 8px 2px 8px;
-background-color: black;
-color: #cebd24;
+
+button {
 border-radius: 2px;
-margin-top: 10px;
+color: #EE8700;
+background-color: black;
+padding: 2px 8px 2px 8px;
+cursor: pointer;
+width: 80px;
+font-size: 17px;
+margin-top: 15px;
 }
 h1 {
 color: #111111;
