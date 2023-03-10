@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+// import { baseURL, requestOptions } from '../../requestConfig';
+import { AuthContext } from '../../Context/AuthContext';
 
-export default function Brand() {
+export default function BrandAdmin() {
+  
+  const { userToken } = useContext(AuthContext);
   
   const { state } = useLocation();
   const navigate = useNavigate();
 
   const [ updatedItem, setUpdatedItem ] = useState(true);
-  const [ brandName, setBrandName ] = useState("");
-  
-  const requestOptions = {
-    method: '',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: brandName })
-  };
+  const [ brand, setBrand ] = useState({
+    id: 0,
+    name: ""
+  });
 
   const removeBrand = async (id: number) => {
     try {
-      requestOptions.method = "DELETE";
-      const res = await fetch(`http://localhost:4000/brand/${id}`, requestOptions);
+      // requestOptions.method = "DELETE";
+      // const res = await fetch(baseURL + `/${brand.id}`, requestOptions);
       setUpdatedItem(!updatedItem);
       navigate(-1);  
     } catch (error) {
@@ -28,9 +29,11 @@ export default function Brand() {
 
   const addBrand = async () => {
     try {
-      requestOptions.method = "POST";
-      const res = await fetch(`http://localhost:4000/brand/`, requestOptions);
-      setUpdatedItem(!updatedItem);
+      // requestOptions.method = "POST";
+      // requestOptions.body = JSON.stringify({name: brand.name});
+      // const res = await fetch(baseURL + "/brand", requestOptions);
+      // setUpdatedItem(!updatedItem);
+      alert("Item Adicionado!");
       navigate(-1);  
     } catch (error) {
       return error;
@@ -39,18 +42,32 @@ export default function Brand() {
 
   const updateBrand = async (id: number) => {
     try {
-      requestOptions.method = "PUT";
-      const res = await fetch(`http://localhost:4000/brand/`, requestOptions);
-      setUpdatedItem(!updatedItem);
+      // requestOptions.method = "PUT";
+      // requestOptions.body = JSON.stringify({name: brand.name});
+      // const res = await fetch(baseURL + `/${brand.id}`, requestOptions);
+      // setUpdatedItem(!updatedItem);
       navigate(-1);  
     } catch (error) {
       return error;
     }
   }
 
+  const brandRequest = async (op: string) => {
+    // requestOptions.body = JSON.stringify({name: brand.name});
+    switch(op) {
+      case "create":
+
+      case "update":
+
+      case "delete":
+
+    }
+  }
+
   useEffect(() => {
     if(state) {
-      setBrandName(state.name);
+      setBrand(state);
+       
     }
     else {
       setUpdatedItem(false);
@@ -65,26 +82,26 @@ export default function Brand() {
         ? (
           <>  
             <p>ID da Marca:</p>
-            <p>{state.id}</p>
+            <p>{brand.id}</p>
             <p>Nome da Marca:</p>
-            <p>{brandName}</p>
+            <p>{brand.name}</p>
             <button onClick={() => setUpdatedItem(!updatedItem)}>Atualizar</button>
           </>
         )
         : (
           <>
             <p>ID da Marca:</p>
-            <p>{state ? state.id : "ID ainda não gerado"}</p>
-            <label htmlFor="brandName">Nome da Categoria:</label>
-            <input type="text" value={brandName} onChange={(e) => setBrandName(e.target.value)}/>
+            <p>{brand.id === 0 ? "ID ainda não gerado" : brand.id}</p>
+            <label htmlFor="brandName">Nome da Marca:</label>
+            <input name="name" type="text" value={brand.name} onChange={(e) => setBrand({...brand, name: e.target.value})}/>
             { state === null
-              ? <button onClick={() => addBrand()}>Criar</button>
-              : <button onClick={() => updateBrand(state.id)}>Salvar</button>
+              ? <button onClick={() => brandRequest("create")}>Criar</button>
+              : <button onClick={() => brandRequest("update")}>Salvar</button>
             }
           </>
         )
       }
-      <button onClick={() => removeBrand(state.id)}>Remover</button>
+      <button onClick={() => brandRequest("delete")}>Remover</button>
     </section>
   )
 }

@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { products } from "../../data";
+import { useLocation, useParams } from "react-router-dom";
 import { IProduct } from "../../interfaces";
 import { ProductSection } from "./styles";
 import Counter from "../../components/Counter";
 import Button from "../../components/Button";
+import {products} from "../../data";
 
 export default function Product() {
 
+  const { state } = useLocation();
+  console.log(state);
+  
   const product: IProduct[] = products;
 
   const { id } = useParams<{ id: string }>();

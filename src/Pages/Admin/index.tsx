@@ -1,8 +1,11 @@
-import { useState, useEffect } from "react";
+import { AxiosResponse } from "axios";
+import { useState, useEffect, useContext } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import {users, products, orders, categories } from "../../data";
+import { AuthContext } from "../../Context/AuthContext";
+// import {users, products, orders, categories } from "../../data";
 import { Data } from "../../interfaces";
+import { instance } from "../../requestConfig";
 
 import { StyledSection } from "./styles";
 
@@ -19,25 +22,37 @@ export default function Admin() {
   // useEffect(() => {
   //   window.history.replaceState(null, "", `${location.pathname}/${searchType}`);
   // }, [searchType]);
+  const { userToken } = useContext(AuthContext);
 
-  const selectData = (dataType: string) => {
+  const selectData = async (dataType: string) => {
 
     setSearchType(dataType);
     setSearchInput("");
     setFilteredList([]);
+    let response: AxiosResponse<any, any>;
 
     switch(dataType) {
       case "products":
-        return setData(products);
+        // return setData(products);
 
       case "categories":
-        return setData(categories);
+        response = await instance.get("/category");
+        return setData(response.data); 
 
       case "users":
-        return setData(users);
+        response = await instance.get("/user", {
+          headers:{
+            Authorization: `Bearer ${userToken}`
+          }
+        });
+        return setData(response.data);
 
       case "orders":
-        return setData(orders);
+        // return setData(orders);
+
+      case "brands":
+        response = await instance.get("/brand");
+        return setData(response.data);
       
       default:
         break;
@@ -79,16 +94,16 @@ export default function Admin() {
           {
             filteredList.length > 0
             ? (
-              filteredList.map((item) =>
-                <li key={item.id}>
+              filteredList.map((item, index) =>
+                <li key={index}>
                   <Link to={`${searchType}/${item.id}`}>
                     {searchType === "orders" ? item.id : item.name}
                   </Link>
                 </li>
             ))
             : (
-              data.map((item) => 
-                <li key={item.id}>
+              data.map((item, index) => 
+                <li key={index}>
                   <Link to={`${searchType}/${item.id}`} state={{id: item.id, dataType: searchType}}>
                     {searchType === "orders" ? item.id : item.name}
                   </Link>

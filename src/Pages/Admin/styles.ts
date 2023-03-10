@@ -8,22 +8,28 @@ export const StyledSection = styled.section`
   text-align: center;
   padding: 2rem;
   
+  button, select, input {
+    outline: transparent;
+    border: .125rem solid ${primaryColor};
+    &:hover, &:focus {
+      border: .25rem solid ${primaryColor};
+      box-shadow: rgba(0, 0, 0, 0.16) 0px .25rem 1rem, rgba(0, 0, 0, 0.23) 0px .25rem 1rem;
+    }
+  }
+
   button, select {
     text-transform: uppercase;
-    border: 2px solid ${primaryColor};
     margin: .15rem;
     padding: .25rem;
     background-color: ${secondaryColor};
     color: ${tertiaryColor};
     &:hover, &:focus {
       color: ${primaryColor};
-      box-shadow: rgba(0, 0, 0, 0.16) 0px .25rem 1rem, rgba(0, 0, 0, 0.23) 0px .25rem 1rem;
     }
   }
 
   select, input {
-    outline: transparent;
-    height: 2.25rem;
+    height: 2.5rem;
   }
   
   div {
@@ -48,6 +54,7 @@ export const StyledSection = styled.section`
   }
 
   input {
+    text-transform: none;
     width: 66%;
     padding: .5rem;
     border: 2px solid ${secondaryColor};

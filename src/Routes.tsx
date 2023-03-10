@@ -12,11 +12,13 @@ import UserAdmin from "./Pages/UserAdmin";
 import CategoryAdmin from "./Pages/CategoryAdmin";
 import Product from "./Pages/Product";
 import RegisterPage from "./Pages/Register";
+import { AuthProvider } from "./Context/AuthContext";
+import BrandAdmin from "./Pages/BrandAdmin";
 
 export default function routes() {
   return (
     <WrapperRoutes>
-      <Route path='/' element={<Home />} />
+      <Route path='/' element={ <Home />} />
       <Route path='/profile' element={<Profile />} />
       <Route path='/profile/orders' element={<Orders />}/>
       <Route path='/admin' element={<Admin />} />
@@ -26,6 +28,8 @@ export default function routes() {
       <Route path='/admin/users/:id/orders/:id' element={<Order />} />
       <Route path='/admin/products/new' element={<ProductAdmin />} />
       <Route path='/admin/products/:id' element={<ProductAdmin />} />
+      <Route path='/admin/brands/new' element={<BrandAdmin />} />
+      <Route path='/admin/brands/:id' element={<BrandAdmin />} />
       <Route path='/admin/categories/new' element={<CategoryAdmin />} />
       <Route path='/admin/categories/:id' element={<CategoryAdmin />} />
       <Route path='/admin/orders/new' element={<Order />} />

@@ -23,7 +23,6 @@ export const MenuItem = styled(Link)`
     text-decoration: none;
     text-transform: uppercase;
     transition: color 0.2s;
-
     &:hover {
       color: ${tertiaryColor};
       }

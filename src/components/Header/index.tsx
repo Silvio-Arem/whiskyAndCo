@@ -4,12 +4,14 @@ import ShoppingCart from "../ShoppingCart";
 import LogoHeader from "../../assets/icons/logo-header.png"
 import LoginIcon from "../LoginIcon";
 import { DivCartLogin, DivLogoMenu, HeaderContainer } from "./styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Menu, MenuButton, MenuItem } from "../Nav/styles";
+import { AuthContext } from "../../Context/AuthContext";
 
 
 export default function Header() {
 
+  const {userToken} = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -39,7 +41,7 @@ export default function Header() {
         <MenuItem to="/products" title="Ir para whiskys" onClick={handleMenuClick}>Whiskys</MenuItem>
         <MenuItem to="/profile" title="Ir para  perfil" onClick={handleMenuClick}>Perfil</MenuItem>
         <MenuItem to="#" title="Ir para informações sobre a loja" onClick={handleMenuClick}>Sobre</MenuItem>
-        <MenuItem to="/admin" title="Ir para painel administrativo" onClick={handleMenuClick}>Painel do Administrador</MenuItem>
+        <MenuItem to="/admin" title="Ir para painel administrativo" onClick={handleMenuClick} >Painel do Administrador</MenuItem>
         <MenuItem to="#" title="Fechar menu" onClick={handleMenuClick}>Fechar Menu</MenuItem>
       </Menu>
       <LoginIcon />
