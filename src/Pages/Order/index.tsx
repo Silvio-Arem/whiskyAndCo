@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import { products, orders } from "../../data";
 import { IOrder, IProduct } from "../../interfaces";
 
 export default function Order () {
@@ -14,7 +13,7 @@ export default function Order () {
 
   return (
     <section>
-      <h3>Id do Pedido: {currentOrder.id}</h3>
+      <h3>Id do Pedido: {currentOrder._id}</h3>
       <p>Data do Pedido: {currentOrder.orderDate}</p>
       <article>
         {

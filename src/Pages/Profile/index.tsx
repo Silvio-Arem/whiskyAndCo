@@ -1,22 +1,19 @@
 import { EventType } from "@testing-library/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { users } from "../../data";
 import { IUser } from "../../interfaces";
 
 export default function Profile() {
   
-  const userData: IUser = users[0];
-  
   const [ updatedProfile, setUpdatedProfile ] = useState(true);
   const [ userProfile, setUserProfile ] = useState({
-    id: userData.id, 
-    name: userData.name,
-    email: userData.email,
-    cpf: userData.cpf,
-    address: userData.address,
-    isAdmin: userData.isAdmin,
-    userOrders: userData.userOrders
+    _id: "", 
+    name: "",
+    email: "",
+    cpf: "",
+    address: "",
+    isAdmin: false,
+    userOrders: []
   })
   
   const navigate = useNavigate();
@@ -37,7 +34,7 @@ export default function Profile() {
       <p>Tipo do Usuário</p>
       <p>{userProfile.isAdmin ? "Administrador": "Cliente"}</p>
       <button>Alterar Senha</button>
-      <button onClick={() => navigate("orders", {state : {userOrders: userData.userOrders}})}>Ir para Pedidos</button>
+      <button onClick={() => navigate("orders", {state : {userOrders: userProfile.userOrders}})}>Ir para Pedidos</button>
     {
     updatedProfile
     ? (

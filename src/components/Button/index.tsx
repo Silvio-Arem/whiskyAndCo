@@ -1,25 +1,12 @@
 import { Link } from "react-router-dom";
+import { IProduct } from "../../interfaces";
 import { PrimaryButton } from "./styles";
 
 interface ButtonProps {
     title: string;
     text: string;
     link: string;
-    state?: {
-    _id: string,
-    name: string,
-    category: {
-        _id: number,
-        description: string 
-    },
-    brand: {
-        _id: number,
-        description: string 
-    },
-    picture: string,
-    price: string,
-    description: string
-    },
+    state?: IProduct,
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 

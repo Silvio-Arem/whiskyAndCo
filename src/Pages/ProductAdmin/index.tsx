@@ -1,19 +1,23 @@
-import React, { useEffect, useState, FormEvent } from 'react';
+import React, { useEffect, useState, FormEvent, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { products } from '../../data';
+import { instance } from '../../requestConfig';
+import { AxiosResponse } from "axios";
 import { IProduct } from '../../interfaces';
+import { AuthContext } from '../../Context/AuthContext';
 
 export default function ProductAdmin() {
   
+  const { userToken } = useContext(AuthContext);
+
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const [ updatedItem, setUpdatedItem ] = useState <boolean> (true);
+  const [ updatedItem, setUpdatedItem ] = useState(true);
   const [ product, setProduct ] = useState <IProduct> ({
-    id: 0,
+    _id: "",
     name: "",
-    category: "",
-    brand: "",
+    category: {_id: "", name: ""},
+    brand: {_id: "", name: ""},
     picture: "",
     price: 0,
     description: "",
@@ -21,7 +25,7 @@ export default function ProductAdmin() {
 
   useEffect(() => {
     if(state) {
-      setProduct(products[state.id-1]);
+      setProduct(state);
     }
     else {
       setUpdatedItem(false);
@@ -35,26 +39,34 @@ export default function ProductAdmin() {
 
   const formHandler = async (e: FormEvent) => {
     e.preventDefault();
-    const requestOptions = {
-      method: '',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(product)
-    };
-    if(state === null) {
-      requestOptions.method = 'POST';
-      const res = await fetch("http://localhost:4000/product", requestOptions);
+    let response: AxiosResponse<any, any>;
+
+    if(product._id === "") {
+      delete product._id;
+      response = await instance.post("/product", {
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        },
+        data: { product }
+      });
+      alert("Produto criado com sucesso!");
     }
     else {
-      requestOptions.method = 'PUT';
-      const res = await fetch(`http://localhost:4000/product/${product.id}`, requestOptions);
-
+      response = await instance
+        .put(`/product/${product._id}`, {
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          },
+          data: { product }
+        });
+      alert("Produto atualizado com sucesso!");
     }
     setUpdatedItem(true);
     navigate(-1);
   }
 
-  const removeProduct = (id: number) => {
-    console.log(id);
+  const removeProduct = () => {
+
   }
 
 
@@ -65,11 +77,13 @@ export default function ProductAdmin() {
         ? (
           <>
             <p>ID do Produto:</p>
-            <p>{product.id}</p>
+            <p>{product._id}</p>
             <p>Nome do Produto:</p>
             <p>{product.name}</p>
             <p>Categoria do Produto:</p>
-            <p>{product.category}</p>
+            <p>{product?.category.name}</p>
+            <p>Marca do Produto:</p>
+            <p>{product?.brand.name}</p>
             <p>Imagens:</p>
             <p>{product.picture}</p>
             <p>Preço do Produto:</p>
@@ -82,11 +96,13 @@ export default function ProductAdmin() {
         : (
         <form onSubmit={(e) => formHandler(e)}>
           <p>ID do Produto:</p>
-          <p>{state ? state.id : "ID ainda não gerado"}</p>
+          <p>{product._id === "" ? "ID ainda não gerado" : product._id}</p>
           <label htmlFor="name">Nome do Produto:</label>
           <input name='name' type="text" value={product.name} onChange={(e) => handleValues(e)} />
           <label htmlFor="category">Categoria do Produto:</label>
-          <input name='category' type="text" value={product.category} onChange={(e) => handleValues(e)} />
+          <input name='category' type="text" value={product.category.name} onChange={(e) => handleValues(e)} />
+          <label htmlFor="category">Marca do Produto:</label>
+          <input name='category' type="text" value={product.brand.name} onChange={(e) => handleValues(e)} />
           <label htmlFor="picture">Imagens:</label>
           <input name='picture' type="text" value={product.picture} onChange={(e) => handleValues(e)} />
           <label htmlFor="price">Preço do Produto:</label>
@@ -98,10 +114,10 @@ export default function ProductAdmin() {
             value={product.description} 
             onChange={(e) => handleValues(e)}>
           </textarea>
-          <input type="submit" value={state === null ? "Criar" : "Salvar"} />
+          <input type="submit" value={product._id === "" ? "Criar" : "Salvar"} />
         </form> 
       )}  
-      <button onClick={() => removeProduct(product.id)}>Remover</button>
+      <button onClick={() => removeProduct()}>Remover</button>
     </section>
   )
 }

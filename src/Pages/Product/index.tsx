@@ -1,27 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { IProduct } from "../../interfaces";
 import { ProductSection } from "./styles";
 import Counter from "../../components/Counter";
 import Button from "../../components/Button";
-import {products} from "../../data";
 
 export default function Product() {
 
   const { state } = useLocation();
-  console.log(state);
-  
-  const product: IProduct[] = products;
+  const [ product, setProduct ] = useState <IProduct> ({
+    _id: "",
+    name: "",
+    category: {_id: "", name: ""},
+    brand: {_id: "", name: ""},
+    picture: "",
+    price: 0,
+    description: "",
+  });
 
-  const { id } = useParams<{ id: string }>();
+  useEffect(() => {
+    if(state) {
+      setProduct(state);
+    }
+    else {
 
-  const selectedProduct = id ? product.filter((item: IProduct) => item.id === Number(id))[0] : undefined;
+    }
+  }, [])
 
-  const shortDescription = selectedProduct?.description.slice(0, 150) + '...';
 
   const [quantity, setQuantity] = useState(1);
-
-  const totalPrice = selectedProduct?.price ? selectedProduct.price * quantity : 0;
 
   const [cartItems, setCartItems] = useState<IProduct[]>([]);
 
@@ -30,28 +37,27 @@ export default function Product() {
   }
 
   function handleAddToCart(item: IProduct) {
+    const totalPrice = quantity * product.price
     const itemWithPrice = { ...item, totalPrice };
     setCartItems([...cartItems, itemWithPrice]);
   }
 
-
-
   return (
     <>
-      {selectedProduct ? (
+      {product._id !== "" ? (
         <ProductSection className="Products">
-          <div key={selectedProduct.id} className="products__cards">
+          <div key={product._id} className="products__cards">
             <div>
-              <img src={selectedProduct.picture} alt={selectedProduct.name} />
+              <img src={product.picture} alt={product.name} />
             </div>
             <div className="products__cards-body">
-              <h5>{selectedProduct.name}</h5>
-              <p>R$ {totalPrice}</p>
-              <p><b>{selectedProduct.category}</b></p>
-              <p className="product__description">{shortDescription}</p>
+              <h5>{product.name}</h5>
+              <p>R$ {quantity * product.price}</p>
+              <p><b>{product?.category.name}</b></p>
+              <p className="product__description">{product.description}</p>
               <Counter quantity={quantity} onQuantityChange={handleQuantityChange} />
               <div className="buttons__choice">
-                <Button link="" title="Adicionar ao carrinho" text="Comprar Agora" onClick={() => handleAddToCart(selectedProduct)}/>
+                <Button link="" title="Adicionar ao carrinho" text="Comprar Agora" onClick={() => handleAddToCart(product)}/>
                 <Button link={`/products/`} title="Continuar comprando" text="Continuar Comprando" />
               </div>
             </div>

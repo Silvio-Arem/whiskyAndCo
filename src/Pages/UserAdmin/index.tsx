@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { users } from '../../data';
 import { IUser } from '../../interfaces';
 
 export default function UserAdmin() {
@@ -10,7 +9,7 @@ export default function UserAdmin() {
 
   const [ updatedItem, setUpdatedItem ] = useState <boolean> (true);
   const [ user, setUser ] = useState <IUser> ({
-    id: 0,
+    _id: "",
     name: "",
     email: "",
     cpf: "",
@@ -22,7 +21,7 @@ export default function UserAdmin() {
 
   useEffect(() => {
     if(state) {
-      setUser(users[state.id--]);
+      // setUser(users[state.id--]);
     }
     else {
       setUpdatedItem(false);
@@ -41,8 +40,7 @@ export default function UserAdmin() {
     setUpdatedItem(true);
   }
 
-  const removeUser = (id: number) => {
-    console.log(id);
+  const removeUser = () => {
   }
 
   return (
@@ -53,7 +51,7 @@ export default function UserAdmin() {
       ? (
         <div>
           <p>ID do Usuário:</p>
-          <p>{user.id}</p>
+          <p>{user._id}</p>
           <button onClick={() => navigate("orders", {state : {userOrders: user.userOrders}})}>Ir para Pedidos</button>
           <p>Nome do Usuário:</p>
           <p>{user.name}</p>
@@ -83,7 +81,7 @@ export default function UserAdmin() {
           <input type="submit" value="Salvar" />
         </form>
       )}
-      <button onClick={() => removeUser(user.id)}>Remover</button>
+      <button onClick={() => removeUser()}>Remover</button>
     </section>
   )
 }

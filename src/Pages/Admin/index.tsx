@@ -1,11 +1,10 @@
-import { AxiosResponse } from "axios";
 import { useState, useEffect, useContext } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Context/AuthContext";
-// import {users, products, orders, categories } from "../../data";
-import { Data } from "../../interfaces";
+import { AxiosResponse } from "axios";
 import { instance } from "../../requestConfig";
+import { Data } from "../../interfaces";
+import { AuthContext } from "../../Context/AuthContext";
 
 import { StyledSection } from "./styles";
 
@@ -33,7 +32,8 @@ export default function Admin() {
 
     switch(dataType) {
       case "products":
-        // return setData(products);
+        response = await instance.get("/product");
+        return setData(response.data);
 
       case "categories":
         response = await instance.get("/category");
@@ -48,7 +48,12 @@ export default function Admin() {
         return setData(response.data);
 
       case "orders":
-        // return setData(orders);
+        response = await instance.get("/order", {
+          headers:{
+            Authorization: `Bearer ${userToken}`
+          }
+        });
+        return setData(response.data);
 
       case "brands":
         response = await instance.get("/brand");
@@ -61,10 +66,11 @@ export default function Admin() {
 
   const updateList = (search: string) => {
     setSearchInput(search);
+    if(search !== "") {}
     const filtered = search !== ""
       ? data.filter(item => 
           searchType === "orders" 
-          ? item.id.toString() === search
+          ? item._id?.includes(search.toLowerCase())
           : item.name.toLowerCase().includes(search.toLowerCase()))
       : []
     setFilteredList(filtered);
@@ -96,16 +102,16 @@ export default function Admin() {
             ? (
               filteredList.map((item, index) =>
                 <li key={index}>
-                  <Link to={`${searchType}/${item.id}`}>
-                    {searchType === "orders" ? item.id : item.name}
+                  <Link to={`${searchType}/${item._id}`}>
+                    {searchType === "orders" ? item._id : item.name}
                   </Link>
                 </li>
             ))
             : (
               data.map((item, index) => 
                 <li key={index}>
-                  <Link to={`${searchType}/${item.id}`} state={{id: item.id, dataType: searchType}}>
-                    {searchType === "orders" ? item.id : item.name}
+                  <Link to={`${searchType}/${item._id}`} state={{id: item._id, dataType: searchType}}>
+                    {searchType === "orders" ? item._id : item.name}
                   </Link>
                 </li>
             ))
