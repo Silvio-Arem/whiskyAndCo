@@ -11,7 +11,6 @@ import { AuthContext } from "../../Context/AuthContext";
 
 export default function Header() {
 
-  const {userToken} = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {

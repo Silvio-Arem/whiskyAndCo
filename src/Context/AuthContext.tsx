@@ -3,7 +3,7 @@ import { instance } from '../requestConfig';
 
 interface IAuthContext {
   loggedUser: {
-    id: number,
+    _id: number,
     name: string,
     email: string,
     isAdmin: boolean
@@ -23,7 +23,7 @@ export function AuthProvider({ children }: Props) {
 
   const [ userToken, setUserToken ] = useState("");
   const [ loggedUser, setLoggedUser ] = useState({
-    id: 0,
+    _id: 0,
     name: "",
     email: "",
     isAdmin: false

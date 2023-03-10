@@ -7,22 +7,7 @@ import Button from "../../components/Button";
 import { AxiosResponse } from "axios";
 import { instance } from "../../requestConfig";
 import { Link, useNavigate } from "react-router-dom";
-
-interface ITeste {
-  _id: string,
-  name: string,
-  category: {
-    _id: number,
-    description: string 
-  },
-  brand: {
-    _id: number,
-    description: string 
-  },
-  picture: string,
-  price: string,
-  description: string,
-};
+ 
 
 export default function Products() {
 
@@ -30,7 +15,7 @@ export default function Products() {
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
-  const [ products, setProducts ] = useState<ITeste[]> ([]);
+  const [ products, setProducts ] = useState<IProduct[]> ([]);
 
   const getData = async () => {
     const response = await instance.get("/product");
@@ -60,7 +45,7 @@ export default function Products() {
   };
 
   const filteredProducts = products.filter((product) => {
-    const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(product?.category?.description);
+    const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(product?.category?.name);
     const matchPriceRange = selectedPriceRanges.length === 0 || selectedPriceRanges.some((range) => {
       const [min, max] = range.split('-');
       return Number(product.price) >= Number(min) && Number(product.price) <= Number(max);
@@ -105,7 +90,7 @@ export default function Products() {
             <div className="products__cards-body">
               <h5>{item.name}</h5>
               <p>R$ {item.price}</p>  
-              <p>{item?.category?.description}</p>
+              <p>{item?.category?.name}</p>
               <Link to={`/product/${item._id}`} state={item}>Ir para whisky selecionado</Link>
               <Button state={item} link={`/product/${item._id}`} title="Ir para whisky selecionado" text="Descrição"/>
             </div>

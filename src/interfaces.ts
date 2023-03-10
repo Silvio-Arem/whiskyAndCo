@@ -1,5 +1,5 @@
 export interface IUser {
-  id: number;
+  _id?: string;
   name: string;
   email: string;
   password: string;
@@ -10,20 +10,20 @@ export interface IUser {
 }
 
 export interface IProduct {
-  id: number,
+  _id?: string,
   name: string,
-  category: string,
-  brand: string,
+  category: ICategory,
+  brand: IBrand,
   picture: string,
   price: number,
   description: string
 }
 
 export interface IOrder {
-  id: number;
+  _id?: string;
   name: string;
   productsList: {
-    productID: number;
+    productid: number;
     quantity: number
   }[];
   amount: number;
@@ -31,12 +31,12 @@ export interface IOrder {
 }
 
 export interface ICategory {
-  id: number;
+  _id?: string;
   name: string
 }
 
 export interface IBrand {
-  id: number;
+  _id?: string;
   name: string
 }
 
