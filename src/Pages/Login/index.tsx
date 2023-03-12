@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-import { LoginDiv, Form, Body, ActionsDiv, Div, CadastreDiv} from "./styles"
+import { LoginDiv, Form, Body, ActionsDiv, Div, CadastreDiv, LinkReact} from "./styles"
+
 
 const LoginPage = () => {
 
@@ -39,8 +40,8 @@ const LoginPage = () => {
 
   </Form>
   <CadastreDiv>
-  <p> Ou crie uma <a href="http://localhost:3000/register"><b>conta</b></a>.</p>
-  </CadastreDiv>
+  <p> Ou crie uma <LinkReact to="/register"><p>conta</p></LinkReact>.</p>
+  </CadastreDiv> 
 
   </LoginDiv>
   )
