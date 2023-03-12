@@ -22,6 +22,7 @@ justify-content: center;
 h2{
     font-size: 25px;
     margin-bottom: 8px;
+    margin-top: 20px;
 }
 `
 
@@ -43,8 +44,6 @@ width: 33.3%;
 height: 100%;
 background-color: #EE8700;
 border: 1px solid #000;
-
-
 
 }
 `
