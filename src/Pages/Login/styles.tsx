@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Body = styled.div`
 background-color: #E5E5E5;
@@ -78,17 +79,19 @@ color: #A9ABBD;
 `
 
 export const CadastreDiv = styled.div`
+
+
 p{
+    display: flex;
+    gap: 5px;
+
 color: #A9ABBD;
 }
 
-a{
-text-decoration: none;
-color: #A9ABBD;
-}
+
 `
+export const LinkReact = styled(Link)`
 
- 
-
-
-
+text-decoration: none;
+color: #646468;
+`
