@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CompleteFormState, FormDataProps } from "../Multi Steps/MultiSteps";
-import {DivForm, ContainerForm} from "./styles"
+import {DivForm, ContainerForm, DivButton} from "./styles"
 
 interface iPayment {
     payment: string
 }
-function FormPayment ({formData, setFormData, SetarPage, page, FormTitles}: FormDataProps)  {
+function FormPayment ({formData, setFormData, SetarPage, page, FormTitles, BackPage}: FormDataProps)  {
 
     const {handleSubmit, register} = useForm<CompleteFormState>();
     
@@ -26,8 +26,14 @@ function FormPayment ({formData, setFormData, SetarPage, page, FormTitles}: Form
         <DivForm>
             <label htmlFor="payment"></label>
              <input type="payment" placeholder="pagamento" {...register("payment")}  onSubmit={handleSubmit(onSubmitFunction)} value={formData.payment} onChange= {(event) => setFormData({...formData, payment: event.target.value})}/>
-             <button id="disable" type="submit"> Enviar</button>
+             
+        
+             
             </DivForm>
+            <DivButton>
+            <button onClick={() => BackPage()}>Voltar</button>
+            <button type="submit"> Enviar</button>
+            </DivButton>
         </ContainerForm>
     )
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import { FormDataProps } from "../Multi Steps/MultiSteps";
 import { ShippingBox } from "../Shipping-Checkbox/shipping";
-import {DivForm, ContainerForm, DivShipping} from "./styles"
+import {DivForm, ContainerForm, DivShipping, DivButton} from "./styles"
 
-function FormShipping ({formData, setFormData, FormTitles, SetarPage,  page}: FormDataProps)  {
+function FormShipping ({formData, setFormData, FormTitles, SetarPage,  page, BackPage}: FormDataProps)  {
     return (
         <ContainerForm>
             <DivForm>
@@ -15,9 +15,13 @@ function FormShipping ({formData, setFormData, FormTitles, SetarPage,  page}: Fo
         <DivShipping>
         <ShippingBox title="Expresso - R$8,00" time="2 a 3 dias uteis" onChange= {(event) => setFormData({...formData, payment: event.target.value})}  checked={formData.shipping}/>
         </DivShipping>
-        <button type="submit" onClick={() => SetarPage()}> Próximo</button>
+  
+        
         </DivForm>
-
+        <DivButton>
+        <button onClick={() => BackPage()}>Voltar</button>
+        <button type="submit" onClick={() => SetarPage()}> Próximo</button>
+        </DivButton>
         </ContainerForm>
     )
 }
