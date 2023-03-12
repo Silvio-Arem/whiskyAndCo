@@ -49,44 +49,16 @@ border: 1px solid #000;
 }
 `
 
-export const DivButton = styled.div`
-width:auto;
-display: flex;
-justify-content: space-evenly;
-
-#disable {
-    background-color: #EE8700;
-    color: black;
-    font-size: 17px
-}
-
-#disableBack {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-button {
-border-radius: 2px;
-color: #EE8700;
-background-color: black;
-padding: 2px 8px 2px 8px;
-cursor: pointer;
-width: 80px;
-font-size: 17px;
 
 
 
-}
 
-`
+
+
+
 
 // Formularios
-export const DivForm = styled.div `
-display: flex;
-justify-content: center;
-flex-direction: column;
-margin: 8px;
-`
+
 
 export const DivShipping = styled.div`
 margin-top: 5px;
@@ -101,11 +73,39 @@ input{
 export const ContainerForm = styled.form`
 width: auto;
 height: auto;
-min-height: 400px;
-min-width: 300px;
-min-height: 200px;
 justify-content: center;
 display: flex;
 align-items: center;
+flex-direction: column;
 
+`
+export const DivForm = styled.div `
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+height: 150px;
+margin: 8px;
+
+`
+export const DivButton = styled.div`
+
+
+
+
+button {
+border-radius: 2px;
+color: #EE8700;
+background-color: black;
+padding: 2px 8px 2px 8px;
+cursor: pointer;
+width: 80px;
+font-size: 17px;
+margin: 0 7px 0 7px;
+
+}
+#disable{
+
+    opacity: 0.5;
+}
 `

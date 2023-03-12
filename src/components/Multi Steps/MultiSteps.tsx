@@ -26,7 +26,9 @@ export interface CompleteFormState{
 export interface FormDataProps extends FormProps{
     FormTitles: string[]
     page: number
+    setPage: any
     SetarPage: () => void
+    BackPage: () => void
     setFormData: React.Dispatch<React.SetStateAction<CompleteFormState>>
 }
 
@@ -47,16 +49,19 @@ function MultiSteps () {
 
     const PageDisplay = () => {
         if (page === 0) {
-            return <FormAddress FormTitles={FormTitles}  page={page} SetarPage={SetarPage} formData={formData} setFormData={setFormData}/>;
+            return <FormAddress BackPage={BackPage} setPage={setPage} FormTitles={FormTitles}  page={page} SetarPage={SetarPage} formData={formData} setFormData={setFormData}/>;
         }
         else if (page === 1) {
-            return <FormShipping FormTitles={FormTitles} page={page} SetarPage={SetarPage} formData={formData} setFormData={setFormData}/>;
+            return <FormShipping BackPage={BackPage} setPage={setPage} FormTitles={FormTitles} page={page} SetarPage={SetarPage} formData={formData} setFormData={setFormData}/>;
         }
         else {
-            return <FormPayment FormTitles={FormTitles}  page={page} SetarPage={SetarPage} formData={formData} setFormData={setFormData}/>;
+            return <FormPayment BackPage={BackPage} setPage={setPage} FormTitles={FormTitles}  page={page} SetarPage={SetarPage} formData={formData} setFormData={setFormData}/>;
         }    
     }
 
+    function BackPage () {
+        setPage(page - 1)
+    }
     function SetarPage () {
         setPage(page + 1)
     }
@@ -94,7 +99,7 @@ return (
         <DivButton>
 
 
-        <ButtonBack/>
+        {/* <ButtonBack/> */}
          
 
 
