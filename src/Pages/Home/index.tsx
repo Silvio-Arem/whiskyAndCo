@@ -54,9 +54,7 @@ const DivBanner = styled.div`
 
 export default function Home() {
 
-  const { userToken } = useContext(AuthContext);
-
-  console.log(userToken);
+  const { loggedUser, userToken } = useContext(AuthContext);
 
   return (
     <div className="Home">

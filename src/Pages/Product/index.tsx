@@ -11,8 +11,8 @@ export default function Product() {
   const [ product, setProduct ] = useState <IProduct> ({
     _id: "",
     name: "",
-    category: {_id: "", name: ""},
-    brand: {_id: "", name: ""},
+    category: "",
+    brand: "",
     picture: "",
     price: 0,
     description: "",
@@ -53,7 +53,7 @@ export default function Product() {
             <div className="products__cards-body">
               <h5>{product.name}</h5>
               <p>R$ {quantity * product.price}</p>
-              <p><b>{product?.category.name}</b></p>
+              <p><b>{product.category}</b></p>
               <p className="product__description">{product.description}</p>
               <Counter quantity={quantity} onQuantityChange={handleQuantityChange} />
               <div className="buttons__choice">

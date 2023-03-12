@@ -12,8 +12,8 @@ export interface IUser {
 export interface IProduct {
   _id?: string,
   name: string,
-  category: ICategory,
-  brand: IBrand,
+  category: string,
+  brand: string,
   picture: string,
   price: number,
   description: string
@@ -21,13 +21,13 @@ export interface IProduct {
 
 export interface IOrder {
   _id?: string;
-  name: string;
-  productsList: {
-    productid: number;
+  userId: string;
+  products: {
+    productid: string;
     quantity: number
   }[];
   amount: number;
-  orderDate: string;
+  createdAt: string;
 }
 
 export interface ICategory {
@@ -40,4 +40,4 @@ export interface IBrand {
   name: string
 }
 
-export type Data = IUser | IProduct | ICategory | IOrder;
+export type Data = IUser | IProduct | ICategory;

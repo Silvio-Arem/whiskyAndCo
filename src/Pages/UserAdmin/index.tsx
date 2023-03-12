@@ -21,7 +21,7 @@ export default function UserAdmin() {
 
   useEffect(() => {
     if(state) {
-      // setUser(users[state.id--]);
+      setUser(state.item);
     }
     else {
       setUpdatedItem(false);

@@ -8,7 +8,6 @@ import { AxiosResponse } from "axios";
 import { instance } from "../../requestConfig";
 import { Link, useNavigate } from "react-router-dom";
  
-
 export default function Products() {
 
   const navigate = useNavigate();
@@ -45,7 +44,7 @@ export default function Products() {
   };
 
   const filteredProducts = products.filter((product) => {
-    const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(product?.category?.name);
+    const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(product?.category);
     const matchPriceRange = selectedPriceRanges.length === 0 || selectedPriceRanges.some((range) => {
       const [min, max] = range.split('-');
       return Number(product.price) >= Number(min) && Number(product.price) <= Number(max);
@@ -90,7 +89,7 @@ export default function Products() {
             <div className="products__cards-body">
               <h5>{item.name}</h5>
               <p>R$ {item.price}</p>  
-              <p>{item?.category?.name}</p>
+              <p>{item?.category}</p>
               <Link to={`/product/${item._id}`} state={item}>Ir para whisky selecionado</Link>
               <Button state={item} link={`/product/${item._id}`} title="Ir para whisky selecionado" text="Descrição"/>
             </div>

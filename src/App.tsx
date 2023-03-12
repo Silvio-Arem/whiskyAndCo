@@ -1,4 +1,4 @@
-import Routes from "./Routes";
+import Routes from "./Routes/Routes";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { Main } from "./components/UI";

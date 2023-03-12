@@ -5,6 +5,7 @@ import { instance } from '../../requestConfig';
 import { AxiosResponse } from "axios";
 import { StyledSection } from '../Admin/styles';
 
+
 export default function CategoryAdmin() {
   
   const { userToken } = useContext(AuthContext);
@@ -50,14 +51,12 @@ export default function CategoryAdmin() {
 
   useEffect(() => {
     if(state) {
-      setCategory(state);
+      setCategory(state.item);
     }
     else {
       setUpdatedItem(false);
     }
   }, []);
-
-  console.log(category.name);
 
   return (
     <StyledSection>
