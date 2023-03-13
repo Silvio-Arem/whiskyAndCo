@@ -14,6 +14,7 @@ import Product from "./Pages/Product";
 import RegisterPage from "./Pages/Register";
 import { AuthProvider } from "./Context/AuthContext";
 import BrandAdmin from "./Pages/BrandAdmin";
+import SucessPage  from "./Pages/Sucess/sucessPage";
 
 export default function routes() {
   return (
@@ -41,6 +42,7 @@ export default function routes() {
       <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage/>}/>
       <Route path='/checkout/:id' element={<Checkout />} />
+      <Route path='/sucess/:id' element={<SucessPage />} />
     </WrapperRoutes>
   );
 }
