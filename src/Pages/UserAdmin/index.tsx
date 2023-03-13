@@ -45,7 +45,7 @@ export default function UserAdmin() {
     try {
       e.preventDefault();
       let response: AxiosResponse<any, any>;
-      const data = { user };
+      const data = { ...user };
       const itemId = user._id;
       delete user._id;
       

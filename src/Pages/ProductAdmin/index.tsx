@@ -54,22 +54,18 @@ export default function ProductAdmin() {
       e.preventDefault();
       let response: AxiosResponse<any, any>;
       const data = {
-        name: product.name,
+        ...product,
         category: product.category._id,
-        brand: product.brand._id,
-        picture: product.picture,
-        price: product.price,
-        description: product.description,
+        brand: product.brand._id
       };
-      const itemId = product._id;
-      delete product._id;
-
-      if(!itemId) {
+      delete data._id;
+      if(product._id === "") {
         response = await instance.post("/product", data, config);
         alert("Produto criado com sucesso!");
       }
       else {
-        response = await instance.put(`/product/${itemId}`, data, config);
+        response = await instance.put(`/product/${product._id}`, data, config);
+        console.log(response);
         alert("Produto atualizado com sucesso!");
       }
       setUpdatedItem(true);
@@ -81,9 +77,7 @@ export default function ProductAdmin() {
   }
 
   const removeProduct = async () => {
-    const itemId = product._id;
-    delete product._id;
-    const response = await instance.delete(`/product/${itemId}`, config);
+    const response = await instance.delete(`/product/${product._id}`, config);
     alert("Produto removido com sucesso!");
     navigate(-1);
   }
