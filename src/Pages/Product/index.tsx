@@ -61,7 +61,7 @@ export default function Product() {
             </div>
             <div className="products__cards-body">
               <h5>{product.name}</h5>
-              <p>R$ {quantity * product.price}</p>
+              <p>R$ {product.price}</p>
               <p><b>{product.category.name}</b></p>
               <p className="product__description">{product.description}</p>
               <Counter quantity={quantity} onQuantityChange={handleQuantityChange} />
