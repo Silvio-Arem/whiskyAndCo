@@ -14,6 +14,7 @@ export default function Products() {
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
+  const [selectedBrand, setSelectedBrand] = useState<string[]>([]);
   const [ products, setProducts ] = useState<IProduct[]>([]);
   const [ categories, setCategories ] = useState<ICategory[]>([])
   const [ brands, setBrands ] = useState<IBrand[]>([])
@@ -30,6 +31,17 @@ export default function Products() {
       setProducts(prods.data);
     }));
   }
+
+  const handleBrandChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } =  event.target;
+    if (checked) {
+      setSelectedBrand([...selectedCategories, value]);
+    } else {
+      setSelectedBrand(
+        selectedBrand.filter((brand) => brand !== value)
+      );
+    }
+  };
 
   const handleCategoryChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } =  event.target;
@@ -54,12 +66,13 @@ export default function Products() {
   };
 
   const filteredProducts = products.filter( (product) => {
+    const matchBrand = selectedBrand.length === 0 || selectedBrand.includes(product.brand.name);
     const matchCategory =  selectedCategories.length === 0 || selectedCategories.includes(product.category.name);
     const matchPriceRange = selectedPriceRanges.length === 0 || selectedPriceRanges.some((range) => {
       const [min, max] = range.split('-');
       return Number(product.price) >= Number(min) && Number(product.price) <= Number(max);
     });
-    return matchCategory && matchPriceRange;
+    return matchCategory && matchBrand && matchPriceRange;
   });
 
   useEffect( () => {
@@ -84,6 +97,15 @@ export default function Products() {
         </details>
         <details>
           <summary>
+            Marca
+          </summary>
+          {brands.map((brand, index) => <label key={brand._id} htmlFor={brand.name}>
+            <input type="checkbox" value={brand.name} onChange={handleCategoryChange} />
+            {brand.name}
+            </label>)}
+        </details>
+        <details>
+          <summary>
             Preço
           </summary>
           <label htmlFor=""><input type="checkbox" value="0-250" onChange={handlePriceRangeChange} />R$0,00 a R$250,00</label>
@@ -98,7 +120,8 @@ export default function Products() {
             <img src={product.picture} alt={product.name} />
             <div className="products__cards-body">
               <h5>{product.name}</h5>
-              <p>R$ {product.price}</p>  
+              <p>R$ {product.price}</p> 
+              <p>{product.brand.name}</p> 
               <p>{product.category.name}</p>
               <Button state={product} link={`/product/${product._id}`} title="Ir para whisky selecionado" text="Descrição"/>
             </div>
