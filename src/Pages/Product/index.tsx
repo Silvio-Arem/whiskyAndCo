@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { IProduct } from "../../interfaces";
 import { ProductSection } from "./styles";
 import Counter from "../../components/Counter";
@@ -25,6 +25,9 @@ export default function Product() {
     else {
 
     }
+
+
+    
   }, [])
 
 
@@ -36,11 +39,15 @@ export default function Product() {
     setQuantity(newValue);
   }
 
+
   function handleAddToCart(item: IProduct) {
     const totalPrice = quantity * Number(product.price)
     const itemWithPrice = { ...item, totalPrice };
+    console.log(itemWithPrice);
     setCartItems([...cartItems, itemWithPrice]);
   }
+
+
 
   return (
     <>

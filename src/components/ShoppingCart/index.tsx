@@ -3,8 +3,8 @@ import { Modal } from 'react-bootstrap';
 import CartIcon from "../../assets/icons/cart-icon.png";
 import { ShoppingCartContainer } from "./styles";
 import Button from '../Button';
-import { useLocation } from 'react-router-dom';
 import { IProduct } from '../../interfaces';
+import { useLocation } from 'react-router-dom';
 
 interface ShoppingCartProps {
     cart: {
@@ -34,7 +34,9 @@ export default function ShoppingCart({ cart }: ShoppingCartProps) {
     }
   }, [])
 
+    
     const [showModal, setShowModal] = useState(false);
+
 
     const handleShow = () => {
         setShowModal(true);
@@ -63,8 +65,8 @@ export default function ShoppingCart({ cart }: ShoppingCartProps) {
                 </Modal.Body>
                 <Modal.Footer>
                     <div>
-                    <Button link='' title={''} text={'Continuar comprando'} onClick={() => setShowModal(false)}/>
-                    <Button title={''} text={'Finalizar sua compra!'} link={'checkout'} />
+                        <Button link='' title={''} text={'Continuar comprando'} onClick={() => setShowModal(false)} />
+                        <Button title={''} text={'Finalizar sua compra!!'} link={'checkout'} />
                     </div>
                 </Modal.Footer>
             </Modal>

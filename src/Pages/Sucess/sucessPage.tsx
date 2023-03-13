@@ -1,7 +1,12 @@
-import React from "react";
 
-const sucessPage = () => {
+import React, { useContext, useState, useEffect } from "react";
+import axios from "axios"
+
+
+
+export const SucessPage = () => {
     return(
+
         <>
         <div>
             <h2>Compra realizada com sucesso!</h2>
@@ -9,4 +14,3 @@ const sucessPage = () => {
         </>
     )
 }
-export default sucessPage;
