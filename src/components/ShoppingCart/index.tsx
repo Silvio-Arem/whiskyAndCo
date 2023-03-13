@@ -3,8 +3,8 @@ import { Modal } from 'react-bootstrap';
 import CartIcon from "../../assets/icons/cart-icon.png";
 import { ShoppingCartContainer } from "./styles";
 import Button from '../Button';
-import { useLocation } from 'react-router-dom';
 import { IProduct } from '../../interfaces';
+import { useLocation } from 'react-router-dom';
 
 interface ShoppingCartProps {
     numItems: number;
@@ -32,7 +32,9 @@ export default function ShoppingCart(props: ShoppingCartProps) {
     }
   }, [])
 
+    
     const [showModal, setShowModal] = useState(false);
+
 
     const handleShow = () => {
         setShowModal(true);
@@ -51,18 +53,11 @@ export default function ShoppingCart(props: ShoppingCartProps) {
                     <Modal.Title>Carrinho</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                {props.cartItems.map((product) => (
-                        <div key={product._id}>
-                            <h4>{product.name}</h4>
-                            <p>{product.description}</p>
-                            <p>Preço: R$ {product.price.toFixed(2)}</p>
-                        </div>
-                    ))}
                 </Modal.Body>
                 <Modal.Footer>
                     <div>
-                    <Button link='' title={''} text={'Continuar comprando'} onClick={() => setShowModal(false)}/>
-                    <Button title={''} text={'Finalizar sua compra!'} link={'checkout'} />
+                        <Button link='' title={''} text={'Continuar comprando'} onClick={() => setShowModal(false)} />
+                        <Button title={''} text={'Finalizar sua compra!!'} link={'checkout'} />
                     </div>
                 </Modal.Footer>
             </Modal>
