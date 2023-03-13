@@ -9,9 +9,9 @@ interface Props {
 }
 
 export const AuthRoute = ({ Admin, Client } : Props) => {
-  const { loggedUser } = useContext(AuthContext);
+  const { loggedUser, userToken } = useContext(AuthContext);
 
-  if (loggedUser._id !== "") {
+  if (loggedUser._id !== "" && userToken) {
     
     if(loggedUser.isAdmin) {
       return Admin;

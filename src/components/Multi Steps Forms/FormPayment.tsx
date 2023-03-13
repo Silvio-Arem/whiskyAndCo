@@ -32,7 +32,7 @@ function FormPayment ({formData, setFormData, SetarPage, page, FormTitles, BackP
             </DivForm>
             <DivButton>
             <button onClick={() => BackPage()}>Voltar</button>
-            <button type="submit"> Enviar</button>
+            <button type="button"> Enviar</button>
             </DivButton>
         </ContainerForm>
     )
