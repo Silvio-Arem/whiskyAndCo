@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { RegisterUser } from "./registerApi";
 import {FormRegister, InputDiv} from "./styles"
 
 const RegisterPage = () => {
@@ -8,11 +9,26 @@ const RegisterPage = () => {
     const [name, setName] = useState<string>("");
     const [cpf, setCpf] = useState<string>("");
     const [address, setAddress] = useState<string>("");
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        console.log("submit", {name, cpf, email, password, address});
-    }
+    const [isAdmin, setisAdmin] = useState<boolean>(false)
 
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
+        console.log("submit", {name, cpf, email, password, address, isAdmin});
+    }
+const payload ={
+    name,
+    email,
+    password,
+    cpf,
+    address,
+    isAdmin
+    
+    
+};
+try{
+    const response = RegisterUser(payload)
+    
+} catch (error) {}
 
     return(
         <div>
@@ -43,7 +59,8 @@ const RegisterPage = () => {
             <label htmlFor="address"></label>
             <input type="address" name="address" required placeholder="Endereço" value={address} onChange= {(event) => setAddress(event.target.value)}/>
             </InputDiv>
-
+            <label htmlFor="">Sou um administrador</label>
+            <input type="checkbox" name="isAdmin" onChange={(event)=> setisAdmin(event.target.checked)}/>
             <div>
                 <button>Cadastrar</button>
             </div>
