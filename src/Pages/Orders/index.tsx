@@ -23,7 +23,7 @@ export default function Orders () {
         {
           orders.map((item) => 
             <article key={item._id} onClick={() => navigate(`${item._id}`, {state : item})}>
-              <p>Data do Pedido: {item.orderDate}</p>
+              <p>Data do Pedido: {item.createdAt}</p>
             </article>             
           )
         }

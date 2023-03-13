@@ -3,15 +3,17 @@ import { Modal } from 'react-bootstrap';
 import CartIcon from "../../assets/icons/cart-icon.png";
 import { ShoppingCartContainer } from "./styles";
 import Button from '../Button';
-import { useLocation } from 'react-router-dom';
 import { IProduct } from '../../interfaces';
+import { useLocation } from 'react-router-dom';
 
 interface ShoppingCartProps {
-    numItems: number;
-    cartItems: IProduct[];
+    cart: {
+        cartItem: IProduct;
+        numItems: number;
+    }[] | null;
 }
 
-export default function ShoppingCart(props: ShoppingCartProps) {
+export default function ShoppingCart({ cart }: ShoppingCartProps) {
     const { state } = useLocation();
   const [ product, setProduct ] = useState <IProduct> ({
     _id: "",
@@ -32,7 +34,9 @@ export default function ShoppingCart(props: ShoppingCartProps) {
     }
   }, [])
 
+    
     const [showModal, setShowModal] = useState(false);
+
 
     const handleShow = () => {
         setShowModal(true);
@@ -43,7 +47,7 @@ export default function ShoppingCart(props: ShoppingCartProps) {
             <div className="carrinho">
                 <p onClick={handleShow}>
                     <img src={CartIcon} alt="Ícone do carrinho" />
-                    <span>{props.numItems} itens</span>
+                    <span>{cart?.length} itens</span>
                 </p>
             </div>
             <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -51,18 +55,18 @@ export default function ShoppingCart(props: ShoppingCartProps) {
                     <Modal.Title>Carrinho</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                {props.cartItems.map((product) => (
-                        <div key={product._id}>
-                            <h4>{product.name}</h4>
-                            <p>{product.description}</p>
-                            <p>Preço: R$ {product.price.toFixed(2)}</p>
+                {cart?.map((product) => (
+                        <div key={product.cartItem._id}>
+                            <h4>{product.cartItem.name}</h4>
+                            <p>{product.cartItem.description}</p>
+                            <p>Preço: R$ {product.cartItem.price.toFixed(2)}</p>
                         </div>
                     ))}
                 </Modal.Body>
                 <Modal.Footer>
                     <div>
-                    <Button link='' title={''} text={'Continuar comprando'} onClick={() => setShowModal(false)}/>
-                    <Button title={''} text={'Finalizar sua compra!'} link={'checkout'} />
+                        <Button link='' title={''} text={'Continuar comprando'} onClick={() => setShowModal(false)} />
+                        <Button title={''} text={'Finalizar sua compra!!'} link={'checkout'} />
                     </div>
                 </Modal.Footer>
             </Modal>

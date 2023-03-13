@@ -110,7 +110,7 @@ export default function Admin() {
             : (
               data.map((item, index) => 
                 <li key={index}>
-                  <Link to={`${searchType}/${item._id}`} state={{id: item._id, dataType: searchType}}>
+                  <Link to={`${searchType}/${item._id}`} state={{item: item}}>
                     {searchType === "orders" ? item._id : item.name}
                   </Link>
                 </li>

@@ -18,8 +18,6 @@ const LoginPage = () => {
       navigate("/", {replace: true});
     }
 
-    console.log(userToken);
-
   return (  
   <LoginDiv>
   <Form onSubmit={handleSubmit}>
