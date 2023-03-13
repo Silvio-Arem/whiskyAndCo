@@ -4,6 +4,7 @@ import { instance } from '../../requestConfig';
 import { AxiosResponse } from "axios";
 import { IProduct, ICategory, IBrand } from '../../interfaces';
 import { AuthContext } from '../../Context/AuthContext';
+import { StyledSection } from '../Admin/styles';
 
 export default function ProductAdmin() {
   
@@ -23,7 +24,8 @@ export default function ProductAdmin() {
     price: 0,
     description: "",
   });
-  const axiosConfig = {headers: { Authorization: `Bearer ${userToken}`}, data: { product }}
+
+  const config = {headers: { Authorization: `Bearer ${userToken}`}};
 
   const getCatsAndBrands = async () => {
     try {
@@ -51,15 +53,23 @@ export default function ProductAdmin() {
     try {
       e.preventDefault();
       let response: AxiosResponse<any, any>;
+      const data = {
+        name: product.name,
+        category: product.category._id,
+        brand: product.brand._id,
+        picture: product.picture,
+        price: product.price,
+        description: product.description,
+      };
       const itemId = product._id;
       delete product._id;
 
       if(!itemId) {
-        response = await instance.post("/product", axiosConfig);
+        response = await instance.post("/product", data, config);
         alert("Produto criado com sucesso!");
       }
       else {
-        response = await instance.put(`/product/${itemId}`, axiosConfig);
+        response = await instance.put(`/product/${itemId}`, data, config);
         alert("Produto atualizado com sucesso!");
       }
       setUpdatedItem(true);
@@ -73,7 +83,7 @@ export default function ProductAdmin() {
   const removeProduct = async () => {
     const itemId = product._id;
     delete product._id;
-    const response = await instance.delete(`/product/${itemId}`, axiosConfig);
+    const response = await instance.delete(`/product/${itemId}`, config);
     alert("Produto removido com sucesso!");
     navigate(-1);
   }
@@ -87,10 +97,9 @@ export default function ProductAdmin() {
     getCatsAndBrands();
   }, [])
 
-  console.log(product.category);
-
   return (
-    <section>
+    <StyledSection>
+      <h3>Informações do Produto:</h3>
       { 
         updatedItem
         ? (
@@ -139,10 +148,13 @@ export default function ProductAdmin() {
             value={product.description} 
             onChange={(e) => handleValues(e)}>
           </textarea>
-          <input type="submit" value={product._id ? "Criar" : "Salvar"} />
+          <input type="submit" value={product._id ? "Salvar" : "Criar"} />
         </form> 
-      )}  
-      <button onClick={() => removeProduct()}>Remover</button>
-    </section>
+      )}
+      <div>
+        {!updatedItem && <button onClick={() => setUpdatedItem(!updatedItem)}>Cancelar</button>}
+        <button onClick={() => removeProduct()}>Remover</button>
+      </div>
+    </StyledSection>
   )
 }

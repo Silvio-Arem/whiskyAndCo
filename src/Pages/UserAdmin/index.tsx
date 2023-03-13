@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { AxiosResponse } from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext';
 import { IUser } from '../../interfaces';
+import { instance } from '../../requestConfig';
 
 export default function UserAdmin() {
 
   const { state } = useLocation();
   const navigate = useNavigate();
+  const { userToken } = useContext(AuthContext);
 
   const [ updatedItem, setUpdatedItem ] = useState <boolean> (true);
   const [ user, setUser ] = useState <IUser> ({
@@ -35,9 +39,30 @@ export default function UserAdmin() {
     }
   }
 
-  const formHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setUpdatedItem(true);
+  const config = {headers: { Authorization: `Bearer ${userToken}`}};
+
+  const formHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault();
+      let response: AxiosResponse<any, any>;
+      const data = { user };
+      const itemId = user._id;
+      delete user._id;
+      
+      if(!itemId) {
+        response = await instance.post("/product", data, config);
+        alert("Produto criado com sucesso!");
+      }
+      else {
+        response = await instance.put(`/product/${itemId}`, data, config);
+        alert("Produto atualizado com sucesso!");
+      }
+      setUpdatedItem(true);
+      navigate(-1);
+
+    } catch (error) {
+      console.log("ERRO: ", error)
+    }
   }
 
   const removeUser = () => {
@@ -81,6 +106,10 @@ export default function UserAdmin() {
           <input type="submit" value="Salvar" />
         </form>
       )}
+      <div>
+        {!updatedItem && <button onClick={() => setUpdatedItem(!updatedItem)}>Cancelar</button>}
+        <button onClick={() => removeUser()}>Remover</button>
+      </div>
       <button onClick={() => removeUser()}>Remover</button>
     </section>
   )

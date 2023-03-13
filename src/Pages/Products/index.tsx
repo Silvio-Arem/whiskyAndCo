@@ -44,7 +44,7 @@ export default function Products() {
   };
 
   const filteredProducts = products.filter( (product) => {
-    const matchCategory =  selectedCategories.length === 0 || selectedCategories.includes(product?.category);
+    const matchCategory =  selectedCategories.length === 0 || selectedCategories.includes(product.category.name);
     const matchPriceRange = selectedPriceRanges.length === 0 || selectedPriceRanges.some((range) => {
       const [min, max] = range.split('-');
       return Number(product.price) >= Number(min) && Number(product.price) <= Number(max);
@@ -83,7 +83,7 @@ export default function Products() {
         </details>
       </Filter>
       <ProductsContainer className="Products">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div key={product._id} className="products__cards">
             <img src={product.picture} alt={product.name} />
             <div className="products__cards-body">

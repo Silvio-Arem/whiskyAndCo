@@ -22,7 +22,7 @@ export const StyledSection = styled.section`
     }
   }
 
-  button, select {
+  button, select, input[type="submit"] {
     text-transform: uppercase;
     margin: .15rem;
     padding: .25rem;
@@ -42,6 +42,12 @@ export const StyledSection = styled.section`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   div, ul {
@@ -68,7 +74,6 @@ export const StyledSection = styled.section`
       box-shadow: rgba(0, 0, 0, 0.16) 0px .25rem 1rem, rgba(0, 0, 0, 0.23) 0px .25rem 1rem;
     }
   }
-
   a{
     text-decoration: none;
     color: ${secondaryColor};
@@ -83,5 +88,10 @@ export const StyledSection = styled.section`
     &:hover {
       background-color: ${secondaryColor};
     }
+  }
+
+  label, p:nth-child(even) {
+    font-weight: 500;
+    font-size: 1.25rem;
   }
 `;

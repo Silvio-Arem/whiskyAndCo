@@ -9,7 +9,7 @@ import { StyledSection } from '../Admin/styles';
 export default function CategoryAdmin() {
   
   const { userToken } = useContext(AuthContext);
-  
+
   const { state } = useLocation();
   const navigate = useNavigate();
   
@@ -24,17 +24,17 @@ export default function CategoryAdmin() {
     const config = {
       headers: {
         Authorization: `Bearer ${userToken}`
-      },
-      data: { name: category.name }
-    }
+      }}
+    const data = {name: category.name};
+    
     switch(op) {
       case "create":
-        response = await instance.post("/category", config);
+        response = await instance.post("/category", data, config);
         alert("Marca criada com sucesso!");
         return navigate(-1);
       
       case "update":
-        response = await instance.put(`/category/${category._id}`, config);
+        response = await instance.put(`/category/${category._id}`, data, config);
         alert("Marca atualizada com sucesso!");
         setUpdatedItem(false);
         return navigate(-1);

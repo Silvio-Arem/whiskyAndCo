@@ -8,7 +8,7 @@ import { StyledSection } from '../Admin/styles';
 export default function BrandAdmin() {
   
   const { userToken } = useContext(AuthContext);
-  
+
   const { state } = useLocation();
   const navigate = useNavigate();
 
@@ -21,19 +21,19 @@ export default function BrandAdmin() {
   const brandRequest = async (op: string) => {
     let response: AxiosResponse<any, any>;
     const config = {
-      headers: {
+        headers: {
         Authorization: `Bearer ${userToken}`
-      },
-      data: { name: brand.name }
+      }
     }
+    const data = {name: brand.name};
     switch(op) {
       case "create":
-        response = await instance.post("/brand", config);
+        response = await instance.post("/brand", data, config);
         alert("Marca criada com sucesso!");
         return navigate(-1);
       
       case "update":
-        response = await instance.put(`/brand/${brand._id}`, config);
+        response = await instance.put(`http://localhost:4000/brand/${brand._id}`, data, config);
         alert("Marca atualizada com sucesso!");
         setUpdatedItem(false);
         return navigate(-1);
@@ -56,8 +56,6 @@ export default function BrandAdmin() {
       setUpdatedItem(false);
     }
   }, []);
-
-  console.log("brand", brand);
 
   return (
     <StyledSection>
@@ -83,11 +81,13 @@ export default function BrandAdmin() {
               ? <button onClick={() => brandRequest("create")}>Criar</button>
               : <button onClick={() => brandRequest("update")}>Salvar</button>
             }
-            {updatedItem && <button onClick={() => setUpdatedItem(!updatedItem)}>Cancelar</button>}
           </>
         )
       }
+      <div>
+      {!updatedItem && <button onClick={() => setUpdatedItem(!updatedItem)}>Cancelar</button>}
       <button onClick={() => brandRequest("delete")}>Remover</button>
+      </div>
     </StyledSection>
   )
 }

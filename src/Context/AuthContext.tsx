@@ -1,4 +1,5 @@
-import React, { createContext, ReactNode, useState } from 'react';
+import React, { createContext, ReactNode, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { instance } from '../requestConfig';
 
 interface IAuthContext {
@@ -10,7 +11,7 @@ interface IAuthContext {
   },
   userToken: string,
   login(email: string, password: string): Promise<void>,
-  logout(): Promise<void>
+  logout(): void
 }
 
 interface Props {
@@ -20,6 +21,8 @@ interface Props {
 export const AuthContext = createContext({} as IAuthContext); 
 
 export function AuthProvider({ children }: Props) {
+
+  const navigate = useNavigate();
 
   const [ userToken, setUserToken ] = useState("");
   const [ loggedUser, setLoggedUser ] = useState({
@@ -31,7 +34,7 @@ export function AuthProvider({ children }: Props) {
   
   const login = async (email: string, password: string) => {
     try {
-      const getLogin = await instance.post("/login", {email, password})
+      const getLogin = await instance.post("/login", {email, password});
       const {user, token} = getLogin.data;
       setUserToken(token);
       if(user) {
@@ -42,15 +45,32 @@ export function AuthProvider({ children }: Props) {
           isAdmin: user.isAdmin
         }
         setLoggedUser(newUser);
+        localStorage.setItem("loggedUser", JSON.stringify(newUser));
+        localStorage.setItem("token", JSON.stringify(token));
       }
     } catch (error) {
       console.log("ERRO: ", error);
     }
   }
 
-  const logout = async () => {
-//em andamento
+  const logout = () => {
+    setLoggedUser({
+      _id: "",
+      name: "",
+      email: "",
+      isAdmin: false
+    });
+    setUserToken("");
+    localStorage.removeItem("loggedUser");
+    localStorage.removeItem("token");
   }
+
+  useEffect(() => {
+    const value = localStorage.getItem("loggedUser");
+    if(loggedUser._id === "") {
+      value !== null ? setLoggedUser(JSON.parse(value)) : navigate("/login");
+    }
+  }, [])
 
   return (
     <AuthContext.Provider value={{ loggedUser, login, logout, userToken }}>

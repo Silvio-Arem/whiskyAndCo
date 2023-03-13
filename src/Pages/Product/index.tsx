@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { IProduct } from "../../interfaces";
 import { ProductSection } from "./styles";
 import Counter from "../../components/Counter";
 import Button from "../../components/Button";
+import { AuthContext } from "../../Context/AuthContext";
 
 export default function Product() {
 
@@ -47,7 +48,8 @@ export default function Product() {
     setCartItems([...cartItems, itemWithPrice]);
   }
 
-
+  const { userToken } = useContext(AuthContext);
+  console.log(userToken);
 
   return (
     <>
@@ -65,7 +67,7 @@ export default function Product() {
               <Counter quantity={quantity} onQuantityChange={handleQuantityChange} />
               <div className="buttons__choice">
                 <Button  link="" title="Adicionar ao carrinho" text="Comprar Agora" onClick={() => handleAddToCart(product)}/>
-                <Button link={`/products/`} title="Continuar comprando" text="Continuar Comprando" />
+                <Button link={`/product`} title="Continuar comprando" text="Continuar Comprando" />
               </div>
             </div>
           </div>
