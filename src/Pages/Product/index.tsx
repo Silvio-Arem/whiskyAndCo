@@ -37,7 +37,7 @@ export default function Product() {
   }
 
   function handleAddToCart(item: IProduct) {
-    const totalPrice = quantity * product.price
+    const totalPrice = quantity * Number(product.price)
     const itemWithPrice = { ...item, totalPrice };
     setCartItems([...cartItems, itemWithPrice]);
   }
@@ -57,7 +57,7 @@ export default function Product() {
               <p className="product__description">{product.description}</p>
               <Counter quantity={quantity} onQuantityChange={handleQuantityChange} />
               <div className="buttons__choice">
-                <Button link="" title="Adicionar ao carrinho" text="Comprar Agora" onClick={() => handleAddToCart(product)}/>
+                <Button  link="" title="Adicionar ao carrinho" text="Comprar Agora" onClick={() => handleAddToCart(product)}/>
                 <Button link={`/products/`} title="Continuar comprando" text="Continuar Comprando" />
               </div>
             </div>

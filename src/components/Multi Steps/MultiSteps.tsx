@@ -2,14 +2,11 @@ import React, {useState} from "react"
 import FormAddress from "../Multi Steps Forms/FormAddress"
 import FormPayment from "../Multi Steps Forms/FormPayment"
 import FormShipping from "../Multi Steps Forms/FormShipping"
-import {Container, ProgressBar, Title, DivButton, Body, DivPage} from "../Multi Steps Forms/styles"
+import {Container, ProgressBar, Title, DivButton, Body, DivPage, ContainerForm} from "../Multi Steps Forms/styles"
 
-export interface address{
-    address:{
-        address: string,
 
-    }
-}
+
+
 
 export interface FormProps{
     formData:{
@@ -22,10 +19,16 @@ export interface FormProps{
 export interface CompleteFormState{
          address: string,
         shipping: boolean,
-        payment: string
+        payment: string,
+        
 }
 
 export interface FormDataProps extends FormProps{
+    FormTitles: string[]
+    page: number
+    setPage: any
+    SetarPage: () => void
+    BackPage: () => void
     setFormData: React.Dispatch<React.SetStateAction<CompleteFormState>>
 }
 
@@ -46,15 +49,23 @@ function MultiSteps () {
 
     const PageDisplay = () => {
         if (page === 0) {
-            return <FormAddress formData={formData} setFormData={setFormData}/>;
+            return <FormAddress BackPage={BackPage} setPage={setPage} FormTitles={FormTitles}  page={page} SetarPage={SetarPage} formData={formData} setFormData={setFormData}/>;
         }
         else if (page === 1) {
-            return <FormShipping formData={formData} setFormData={setFormData}/>;
+            return <FormShipping BackPage={BackPage} setPage={setPage} FormTitles={FormTitles} page={page} SetarPage={SetarPage} formData={formData} setFormData={setFormData}/>;
         }
         else {
-            return <FormPayment formData={formData} setFormData={setFormData}/>;
-        }
+            return <FormPayment BackPage={BackPage} setPage={setPage} FormTitles={FormTitles}  page={page} SetarPage={SetarPage} formData={formData} setFormData={setFormData}/>;
+        }    
     }
+
+    function BackPage () {
+        setPage(page - 1)
+    }
+    function SetarPage () {
+        setPage(page + 1)
+    }
+
     function ButtonBack () {
         return page === 0 ? (
     
@@ -62,13 +73,7 @@ function MultiSteps () {
     
         ):   <button disabled={page == 0 } onClick={() => {setPage((currPage) => currPage - 1);}}>Voltar</button>
         }
-    function ButtonProx () {
-        return page === 2 ? (
-    
-            <button id="disable" disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Enviar</button>
-    
-        ):   <button disabled={page == FormTitles.length - 1 } onClick={() => {setPage((currPage) => currPage + 1);}}> Próximo</button>
-    } 
+
 
 
 return (
@@ -93,9 +98,11 @@ return (
 
         <DivButton>
 
-        <ButtonBack/>
-        <ButtonProx/> 
-        
+
+        {/* <ButtonBack/> */}
+         
+
+
         </DivButton> 
     </DivPage>
 
