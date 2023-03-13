@@ -66,9 +66,10 @@ export function AuthProvider({ children }: Props) {
   }
 
   useEffect(() => {
-    const value = localStorage.getItem("loggedUser");
+    const userValue = localStorage.getItem("loggedUser");
+    const tokenValue = localStorage.getItem("token");
     if(loggedUser._id === "") {
-      value !== null ? setLoggedUser(JSON.parse(value)) : navigate("/login");
+      userValue !== null ? setLoggedUser(JSON.parse(userValue)) : navigate("/login");
     }
   }, [])
 

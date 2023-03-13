@@ -1,10 +1,10 @@
-import {  IProduct } from "../../interfaces";
+import {  IBrand, ICategory, IProduct } from "../../interfaces";
 import { PageDescript, ProductsContainer } from "./styles";
 import { Filter } from "../../components/Filter/styles";
 import { useEffect, useState } from "react";
 import Button from "../../components/Button";
 
-import { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import { instance } from "../../requestConfig";
 import { Link, useNavigate } from "react-router-dom";
  
@@ -15,10 +15,20 @@ export default function Products() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
   const [ products, setProducts ] = useState<IProduct[]>([]);
+  const [ categories, setCategories ] = useState<ICategory[]>([])
+  const [ brands, setBrands ] = useState<IBrand[]>([])
 
   const getData = async () => {
-    const response = await instance.get("/product");
-    setProducts(response.data);
+    const response = await axios.all([
+      instance.get("/category"),
+      instance.get("/brand"),
+      instance.get("/product")
+    ])
+    .then(axios.spread((cats, brnds, prods) => {
+      setCategories(cats.data);
+      setBrands(brnds.data);
+      setProducts(prods.data);
+    }));
   }
 
   const handleCategoryChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,8 +66,6 @@ export default function Products() {
     getData();
   }, [])
 
-  console.log(products);
-
   return (
     <>
       <PageDescript>
@@ -69,10 +77,10 @@ export default function Products() {
           <summary>
             Categoria
           </summary>
-          <label htmlFor=""><input type="checkbox" value="Whisky Japonês" onChange={handleCategoryChange} />Whisky Japonês</label>
-          <label htmlFor=""><input type="checkbox" value="Tennessee Whiskey" onChange={handleCategoryChange} />Tennessee Whiskey</label>
-          <label htmlFor=""><input type="checkbox" value="Bourbon Whiskey" onChange={handleCategoryChange} />Bourbon Whiskey</label>
-          <label htmlFor=""><input type="checkbox" value="Rye" onChange={handleCategoryChange} />Rye</label>
+          {categories.map((category, index) => <label key={category._id} htmlFor={category.name}>
+            <input type="checkbox" value={category.name} onChange={handleCategoryChange} />
+            {category.name}
+            </label>)}
         </details>
         <details>
           <summary>

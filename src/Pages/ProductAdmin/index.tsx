@@ -1,7 +1,7 @@
 import React, { useEffect, useState, FormEvent, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { instance } from '../../requestConfig';
-import { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import { IProduct, ICategory, IBrand } from '../../interfaces';
 import { AuthContext } from '../../Context/AuthContext';
 import { StyledSection } from '../Admin/styles';
@@ -15,7 +15,7 @@ export default function ProductAdmin() {
 
   const [ updatedItem, setUpdatedItem ] = useState(true);
   const [ categories, setCategories ] = useState<ICategory[]>([])
-  const [ brands, setBrands ] = useState<ICategory[]>([])
+  const [ brands, setBrands ] = useState<IBrand[]>([])
   const [ product, setProduct ] = useState <IProduct> ({
     name: "",
     category: {_id: "", name: ""},
@@ -29,12 +29,14 @@ export default function ProductAdmin() {
 
   const getCatsAndBrands = async () => {
     try {
-      const response = await Promise.all([
+      const response = await axios.all([
         instance.get("/category"),
         instance.get("/brand")
-      ]);
-      setCategories(response[0].data);
-      setBrands(response[1].data)
+      ])
+      .then(axios.spread((cats, brnds) => {
+        setCategories(cats.data);
+        setBrands(brnds.data)
+      }));
     } catch (error) {
       console.log("ERRO: ", error)
     }
