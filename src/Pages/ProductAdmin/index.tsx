@@ -98,7 +98,7 @@ export default function ProductAdmin() {
             <p>Nome do Produto:</p>
             <p>{product.name}</p>
             <p>Categoria do Produto:</p>
-            {/* <p>{categories.at(product._id === cat._id)}</p> */}
+            {categories.filter((category) => category._id === product._id).map(item => <p>{item.name}</p> )}
             <p>Marca do Produto:</p>
             <p>{product.brand}</p>
             <p>Imagens:</p>

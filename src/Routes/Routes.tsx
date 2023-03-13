@@ -22,7 +22,7 @@ export default function routes() {
       <Route path='/' element={ <Home />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage/>}/>
-      <Route path='/products' element={<Products />} />
+      <Route path='/product' element={<Products />} />
       <Route path='/product/:id' element={<Product />} />
       <Route path='/profile' element={<AuthRoute Admin={<Profile />} Client={<Profile />} />}/>
       <Route path='/profile/orders' element={<AuthRoute Admin={<Orders />} Client={<Orders />} />} />

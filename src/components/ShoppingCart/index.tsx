@@ -16,8 +16,8 @@ export default function ShoppingCart(props: ShoppingCartProps) {
   const [ product, setProduct ] = useState <IProduct> ({
     _id: "",
     name: "",
-    category: {_id: "", name: ""},
-    brand: {_id: "", name: ""},
+    category: "",
+    brand: "",
     picture: "",
     price: 0,
     description: "",
