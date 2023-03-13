@@ -8,6 +8,11 @@ export const StyledSection = styled.section`
   text-align: center;
   padding: 2rem;
   
+  h3 {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
   button, select, input {
     outline: transparent;
     border: .125rem solid ${primaryColor};

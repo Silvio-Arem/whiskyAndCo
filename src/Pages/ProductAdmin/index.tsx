@@ -17,8 +17,8 @@ export default function ProductAdmin() {
   const [ brands, setBrands ] = useState<ICategory[]>([])
   const [ product, setProduct ] = useState <IProduct> ({
     name: "",
-    category: "",
-    brand: "",
+    category: {_id: "", name: ""},
+    brand: {_id: "", name: ""},
     picture: "",
     price: 0,
     description: "",
@@ -73,19 +73,21 @@ export default function ProductAdmin() {
   const removeProduct = async () => {
     const itemId = product._id;
     delete product._id;
-    const response = await instance.delete(`/product/${itemId}`, axiosConfig)
+    const response = await instance.delete(`/product/${itemId}`, axiosConfig);
     alert("Produto removido com sucesso!");
     navigate(-1);
   }
 
   useEffect(() => {
     if(state) {
-      setProduct(state);
+      setProduct(state.item);
     } else {
       setUpdatedItem(false);
     }
     getCatsAndBrands();
   }, [])
+
+  console.log(product.category);
 
   return (
     <section>
@@ -98,9 +100,9 @@ export default function ProductAdmin() {
             <p>Nome do Produto:</p>
             <p>{product.name}</p>
             <p>Categoria do Produto:</p>
-            {categories.filter((category) => category._id === product._id).map(item => <p>{item.name}</p> )}
+            {categories.filter((cat) => cat._id === product.category._id).map(item => <p key={item._id}>{item.name}</p>)}
             <p>Marca do Produto:</p>
-            <p>{product.brand}</p>
+            {brands.filter((brand) => brand._id === product.brand._id).map(item => <p key={item._id}>{item.name}</p>)}
             <p>Imagens:</p>
             <p>{product.picture}</p>
             <p>Preço do Produto:</p>
@@ -117,12 +119,12 @@ export default function ProductAdmin() {
           <label htmlFor="name">Nome do Produto:</label>
           <input name='name' type="text" value={product.name} onChange={(e) => handleValues(e)} />
           <label htmlFor="category">Categoria do Produto:</label>
-          <select name="category" value={product.category} onChange={(e) => handleValues(e)}>
+          <select name="category" value={product.category.name} onChange={(e) => handleValues(e)}>
             <option value="">Categorias</option>
             {categories.map((category) => <option key={category._id} value={category.name}>{category.name}</option> )}
           </select>
           <label htmlFor="brand">Marca do Produto:</label>
-          <select name="brand" value={product.brand} onChange={(e) => handleValues(e)}>
+          <select name="brand" value={product.brand.name} onChange={(e) => handleValues(e)}>
             <option value="">Marcas</option>
             {brands.map((brand) => <option key={brand._id} value={brand.name}>{brand.name}</option> )}
           </select>

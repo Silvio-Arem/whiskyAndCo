@@ -7,17 +7,19 @@ import { useLocation } from 'react-router-dom';
 import { IProduct } from '../../interfaces';
 
 interface ShoppingCartProps {
-    numItems: number;
-    cartItems: IProduct[];
+    cart: {
+        cartItem: IProduct;
+        numItems: number;
+    }[] | null;
 }
 
-export default function ShoppingCart(props: ShoppingCartProps) {
+export default function ShoppingCart({ cart }: ShoppingCartProps) {
     const { state } = useLocation();
   const [ product, setProduct ] = useState <IProduct> ({
     _id: "",
     name: "",
-    category: "",
-    brand: "",
+    category: {_id: "", name: ""},
+    brand: {_id: "", name: ""},
     picture: "",
     price: 0,
     description: "",
@@ -43,7 +45,7 @@ export default function ShoppingCart(props: ShoppingCartProps) {
             <div className="carrinho">
                 <p onClick={handleShow}>
                     <img src={CartIcon} alt="Ícone do carrinho" />
-                    <span>{props.numItems} itens</span>
+                    <span>{cart?.length} itens</span>
                 </p>
             </div>
             <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -51,11 +53,11 @@ export default function ShoppingCart(props: ShoppingCartProps) {
                     <Modal.Title>Carrinho</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                {props.cartItems.map((product) => (
-                        <div key={product._id}>
-                            <h4>{product.name}</h4>
-                            <p>{product.description}</p>
-                            <p>Preço: R$ {product.price.toFixed(2)}</p>
+                {cart?.map((product) => (
+                        <div key={product.cartItem._id}>
+                            <h4>{product.cartItem.name}</h4>
+                            <p>{product.cartItem.description}</p>
+                            <p>Preço: R$ {product.cartItem.price.toFixed(2)}</p>
                         </div>
                     ))}
                 </Modal.Body>

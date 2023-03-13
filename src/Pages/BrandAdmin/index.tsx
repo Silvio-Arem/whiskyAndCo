@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { AxiosResponse } from "axios";
 import { instance } from '../../requestConfig';
 import { AuthContext } from '../../Context/AuthContext';
+import { StyledSection } from '../Admin/styles';
 
 export default function BrandAdmin() {
   
@@ -14,7 +15,7 @@ export default function BrandAdmin() {
   const [ updatedItem, setUpdatedItem ] = useState(true);
   const [ brand, setBrand ] = useState({
     _id: "",
-    name: ""
+    name: "",
   });
 
   const brandRequest = async (op: string) => {
@@ -49,15 +50,17 @@ export default function BrandAdmin() {
 
   useEffect(() => {
     if(state) {
-      setBrand(state);
+      setBrand(state.item);
     }
     else {
       setUpdatedItem(false);
     }
   }, []);
 
+  console.log("brand", brand);
+
   return (
-    <section>
+    <StyledSection>
       <h3>Informações da Marca</h3>
       {
         updatedItem
@@ -80,10 +83,11 @@ export default function BrandAdmin() {
               ? <button onClick={() => brandRequest("create")}>Criar</button>
               : <button onClick={() => brandRequest("update")}>Salvar</button>
             }
+            {updatedItem && <button onClick={() => setUpdatedItem(!updatedItem)}>Cancelar</button>}
           </>
         )
       }
       <button onClick={() => brandRequest("delete")}>Remover</button>
-    </section>
+    </StyledSection>
   )
 }

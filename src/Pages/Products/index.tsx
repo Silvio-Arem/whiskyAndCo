@@ -89,7 +89,7 @@ export default function Products() {
             <div className="products__cards-body">
               <h5>{product.name}</h5>
               <p>R$ {product.price}</p>  
-              <p>{product.category}</p>
+              <p>{product.category.name}</p>
               <Button state={product} link={`/product/${product._id}`} title="Ir para whisky selecionado" text="Descrição"/>
             </div>
           </div>

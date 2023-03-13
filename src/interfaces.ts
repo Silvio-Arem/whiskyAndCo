@@ -12,8 +12,8 @@ export interface IUser {
 export interface IProduct {
   _id?: string,
   name: string,
-  category: string,
-  brand: string,
+  category: ICategory,
+  brand: IBrand,
   picture: string,
   price: number,
   description: string
