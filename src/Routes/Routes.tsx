@@ -30,7 +30,7 @@ export default function routes() {
       <Route path='/profile' element={<AuthRoute Admin={<Profile />} Client={<Profile />} />}/>
       <Route path='/profile/orders' element={<AuthRoute Admin={<Orders />} Client={<Orders />} />} />
       <Route path='/profile/orders/:id' element={<AuthRoute Admin={<Order />} Client={<Order />} />} />
-      <Route path='/checkout/:id' element={<AuthRoute Admin={<Checkout />} Client={<Checkout />} />} />
+      <Route path='/checkout/' element={<AuthRoute Admin={<Checkout />} Client={<Checkout />} />} />
       <Route path='/admin' element={<AuthRoute Admin={<Admin/>} Client={<Home />} />} />
       <Route path='/admin/users/new' element={<AuthRoute Admin={<UserAdmin/>} Client={<Home />} />} />
       <Route path='/admin/users/:id' element={<AuthRoute Admin={<UserAdmin/>} Client={<Home />} />} />

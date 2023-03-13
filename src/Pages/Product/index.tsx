@@ -61,12 +61,12 @@ export default function Product() {
             </div>
             <div className="products__cards-body">
               <h5>{product.name}</h5>
-              <p>R$ {quantity * product.price}</p>
+              <p>R$ {product.price}</p>
               <p><b>{product.category.name}</b></p>
               <p className="product__description">{product.description}</p>
               <Counter quantity={quantity} onQuantityChange={handleQuantityChange} />
               <div className="buttons__choice">
-                <Button  link="" title="Adicionar ao carrinho" text="Comprar Agora" onClick={() => handleAddToCart(product)}/>
+                <Button  link={'/checkout'} title="Adicionar ao carrinho" text="Comprar Agora" onClick={() => handleAddToCart(product)}/>
                 <Button link={`/product`} title="Continuar comprando" text="Continuar Comprando" />
               </div>
             </div>

@@ -56,6 +56,8 @@ export default function Products() {
     getData();
   }, [])
 
+  console.log(products);
+
   return (
     <>
       <PageDescript>
