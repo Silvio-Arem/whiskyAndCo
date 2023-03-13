@@ -7,13 +7,13 @@ import { IProduct } from '../../interfaces';
 import { useLocation } from 'react-router-dom';
 
 interface ShoppingCartProps {
-    cart: {
+    shoppCart: {
         cartItem: IProduct;
         numItems: number;
     }[] | null;
 }
 
-export default function ShoppingCart({ cart }: ShoppingCartProps) {
+export default function ShoppingCart({ shoppCart }: ShoppingCartProps) {
     const { state } = useLocation();
   const [ product, setProduct ] = useState <IProduct> ({
     _id: "",
@@ -35,6 +35,7 @@ export default function ShoppingCart({ cart }: ShoppingCartProps) {
   }, [])
 
     
+    
     const [showModal, setShowModal] = useState(false);
 
 
@@ -47,7 +48,7 @@ export default function ShoppingCart({ cart }: ShoppingCartProps) {
             <div className="carrinho">
                 <p onClick={handleShow}>
                     <img src={CartIcon} alt="Ícone do carrinho" />
-                    <span>{cart?.length} itens</span>
+                    <span>{shoppCart?.length} itens</span>
                 </p>
             </div>
             <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -55,7 +56,7 @@ export default function ShoppingCart({ cart }: ShoppingCartProps) {
                     <Modal.Title>Carrinho</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                {cart?.map((product) => (
+                {shoppCart?.map((product) => (
                         <div key={product.cartItem._id}>
                             <h4>{product.cartItem.name}</h4>
                             <p>{product.cartItem.description}</p>
