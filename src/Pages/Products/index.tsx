@@ -100,7 +100,7 @@ export default function Products() {
             Marca
           </summary>
           {brands.map((brand, index) => <label key={brand._id} htmlFor={brand.name}>
-            <input type="checkbox" value={brand.name} onChange={handleCategoryChange} />
+            <input type="checkbox" value={brand.name} onChange={handleBrandChange} />
             {brand.name}
             </label>)}
         </details>
