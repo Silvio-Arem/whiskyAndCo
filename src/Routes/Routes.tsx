@@ -1,4 +1,5 @@
 import { Routes as WrapperRoutes, Route } from "react-router-dom";
+
 import Home from "../Pages/Home";
 import Profile from "../Pages/Profile";
 import Admin from "../Pages/Admin";
@@ -12,9 +13,11 @@ import UserAdmin from "../Pages/UserAdmin";
 import CategoryAdmin from "../Pages/CategoryAdmin";
 import Product from "../Pages/Product";
 import RegisterPage from "../Pages/Register";
-import { AuthProvider } from "../Context/AuthContext";
 import BrandAdmin from "../Pages/BrandAdmin";
+import SucessPage from "../Pages/Sucess/sucessPage";
+
 import { AuthRoute } from "./AuthRoute";
+import { AuthProvider } from "../Context/AuthContext";
 
 export default function routes() {
   return (
@@ -41,6 +44,7 @@ export default function routes() {
       <Route path='/admin/categories/:id' element={<AuthRoute Admin={<CategoryAdmin />} Client={<Home />} />} />
       <Route path='/admin/orders/new' element={<AuthRoute Admin={<Order />} Client={<Home />} />} />
       <Route path='/admin/orders/:id' element={<AuthRoute Admin={<Order />} Client={<Home />} />} />
+      <Route path='/sucess/:id' element={<AuthRoute Admin={<SucessPage />} Client={<SucessPage />} />} />
     </WrapperRoutes>
   );
 }
