@@ -34,7 +34,7 @@ export default function Header() {
       <Nav />
       </DivLogoMenu>
       <DivCartLogin>
-      <ShoppingCart shoppCart={null} />
+      <ShoppingCart />
       <Menu open={menuOpen}>
         <MenuItem to="/" title="Ir para home" onClick={handleMenuClick}>Início</MenuItem>
         <MenuItem to="/products" title="Ir para whiskys" onClick={handleMenuClick}>Whiskys</MenuItem>

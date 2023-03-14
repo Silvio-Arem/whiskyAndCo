@@ -1,39 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import CartIcon from "../../assets/icons/cart-icon.png";
 import { ShoppingCartContainer } from "./styles";
 import Button from '../Button';
 import { IProduct } from '../../interfaces';
-import { useLocation } from 'react-router-dom';
+import Product from '../../Pages/Product';
+import Cart from '../Cart';
 
-interface ShoppingCartProps {
-    shoppCart: {
-        cartItem: IProduct;
-        numItems: number;
-    }[] | null;
-}
+const products: IProduct[] = [
+    {
+        _id: "",
+        name: "",
+        category: {_id: "", name: ""},
+        brand: {_id: "", name: ""},
+        picture: "",
+        price: 0,
+        description: "",
+      }
+]
 
-export default function ShoppingCart({ shoppCart }: ShoppingCartProps) {
-    const { state } = useLocation();
-  const [ product, setProduct ] = useState <IProduct> ({
-    _id: "",
-    name: "",
-    category: {_id: "", name: ""},
-    brand: {_id: "", name: ""},
-    picture: "",
-    price: 0,
-    description: "",
-  });
-
-  useEffect(() => {
-    if(state) {
-      setProduct(state);
-    }
-    else {
-
-    }
-  }, [])
-
+export default function ShoppingCart() {
+    
     
     
     const [showModal, setShowModal] = useState(false);
@@ -48,7 +35,7 @@ export default function ShoppingCart({ shoppCart }: ShoppingCartProps) {
             <div className="carrinho">
                 <p onClick={handleShow}>
                     <img src={CartIcon} alt="Ícone do carrinho" />
-                    <span>{shoppCart?.length} itens</span>
+                    <span></span>
                 </p>
             </div>
             <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -56,13 +43,7 @@ export default function ShoppingCart({ shoppCart }: ShoppingCartProps) {
                     <Modal.Title>Carrinho</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                {shoppCart?.map((product) => (
-                        <div key={product.cartItem._id}>
-                            <h4>{product.cartItem.name}</h4>
-                            <p>{product.cartItem.description}</p>
-                            <p>Preço: R$ {product.cartItem.price.toFixed(2)}</p>
-                        </div>
-                    ))}
+                
                 </Modal.Body>
                 <Modal.Footer>
                     <div>
