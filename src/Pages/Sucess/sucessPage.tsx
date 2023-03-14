@@ -16,7 +16,7 @@ export default function SucessPage ()  {
         const productsList = response.data;
         const list = order.products
           .forEach(element => {
-            productsList.filter((item: IProduct) => element.productId === item._id)
+            productsList.filter((item: IProduct) => element._id === item._id)
         });
       }
     

@@ -21,9 +21,12 @@ export interface IProduct {
 
 export interface IOrder {
   _id?: string,
-  userId: string,
+  userId: {
+    _id: string,
+    name: string
+  },
   products: {
-    productId: string,
+    _id: string,
     quantity: number
   }[],
   amount: number,
