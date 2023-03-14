@@ -7,7 +7,7 @@ function Checkout() {
  
     return (
       <div className="Checkout">
-       
+      
          
         <MultiSteps/>
         

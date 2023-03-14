@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 // -------------------------------------- Pagina principal
-export const Body = styled.body`
+export const Body = styled.div`
 background-color: #E5E5E5;
 width: 100%;
 height: 100vh;
