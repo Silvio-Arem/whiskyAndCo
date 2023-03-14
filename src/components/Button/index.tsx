@@ -15,7 +15,7 @@ export default function Button(props: ButtonProps) {
 
     return (
         <PrimaryButton className="primary-button">
-            <button>
+            <button onClick={props.onClick}>
                 <Link to={props.link} state={props.state} title={props.title}>{props.text}</Link>     
             </button>
         </PrimaryButton>

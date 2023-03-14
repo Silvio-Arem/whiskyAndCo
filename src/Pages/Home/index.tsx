@@ -5,6 +5,7 @@ import CollectionSection from "../../components/Collections";
 import Button from "../../components/Button";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
+import { CartContext } from "../../Context/CartContext";
 
 const Presentation = styled.div`
     display: flex;
@@ -53,6 +54,11 @@ const DivBanner = styled.div`
 
 
 export default function Home() {
+
+  const { shopCart, addToCart } = useContext(CartContext);
+  console.log("Home")
+  console.log(shopCart);
+  console.log("depois da home")
 
   const { loggedUser, userToken } = useContext(AuthContext);
 
