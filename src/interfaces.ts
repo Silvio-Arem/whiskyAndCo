@@ -41,4 +41,9 @@ export interface IBrand {
   name: string
 }
 
+export interface IShoppingCartItem {
+  product: IProduct;
+  quantity: number;
+}
+
 export type Data = IUser | IProduct | ICategory;
