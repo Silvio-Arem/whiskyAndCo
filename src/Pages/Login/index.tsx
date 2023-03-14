@@ -41,7 +41,7 @@ const LoginPage = () => {
 
   </Form>
   <CadastreDiv>
-  <p> Ou crie uma <LinkReact to="/register"><p>conta</p></LinkReact>.</p>
+  <LinkReact to="/register">Ou crie uma conta.</LinkReact>
   </CadastreDiv> 
 
   </LoginDiv>

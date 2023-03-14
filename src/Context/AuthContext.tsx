@@ -68,10 +68,12 @@ export function AuthProvider({ children }: Props) {
   useEffect(() => {
     const userValue = localStorage.getItem("loggedUser");
     const tokenValue = localStorage.getItem("token");
+
     if(loggedUser._id === "") {
       userValue !== null ? setLoggedUser(JSON.parse(userValue)) : navigate("/login");
+      tokenValue !== null ? setUserToken(JSON.parse(tokenValue)) : navigate("/login");
     }
-  }, [])
+  }, []);
 
   return (
     <AuthContext.Provider value={{ loggedUser, login, logout, userToken }}>

@@ -3,7 +3,6 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { IUser } from "../../interfaces";
 import { instance } from "../../requestConfig";
-import { RegisterUser } from "./registerApi";
 import {FormRegister, InputDiv} from "./styles"
 
 const RegisterPage = () => {
@@ -42,7 +41,7 @@ const RegisterPage = () => {
             console.log("ERRO: ", error);
         }
     }
-    
+
     const handleValues = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         if(user !== null){
@@ -61,7 +60,7 @@ const RegisterPage = () => {
 
             <InputDiv>
             <label htmlFor="cpf"></label>
-            <input type="cpf" name="cpf"  required placeholder="CPF" value={user.cpf} onChange= {(e) => handleValues(e)}/>
+            <input type="cpf" minLength={11} name="cpf"  required placeholder="CPF" value={user.cpf} onChange= {(e) => handleValues(e)}/>
             </InputDiv>
 
             <InputDiv>
@@ -76,7 +75,7 @@ const RegisterPage = () => {
 
              <InputDiv>
             <label htmlFor="address"></label>
-            <input type="address" name="address" required placeholder="Endereço" value={user.address} onChange= {(e) => handleValues(e)}/>
+            <input type="text" name="address" required placeholder="Endereço" value={user.address} onChange= {(e) => handleValues(e)}/>
             </InputDiv>
             <label htmlFor="">Sou um administrador</label>
             <input type="checkbox" name="isAdmin" checked={user.isAdmin} onChange= {(e) => handleValues(e)}/>

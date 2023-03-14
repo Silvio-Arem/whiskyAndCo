@@ -1,11 +1,11 @@
 export interface IUser {
-  _id?: string;
-  name: string;
+  _id?: string,
+  name: string,
   email: string;
-  password: string;
-  cpf: string;
-  address: string;
-  isAdmin: boolean;
+  password: string,
+  cpf: string,
+  address: string,
+  isAdmin: boolean,
   userOrders?: number[]
 }
 
@@ -20,23 +20,24 @@ export interface IProduct {
 }
 
 export interface IOrder {
-  _id?: string;
-  userId: string;
+  _id?: string,
+  userId: string,
   products: {
-    productid: string;
+    productId: string,
     quantity: number
-  }[];
-  amount: number;
-  createdAt: string;
+  }[],
+  amount: number,
+  createdAt?: string,
+  updatedAt?: string
 }
 
 export interface ICategory {
-  _id?: string;
+  _id?: string,
   name: string
 }
 
 export interface IBrand {
-  _id?: string;
+  _id?: string,
   name: string
 }
 

@@ -20,11 +20,7 @@ export default function BrandAdmin() {
 
   const brandRequest = async (op: string) => {
     let response: AxiosResponse<any, any>;
-    const config = {
-        headers: {
-        Authorization: `Bearer ${userToken}`
-      }
-    }
+    const config = { headers: { Authorization: `Bearer ${userToken}` }};
     const data = {name: brand.name};
     switch(op) {
       case "create":

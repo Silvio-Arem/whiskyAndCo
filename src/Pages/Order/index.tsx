@@ -14,7 +14,7 @@ export default function Order () {
     const productsList = response.data;
     const list = currentOrder.products
       .forEach(element => {
-        productsList.filter((item: IProduct) => element.productid === item._id)
+        productsList.filter((item: IProduct) => element.productId === item._id)
     });
   }
 
@@ -35,7 +35,8 @@ export default function Order () {
           currentOrder.products
           .map((item, index) => 
             <div key={index}>
-              <p>{}</p>
+              <p>{list[index].picture}</p>
+              <p>{list[index].name}</p>
               <p>{currentOrder.products[index].quantity}</p>
               <p>Valor: {list[index].price * currentOrder.products[index].quantity}</p>
             </div>

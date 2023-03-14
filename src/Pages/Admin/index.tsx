@@ -18,13 +18,11 @@ export default function Admin() {
   const [ data, setData ] = useState <Data[]> ([]);
   const [ filteredList, setFilteredList ] = useState <Data[]> ([]);
 
-  // useEffect(() => {
-  //   window.history.replaceState(null, "", `${location.pathname}/${searchType}`);
-  // }, [searchType]);
   const { userToken } = useContext(AuthContext);
 
   const selectData = async (dataType: string) => {
 
+    const config = { headers: { Authorization: `Bearer ${userToken}`}};
     setSearchType(dataType);
     setSearchInput("");
     setFilteredList([]);
@@ -40,19 +38,11 @@ export default function Admin() {
         return setData(response.data); 
 
       case "users":
-        response = await instance.get("/user", {
-          headers:{
-            Authorization: `Bearer ${userToken}`
-          }
-        });
+        response = await instance.get("/user", config);
         return setData(response.data);
 
       case "orders":
-        response = await instance.get("/order", {
-          headers:{
-            Authorization: `Bearer ${userToken}`
-          }
-        });
+        response = await instance.get("/order", config);
         return setData(response.data);
 
       case "brands":
@@ -82,7 +72,7 @@ export default function Admin() {
         <p>Faça todas as operações sobre os tipos disponíveis</p>
         <div>
           <select name="searchType" value={searchType} onChange={(e) => selectData(e.target.value)}>
-            <option value="">Selecione um tipo</option>
+            <option value="">Selecione o tipo</option>
             <option value="users">Usuários</option>
             <option value="products">Produtos</option>
             <option value="categories">Categorias</option>

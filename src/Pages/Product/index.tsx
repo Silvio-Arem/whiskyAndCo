@@ -49,7 +49,6 @@ export default function Product() {
   }
 
   const { userToken } = useContext(AuthContext);
-  console.log(userToken);
 
   return (
     <>
