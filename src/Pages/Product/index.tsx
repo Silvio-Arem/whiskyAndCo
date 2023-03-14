@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { IProduct } from "../../interfaces";
+import { IProduct, IShoppingCartItem } from "../../interfaces";
 import { ProductSection } from "./styles";
 import Counter from "../../components/Counter";
 import Button from "../../components/Button";
 import { AuthContext } from "../../Context/AuthContext";
 import { CartContext } from "../../Context/CartContext";
+
+
 
 export default function Product() {
 
@@ -30,14 +32,11 @@ export default function Product() {
 
     }
 
-
-    
   }, [])
 
 
   const [quantity, setQuantity] = useState(1);
 
-  const [cartItems, setCartItems] = useState<IProduct[]>([]);
 
   function handleQuantityChange(newValue: number) {
     setQuantity(newValue);
