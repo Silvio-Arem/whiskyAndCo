@@ -5,8 +5,11 @@ import { ProductSection } from "./styles";
 import Counter from "../../components/Counter";
 import Button from "../../components/Button";
 import { AuthContext } from "../../Context/AuthContext";
+import { CartContext } from "../../Context/CartContext";
 
 export default function Product() {
+
+  const { shopCart, addToCart } = useContext(CartContext);
 
   const { state } = useLocation();
   const [ product, setProduct ] = useState <IProduct> ({
@@ -42,14 +45,12 @@ export default function Product() {
 
 
   function handleAddToCart(item: IProduct) {
-    const totalPrice = quantity * Number(product.price)
+    addToCart(item, quantity);
+    const totalPrice = quantity * Number(product.price);
     const itemWithPrice = { ...item, totalPrice };
     console.log(itemWithPrice);
     setCartItems([...cartItems, itemWithPrice]);
   }
-
-  const { userToken } = useContext(AuthContext);
-
   return (
     <>
       {product._id !== "" ? (
@@ -65,6 +66,7 @@ export default function Product() {
               <p className="product__description">{product.description}</p>
               <Counter quantity={quantity} onQuantityChange={handleQuantityChange} />
               <div className="buttons__choice">
+                <button onClick={() => handleAddToCart(product)}>teste</button>
                 <Button  link={'/checkout'} title="Adicionar ao carrinho" text="Comprar Agora" onClick={() => handleAddToCart(product)}/>
                 <Button link={`/product`} title="Continuar comprando" text="Continuar Comprando" />
               </div>
