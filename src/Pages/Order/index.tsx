@@ -23,6 +23,7 @@ export default function Order () {
 
   const getProducts = async () => {
     const response = await instance.get("/product");
+<<<<<<< HEAD
     const products: IProduct[] = response.data;
     setList(products);
   }
@@ -35,6 +36,13 @@ export default function Order () {
       console.log("ERRO: ", error);
     }
 
+=======
+    const productsList = response.data;
+    const list = currentOrder.products
+      .forEach(element => {
+        // productsList.filter((item: IProduct) => element.productId === item._id)
+    });
+>>>>>>> 2745a0250f1e2423990859600a9a336af1b5ce00
   }
 
  useEffect(() => {
