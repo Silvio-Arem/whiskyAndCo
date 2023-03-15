@@ -1,4 +1,4 @@
-<h1 align="center">[Front-End] - Desafio 4 XP - Gama Academy</h1>
+<h1 align="center">[Front-End] - Desafio Final XP - Gama Academy</h1>
 
 <div align="center">
   <img width="300" src="https://github.com/Silvio-Arem/whiskyAndCo/blob/master/src/assets/icons/logo-header.png">
