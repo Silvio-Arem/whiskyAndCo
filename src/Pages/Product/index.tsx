@@ -44,12 +44,7 @@ export default function Product() {
 
 
   function handleAddToCart(item: IProduct) {
-    console.log(quantity);
     addToCart(item, quantity);
-    // const totalPrice = quantity * Number(product.price);
-    // const itemWithPrice = { ...item, totalPrice };
-    // console.log(itemWithPrice);
-    // addToCart(itemWithPrice);
   }
   return (
     <>

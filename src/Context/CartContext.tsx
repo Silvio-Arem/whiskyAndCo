@@ -29,7 +29,6 @@ export function CartProvider({ children }: Props) {
 
   const addToCart = (product: IProduct, quantity: number) => {
     let oldCart = shopCart
-    console.log(oldCart)
     const newItem = { product, quantity };
     let foundProduct = oldCart.filter(item => item.product.name === product.name)
     if (foundProduct[0]) {
@@ -39,18 +38,15 @@ export function CartProvider({ children }: Props) {
       setShopCart(oldCart);
     } else {
       setShopCart(prevCart => [...prevCart, newItem]);
-      console.log(shopCart)
     }
   }
 
   const removeFromCart = (product: IProduct) => {
     let oldCart = shopCart
-    console.log(oldCart)
     let foundProduct = oldCart.filter(item => item.product.name === product.name)
     let position = oldCart.indexOf(foundProduct[0])
     oldCart.splice(position, 1) 
     setShopCart(oldCart);
-    console.log("!!!!removeu!!!!")
   }
 
 

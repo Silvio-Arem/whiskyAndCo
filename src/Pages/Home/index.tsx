@@ -56,9 +56,6 @@ const DivBanner = styled.div`
 export default function Home() {
 
   const { shopCart, addToCart } = useContext(CartContext);
-  console.log("Home")
-  console.log(shopCart);
-  console.log("depois da home")
 
   const { loggedUser, userToken } = useContext(AuthContext);
 
