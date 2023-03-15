@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { primaryColor, secondaryColor, tertiaryColor } from '../../components/UI/variables';
 
-export const StyledCategory = styled.section`
+export const StyledOrders = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;

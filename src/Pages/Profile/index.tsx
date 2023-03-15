@@ -1,40 +1,73 @@
 import { EventType } from "@testing-library/react";
-import { useState } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
 import { IUser } from "../../interfaces";
+import { instance } from "../../requestConfig";
+
+import { StyledProfile } from "./styles";
 
 export default function Profile() {
   
+  const { userToken } = useContext(AuthContext);
+
   const [ updatedProfile, setUpdatedProfile ] = useState(true);
+  const [ userOrders, setUserOrders ] = useState([]);
   const [ userProfile, setUserProfile ] = useState({
     _id: "", 
     name: "",
     email: "",
     cpf: "",
     address: "",
-    isAdmin: false,
-    userOrders: []
+    isAdmin: false
   })
   
   const navigate = useNavigate();
-  
+  const config = { headers: { Authorization: `Bearer ${userToken}`}};
+
   const handleValues = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserProfile({...userProfile, [name]: value})
   }
 
-  const formHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setUpdatedProfile(true);
+  const formHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault();
+      const response = await instance.put(`user/${userProfile._id}`, config);
+      setUpdatedProfile(true);
+      alert("Dados alterados com sucesso!");
+    } catch (error) {
+      console.log("ERRO: ", error);
+    }
   }
 
+  const getData = async () => {
+    try {
+      const response = await axios.all([
+        instance.get("/user", config),
+        instance.get("/userOrders", config)
+      ])
+      .then(axios.spread((user, uOrders) => {
+        setUserProfile(user.data);
+        setUserOrders(uOrders.data)
+      }));
+    } catch (error) {
+      console.log("ERRO: ", error)
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  }, [])
+
   return (
-    <section>
+    <StyledProfile>
       <h3>Dados Pessoais:</h3>
       <p>Tipo do Usuário</p>
       <p>{userProfile.isAdmin ? "Administrador": "Cliente"}</p>
       <button>Alterar Senha</button>
-      <button onClick={() => navigate("orders", {state : {userOrders: userProfile.userOrders}})}>Ir para Pedidos</button>
+      <button onClick={() => navigate("orders", {state : userOrders})}>Ir para Pedidos</button>
     {
     updatedProfile
     ? (
@@ -53,17 +86,17 @@ export default function Profile() {
     : (
       <form onSubmit={(e) => formHandler(e)}>
         <label htmlFor="name">Nome:</label>
-        <input type="text" value={userProfile.name} onChange={(e) => handleValues(e)} />
+        <input type="text" name="name" value={userProfile.name} onChange={(e) => handleValues(e)} />
         <label htmlFor="email">E-mail:</label>
-        <input type="email" value={userProfile.email} onChange={(e) => handleValues(e)} />
+        <input type="email" name="email" value={userProfile.email} onChange={(e) => handleValues(e)} />
         <label htmlFor="cpf">CPF:</label>
-        <input type="text" value={userProfile.cpf} onChange={(e) => handleValues(e)} />
+        <input type="text" name="cpf" value={userProfile.cpf} onChange={(e) => handleValues(e)} />
         <label htmlFor="address">Endereço</label>
-        <input type="text" value={userProfile.address} onChange={(e) => handleValues(e)} />
+        <input type="text" name="address" value={userProfile.address} onChange={(e) => handleValues(e)} />
         <input type="submit" value="Salvar" />
       </form>
     )}
-    </section>
+    </StyledProfile>
   );
 }
 

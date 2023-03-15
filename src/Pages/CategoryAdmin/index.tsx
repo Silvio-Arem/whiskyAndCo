@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext';
 import { instance } from '../../requestConfig';
 import { AxiosResponse } from "axios";
-import { StyledSection } from '../Admin/styles';
+import { StyledCategory } from './styles';
 
 
 export default function CategoryAdmin() {
@@ -59,7 +59,7 @@ export default function CategoryAdmin() {
   }, []);
 
   return (
-    <StyledSection>
+    <StyledCategory>
       <h3>Informações da Categoria</h3>
       {
         updatedItem
@@ -92,6 +92,6 @@ export default function CategoryAdmin() {
         )
       }
       <button onClick={() => categoryRequest("delete")}>Remover</button>
-    </StyledSection>
+    </StyledCategory>
   )
 }

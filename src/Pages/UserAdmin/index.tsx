@@ -5,13 +5,15 @@ import { AuthContext } from '../../Context/AuthContext';
 import { IUser } from '../../interfaces';
 import { instance } from '../../requestConfig';
 
+import { StyleUserAdmin } from './styles';
+
 export default function UserAdmin() {
 
   const { state } = useLocation();
   const navigate = useNavigate();
   const { userToken } = useContext(AuthContext);
 
-  const [ updatedItem, setUpdatedItem ] = useState <boolean> (true);
+  const [ updatedItem, setUpdatedItem ] = useState <boolean> (false);
   const [ user, setUser ] = useState <IUser> ({
     _id: "",
     name: "",
@@ -20,7 +22,6 @@ export default function UserAdmin() {
     password: "",
     address: "",
     isAdmin: false,
-    userOrders: []
   });
 
   useEffect(() => {
@@ -28,7 +29,7 @@ export default function UserAdmin() {
       setUser(state.item);
     }
     else {
-      setUpdatedItem(false);
+      setUpdatedItem(true);
     }
   }, [])
 
@@ -46,16 +47,15 @@ export default function UserAdmin() {
       e.preventDefault();
       let response: AxiosResponse<any, any>;
       const data = { ...user };
-      const itemId = user._id;
-      delete user._id;
+      delete data._id;
       
-      if(!itemId) {
-        response = await instance.post("/product", data, config);
-        alert("Produto criado com sucesso!");
+      if(!user._id) {
+        response = await instance.post("/user", data, config);
+        alert("Usuário criado com sucesso!");
       }
       else {
-        response = await instance.put(`/product/${itemId}`, data, config);
-        alert("Produto atualizado com sucesso!");
+        response = await instance.put(`/user/${user._id}`, data, config);
+        alert("Usuário atualizado com sucesso!");
       }
       setUpdatedItem(true);
       navigate(-1);
@@ -65,11 +65,20 @@ export default function UserAdmin() {
     }
   }
 
-  const removeUser = () => {
+  const removeUser = async () => {
+    try {
+      const response = await instance.delete(`/user/${user._id}`, config);
+      alert("Usuário removido com sucesso!");
+      navigate(-1);
+    } catch (error) {
+      console.log("ERRO: ", error);
+    }
   }
 
+  console.log(updatedItem)
+
   return (
-    <section>
+    <StyleUserAdmin>
       <h3>Informações do Usuário:</h3>
     {
       updatedItem
@@ -103,14 +112,11 @@ export default function UserAdmin() {
           <input type="text" value={user.address} onChange={(e) => handleValues(e)} />
           <label htmlFor="isAdmin">Usuário Administrador:</label>
           <input type="checkbox" checked={user.isAdmin} onChange={(e) => handleValues(e)} />
-          <input type="submit" value="Salvar" />
+          <input type="submit" value={user._id ? "Salvar" : "Criar"} />
         </form>
       )}
-      <div>
-        {!updatedItem && <button onClick={() => setUpdatedItem(!updatedItem)}>Cancelar</button>}
-        <button onClick={() => removeUser()}>Remover</button>
-      </div>
+      {!updatedItem && <button onClick={() => setUpdatedItem(!updatedItem)}>Cancelar</button>}
       <button onClick={() => removeUser()}>Remover</button>
-    </section>
+    </StyleUserAdmin>
   )
 }

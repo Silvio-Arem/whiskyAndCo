@@ -5,7 +5,7 @@ import { instance } from '../requestConfig';
 interface IAuthContext {
   loggedUser: {
     _id: string,
-    name: string,
+    name: string, 
     email: string,
     isAdmin: boolean
   },

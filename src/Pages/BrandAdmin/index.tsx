@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { AxiosResponse } from "axios";
 import { instance } from '../../requestConfig';
 import { AuthContext } from '../../Context/AuthContext';
-import { StyledSection } from '../Admin/styles';
+import { StyledBrand } from './styles';
 
 export default function BrandAdmin() {
   
@@ -54,7 +54,7 @@ export default function BrandAdmin() {
   }, []);
 
   return (
-    <StyledSection>
+    <StyledBrand>
       <h3>Informações da Marca</h3>
       {
         updatedItem
@@ -84,6 +84,6 @@ export default function BrandAdmin() {
       {!updatedItem && <button onClick={() => setUpdatedItem(!updatedItem)}>Cancelar</button>}
       <button onClick={() => brandRequest("delete")}>Remover</button>
       </div>
-    </StyledSection>
+    </StyledBrand>
   )
 }

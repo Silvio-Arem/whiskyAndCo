@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { primaryColor, secondaryColor, tertiaryColor } from '../../components/UI/variables';
 
-export const StyledCategory = styled.section`
+export const StyledOrder = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,12 +43,6 @@ export const StyledCategory = styled.section`
     align-items: center;
     justify-content: center;
   }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
   
   div, ul {
     width: 100%;
@@ -64,16 +58,6 @@ export const StyledCategory = styled.section`
     min-width: 6rem;
   }
 
-  input {
-    text-transform: none;
-    width: 66%;
-    padding: .5rem;
-    border: 2px solid ${secondaryColor};
-    &:focus {
-      border: 3px solid ${primaryColor};
-      box-shadow: rgba(0, 0, 0, 0.16) 0px .25rem 1rem, rgba(0, 0, 0, 0.23) 0px .25rem 1rem;
-    }
-  }
   a{
     text-decoration: none;
     color: ${secondaryColor};
