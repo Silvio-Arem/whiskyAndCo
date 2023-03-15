@@ -14,7 +14,7 @@ export default function Order () {
     const productsList = response.data;
     const list = currentOrder.products
       .forEach(element => {
-        productsList.filter((item: IProduct) => element.productId === item._id)
+        // productsList.filter((item: IProduct) => element.productId === item._id)
     });
   }
 

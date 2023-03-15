@@ -63,7 +63,7 @@ export const ProductsContainer = styled.section`
 }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 990px) {
   .products__cards {
     flex-direction: row;
     max-width: 700px;

@@ -4,9 +4,16 @@ import CartIcon from "../../assets/icons/cart-icon.png";
 import { ShoppingCartContainer } from "./styles";
 import Button from '../Button';
 import { CartContext, IProductCart } from '../../Context/CartContext';
+import styled from 'styled-components';
 
 
 export default function ShoppingCart() {
+
+    const DivModalBody = styled.div`
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+    `;
 
     const { shopCart, removeFromCart, setShopCart } = useContext(CartContext);
 
@@ -19,7 +26,7 @@ export default function ShoppingCart() {
 
     useEffect(() => {
         setShopCart(shopCart);
-      }, [shopCart]);
+    }, [shopCart]);
 
     return (
         <ShoppingCartContainer>
@@ -35,11 +42,10 @@ export default function ShoppingCart() {
                 </Modal.Header>
                 <Modal.Body>
                     {shopCart.map((product: IProductCart) => (
-                        <div key={product.product._id}>
-                            <p>{product.product.name} - R$ {product.product.price}</p>
-                            <button onClick={() => removeFromCart(product.product)}>X</button>
-                            <p>{product.quantity}</p>
-                        </div>
+                        <DivModalBody key={product.product._id}>
+                            <p>{product.quantity} - {product.product.name} - R$ {product.product.price}</p>
+                            <Button title={'Remover item'} text={'X'} link={''} onClick={() => removeFromCart(product.product)} />
+                        </DivModalBody>
                     ))}
                 </Modal.Body>
                 <Modal.Footer>
