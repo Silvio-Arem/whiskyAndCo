@@ -40,6 +40,10 @@ export default function UserAdmin() {
     }
   }
 
+  const handleAdmin = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUser({...user, isAdmin: e.target.checked});
+  }
+
   const config = {headers: { Authorization: `Bearer ${userToken}`}};
 
   const formHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -75,18 +79,16 @@ export default function UserAdmin() {
     }
   }
 
-  console.log(updatedItem)
-
   return (
     <StyleUserAdmin>
       <h3>Informações do Usuário:</h3>
+      <button onClick={() => navigate("orders", {state : {userOrders: user.userOrders}})}>Ir para Pedidos</button>
     {
       updatedItem
       ? (
         <div>
           <p>ID do Usuário:</p>
           <p>{user._id}</p>
-          <button onClick={() => navigate("orders", {state : {userOrders: user.userOrders}})}>Ir para Pedidos</button>
           <p>Nome do Usuário:</p>
           <p>{user.name}</p>
           <p>Email do Usuário:</p>
@@ -97,7 +99,6 @@ export default function UserAdmin() {
           <p>{user.address}</p>
           <p>Tipo do Usuário:</p>
           <p>{user.isAdmin ? "Administrador": "Cliente"}</p>
-          <button onClick={() => setUpdatedItem(!updatedItem)}>Atualizar</button>
         </div>
         )
         : (
@@ -110,13 +111,21 @@ export default function UserAdmin() {
           <input type="text" value={user.cpf} onChange={(e) => handleValues(e)} />
           <label htmlFor="address">Endereço do Usuário:</label>
           <input type="text" value={user.address} onChange={(e) => handleValues(e)} />
-          <label htmlFor="isAdmin">Usuário Administrador:</label>
-          <input type="checkbox" checked={user.isAdmin} onChange={(e) => handleValues(e)} />
+          <article>
+            <label htmlFor="isAdmin">Usuário Administrador:</label>
+            <input type="checkbox" name='isAdmin' checked={user.isAdmin} onChange={(e) => handleAdmin(e)} />
+          </article>
           <input type="submit" value={user._id ? "Salvar" : "Criar"} />
         </form>
       )}
-      {!updatedItem && <button onClick={() => setUpdatedItem(!updatedItem)}>Cancelar</button>}
-      <button onClick={() => removeUser()}>Remover</button>
+      <article>
+        {
+          updatedItem 
+          ? <button onClick={() => setUpdatedItem(!updatedItem)}>Atualizar</button> 
+          : <button onClick={() => setUpdatedItem(!updatedItem)}>Cancelar</button>
+        }
+        <button onClick={() => removeUser()}>Remover</button>
+      </article>
     </StyleUserAdmin>
   )
 }

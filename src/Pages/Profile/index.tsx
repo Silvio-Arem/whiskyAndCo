@@ -96,6 +96,7 @@ export default function Profile() {
         <input type="submit" value="Salvar" />
       </form>
     )}
+    {!updatedProfile && <button onClick={() => setUpdatedProfile(!updatedProfile)}>Cancelar</button>}
     </StyledProfile>
   );
 }

@@ -13,7 +13,8 @@ export const StyleUserAdmin = styled.section`
     font-weight: 500;
   }
 
-  button, select, input {
+  button, input {
+    min-width: 6rem;
     outline: transparent;
     border: .125rem solid ${primaryColor};
     &:hover, &:focus {
@@ -22,7 +23,7 @@ export const StyleUserAdmin = styled.section`
     }
   }
 
-  button, select, input[type="submit"] {
+  button, input[type="submit"] {
     text-transform: uppercase;
     margin: .15rem;
     padding: .25rem;
@@ -33,40 +34,44 @@ export const StyleUserAdmin = styled.section`
     }
   }
 
-  select, input {
+  input[type="checkbox"] {
+    min-width: auto;
+    outline: transparent;
+    height: auto;
+    width: auto;
+    margin: 0 1rem;
+  }
+
+  input {
     height: 2.5rem;
+    margin-bottom: 1rem;
   }
   
   div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
   }
 
   form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  
-  div, ul {
-    width: 100%;
-    max-width: 48rem;
-    padding: 2rem;
-  }
 
-  select {
-    width: 33%;
-  }
-
-  button {
-    min-width: 6rem;
+  article {
+    display: flex;
+    align-items: baseline;
+    margin: 1rem;
   }
 
   input {
     text-transform: none;
-    width: 66%;
+    width: 100%;
+    max-width: 24rem;
     padding: .5rem;
     border: 2px solid ${secondaryColor};
     &:focus {
@@ -74,23 +79,8 @@ export const StyleUserAdmin = styled.section`
       box-shadow: rgba(0, 0, 0, 0.16) 0px .25rem 1rem, rgba(0, 0, 0, 0.23) 0px .25rem 1rem;
     }
   }
-  a{
-    text-decoration: none;
-    color: ${secondaryColor};
-    &:hover, &:focus {
-      color: ${primaryColor};
-      font-size: large;
-    }
-  }
 
-  li {
-    list-style-type: none;
-    &:hover {
-      background-color: ${secondaryColor};
-    }
-  }
-
-  label, p:nth-child(even) {
+  label, p:nth-child(odd) {
     font-weight: 500;
     font-size: 1.25rem;
   }
