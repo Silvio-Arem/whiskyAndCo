@@ -16,18 +16,22 @@ export default function Orders () {
     }
   }, [])
 
-  console.log(state);
-
   return (
     <StyledOrders>
-      {/* <h3>Pedidos Realizados</h3>
+      <h3>Pedidos Realizados</h3>
         {
-          orders.map((item) => 
-            <article key={item._id} onClick={() => navigate(`${item._id}`, {state : item})}>
-              <p>Data do Pedido: {item.createdAt}</p>
-            </article>             
+          orders.length > 0
+          ? (
+            orders.map((item) => 
+              <article key={item._id} onClick={() => navigate(`${item._id}`, {state : item})}>
+                <p>Data do Pedido: {item.createdAt?.split("").reverse()}</p>
+              </article>
+            ) 
           )
-        } */}
+          : (
+            <aside>Não há pedidos registrados para o Usuário</aside>
+          )
+        }
     </StyledOrders>
   )
 }

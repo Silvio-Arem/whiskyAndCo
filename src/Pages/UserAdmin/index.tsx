@@ -13,7 +13,7 @@ export default function UserAdmin() {
   const navigate = useNavigate();
   const { userToken } = useContext(AuthContext);
 
-  const [ updatedItem, setUpdatedItem ] = useState <boolean> (false);
+  const [ updatedItem, setUpdatedItem ] = useState <boolean> (true);
   const [ user, setUser ] = useState <IUser> ({
     _id: "",
     name: "",
@@ -82,7 +82,6 @@ export default function UserAdmin() {
   return (
     <StyleUserAdmin>
       <h3>Informações do Usuário:</h3>
-      <button onClick={() => navigate("orders", {state : {userOrders: user.userOrders}})}>Ir para Pedidos</button>
     {
       updatedItem
       ? (

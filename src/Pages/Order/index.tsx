@@ -45,24 +45,35 @@ export default function Order () {
 
   return (
     <StyledOrder>
-      <h3>Id do Pedido: {currentOrder._id}</h3>
-      <p>Data do Pedido: {currentOrder.createdAt}</p>
-      <article>
-        {currentOrder.products.map((orderProduct) => {
-            const product = list.find((product) => product._id === orderProduct._id);
-            if (!product) {
-              return <p key={orderProduct._id}>Produto não encontrado</p>;
-            }
-            return (
-              <div key={orderProduct._id}>
-                <p>{product.picture}</p>
-                  <p>{product.name}</p>
-                  <p>{orderProduct.quantity}</p>
-                  <p>Valor: {product.price * orderProduct.quantity}</p>
-              </div>
-            );
-          })}
-      </article>
+      <h3>Detalhes do Pedido</h3>
+      <p>Id do Pedido - {currentOrder._id}</p>
+      <p>Data do Pedido - {currentOrder.createdAt?.slice(0,10).split("-").reverse().join("/")}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Quantidade</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentOrder.products.map((orderProduct) => {
+              const product = list.find((product) => product._id === orderProduct._id);
+              if (!product) {
+                return <p key={orderProduct._id}>Produto não encontrado</p>;
+              }
+              return (
+                <tr key={orderProduct._id}>
+                  <td data-label="Imagem"><img src={product.picture} alt={product.name} /></td>
+                  <td data-label="Nome">{product.name}</td>
+                  <td data-label="Quantidade">{orderProduct.quantity} {orderProduct.quantity > 1 ? "itens" : "item"}</td>
+                  <td data-label="Valor">R${product.price * orderProduct.quantity}</td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
       <p>Total da compra: {currentOrder.amount}</p>
       <button onClick={() => cancelOrder()}>Cancelar Pedido</button>
     </StyledOrder>

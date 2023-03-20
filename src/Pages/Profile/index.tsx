@@ -10,7 +10,8 @@ import { StyledProfile } from "./styles";
 
 export default function Profile() {
   
-  const { userToken } = useContext(AuthContext);
+  const { loggedUser, userToken } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [ updatedProfile, setUpdatedProfile ] = useState(true);
   const [ userOrders, setUserOrders ] = useState([]);
@@ -23,7 +24,6 @@ export default function Profile() {
     isAdmin: false
   })
   
-  const navigate = useNavigate();
   const config = { headers: { Authorization: `Bearer ${userToken}`}};
 
   const handleValues = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,12 +45,12 @@ export default function Profile() {
   const getData = async () => {
     try {
       const response = await axios.all([
-        instance.get("/user", config),
+        instance.get(`/user/${loggedUser._id}`, config),
         instance.get("/userOrders", config)
       ])
       .then(axios.spread((user, uOrders) => {
         setUserProfile(user.data);
-        setUserOrders(uOrders.data)
+        setUserOrders(uOrders.data);
       }));
     } catch (error) {
       console.log("ERRO: ", error)
@@ -64,14 +64,13 @@ export default function Profile() {
   return (
     <StyledProfile>
       <h3>Dados Pessoais:</h3>
-      <p>Tipo do Usuário</p>
-      <p>{userProfile.isAdmin ? "Administrador": "Cliente"}</p>
-      <button>Alterar Senha</button>
       <button onClick={() => navigate("orders", {state : userOrders})}>Ir para Pedidos</button>
     {
     updatedProfile
     ? (
       <div>
+        <p>Tipo do Usuário</p>
+        <p>{userProfile.isAdmin ? "Administrador": "Cliente"}</p>
         <p>Nome:</p>
         <p>{userProfile.name}</p>
         <p>E-mail:</p>
