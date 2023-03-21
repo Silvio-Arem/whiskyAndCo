@@ -43,6 +43,19 @@
 <pre>npm start</pre>
 <br>
 
+5 - As etapas acima são para execução da parte frontend do projeto. Para a aplicação funcionar corretamente, é necessário a execução em paralelo do projeto backend (servidor). Para continuar, repita até o passo 3, porém para o repositório do backend (citado acima).
+
+6 - Faça a instalação do typescript globalmente em sua máquina, através do comando:
+<pre>npm install -g typescript</pre>
+<br>
+
+7 - Agora, execute o comando abaixo para gerar o código executável do projeto:
+<pre>tsc</pre>
+<br>
+
+8 - Execute o passo 4. Agora, você deverá ter os dois projetos em execução simultânea e localmente, nas portas 3000 e 4000. 
+
+7 - Em seguida, para 
 <h2 align="center">Tecnologias</h2>
 
 <div align="center">
