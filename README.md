@@ -35,7 +35,7 @@
 <pre>git clone https://github.com/Silvio-Arem/whiskyAndCo.git</pre>
 <br>
 
-3 - Com o repositório já no diretório que escolheu, é nessário instalar as dependências do projeto. Para instalação de dependências, execute:
+3 - Depois de clonado, acesse o diretório do projeto. Para isso, abra o projeto na sua IDE de preferência, e pelo terminal (prompt de comandos), instale as dependências do projeto. Para instalação de dependências, execute o comando:
 <pre>npm install</pre>
 <br>
 
