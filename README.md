@@ -29,7 +29,7 @@
 
 <h2 align="center">Reprodução</h2>
 
-1 - Faça o clone do repositório para utilizá-lo na sua máquina. Para isso, vá ate o botão verde "<> code", no canto superior direito deessa mesma tela do repositório, e copie o link do repositório.
+1 - Faça o clone do repositório para utilizá-lo na sua máquina. Para isso, vá ate o botão verde "<> code", no canto superior direito dessa mesma tela do repositório, e copie o link do repositório.
 
 2 - Em sua máquina, no diretório que escolher ser o diretório para o projeto, execute o comando abaixo (é necessário ter o git instalado, para mais informações, visite https://git-scm.com/book/en/v2/Getting-Started-Installing-Git):
 <pre>git clone https://github.com/Silvio-Arem/whiskyAndCo.git</pre>
