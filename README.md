@@ -54,8 +54,7 @@
 <br>
 
 8 - Execute o passo 4. Agora, você deverá ter os dois projetos em execução simultânea e localmente, nas portas 3000 e 4000. 
-
-7 - Em seguida, para 
+ 
 <h2 align="center">Tecnologias</h2>
 
 <div align="center">
